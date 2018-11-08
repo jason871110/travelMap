@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I come from template!!</title>
+    <meta charset="utf-8">
+    <style>
+    body {
+    background-color: rgb(253, 253, 239);
+    }
+    em {
+    color: LightSeaGreen;
+    }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Tainan Travel</h1>
+    {% for course in course_list %}
+    <div>
+    {{ course.title }}<br>
+    {{ course.created_at }}<br>
+    <!--<div class="thumbnail">
+        <img src="{{ img }}" alt="no image">
+        {{ img }}
+    </div>-->
+    {{ course.content }}&nbsp;
+    </div>
+    {% endfor %}
+</body>
+</html>
