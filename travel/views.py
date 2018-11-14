@@ -3,12 +3,12 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import TouristSite,IMG
+from .models import TouristSite,Schedule,TotalCourse
 from django.http import JsonResponse
 import json
 # Create your views here.
 
-
+'''
 def uploadImg(request):
     if request.method == 'POST':
         new_img = IMG(img=request.FILES.get('img'))
@@ -17,14 +17,15 @@ def uploadImg(request):
         return redirect('showimg.html')#view or html is ok
 
     return render(request,'uploadimg.html')
-
+'''
+'''
 def showImg(request):
     imgs = IMG.objects.all()
     content = {
         'imgs':imgs,
     }
     return render(request,'showimg.html', content)
-
+'''
 def insertNewSchedule(request):
     content = {}
     if request.method == 'POST':
@@ -88,7 +89,7 @@ def addNewScheduleToDatabase(content):
     return obj
 
 def addNewLineToDatabase(content):
-    obj = TotalLines.objects.create(title=content['day'],site_content=content['site_content'],Course=content['pk'])
+    obj = TotalCourse.objects.create(title=content['day'],site_content=content['site_content'],Course=content['pk'])
     
     return obj
 

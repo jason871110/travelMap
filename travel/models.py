@@ -20,8 +20,7 @@ class Schedule(models.Model):
 class TotalCourse(models.Model):
     day = models.IntegerField(blank=True)
     site_content = models.TextField(blank=True)
-    course = models.ForeignKey(Schedule,    on_delete=models.CASCADE,
-)
+    course = models.ForeignKey(Schedule, on_delete=models.CASCADE,)
 
     def __str__(self):
         return self.day
@@ -31,11 +30,7 @@ class TouristSite(models.Model):
     site_name = models.CharField(max_length=100)
     time =  models.TextField(blank=True)
     image = models.ImageField(upload_to='upload',blank=True)
-    line = models.ForeignKey(TotalCourse,    on_delete=models.CASCADE,
-)
+    line = models.ForeignKey(TotalCourse, on_delete=models.CASCADE,)
 
     def __str__(self):
         return self.site_name
-
-class IMG(models.Model):
-    img = models.ImageField(upload_to='upload')
