@@ -34,3 +34,6 @@ class TouristSite(models.Model):
 
     def __str__(self):
         return self.site_name
+
+class IMG(models.Model):
+    image = models.ImageField(upload_to='upload',blank=True)

@@ -3,29 +3,29 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import TouristSite,Schedule,TotalCourse
+from .models import TouristSite,Schedule,TotalCourse,IMG
 from django.http import JsonResponse
 import json
 # Create your views here.
 
-'''
+
 def uploadImg(request):
     if request.method == 'POST':
-        new_img = IMG(img=request.FILES.get('img'))
+        new_img = IMG(image=request.FILES.get('img'))
         #後面的'img'對應到html的name='img'
         new_img.save()
         return redirect('showimg.html')#view or html is ok
 
     return render(request,'uploadimg.html')
-'''
-'''
+
+
 def showImg(request):
     imgs = IMG.objects.all()
     content = {
         'imgs':imgs,
     }
     return render(request,'showimg.html', content)
-'''
+
 def insertNewSchedule(request):
     content = {}
     if request.method == 'POST':
