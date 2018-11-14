@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Schedule,TotalLines,TouristSite,IMG
+from .models import TouristSite,IMG
 from django.http import JsonResponse
 import json
 # Create your views here.

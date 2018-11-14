@@ -19,9 +19,9 @@ from django.conf import settings
 from travel.views import uploadImg,showImg,insertNewSchedule,addCourseLines,addNewScheduleToDatabase
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', uploadImg, name=home),
-    url(r'^upload', uploadImg, name=home),
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', uploadImg),
+    url(r'^upload', uploadImg),
     url(r'^show', showImg),
     url(r'^insert', insertNewSchedule),
     url(r'^addline', addCourseLines),
