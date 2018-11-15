@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>schedule</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="schedule.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </head>
+  <body style="background-color:hsl(1, 0%, 50%,10%)">
+      {% csrf_token %}
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+      <a class="navbar-brand" href="#">
+        <img src="https://images.pexels.com/photos/979602/pexels-photo-979602.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Logo" style="width:40px;">
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">下載</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">規劃行程</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="#">參考行程</a>
+        </li>
+      </ul>
+      <form class="form-inline" action="/action_page.php" style="float:right;">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    </nav>
+    <div class="container-fluid" >
+      <div class="row">
+        <div class="col-sm-2" style="margin-top:60px;">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+          </ul>
+          <hr class="d-sm-none">
+        </div>
+        <div class="col-sm-8" style="margin-top:60px; margin-bottom:30px;background-color: white;height:400pt">
+          <div class="container" >
+            <div class="row">
+              <div class="col-sm-4" style="border:1pt; height:350pt;margin-top:30px; margin-bottom:30px;">
+                <div class="container">
+                   <form method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="pk" value="{{pk}}">
+                    選擇第幾天:
+                    <select name="whichday">
+                        <option value="day_1">第1天
+                        <option value="day_2">第2天
+                        <option value="day_3">第3天
+                    </select><br>
+                    選擇時間:
+                    <select name="seq">
+                        <option value=1>1
+                        <option value=2>2
+                        <option value=3>3
+                    </select><br>
+                    輸入描述或簡介:<br>
+                    <textarea name="title" cols="20" rows="1"></textarea><br>
+
+                    <button type="submit">上傳</button>
+                </form>
+                </div>
+                <div class="container" style="background-color: #f2f2f2;">
+                  <div id="MainMenu">
+                    <div class="list-group panel" >
+                      <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" id="day_1" >day 1</a>
+                      <div class="collapse" id="demo3">
+                        <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1"><i class="fa fa-caret-down" >keep</i></a>
+
+                        <a href="javascript:;" class="list-group-item" id="sche_day_1_2">pussy</a>
+                      </div>
+                      <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"id="day_2">day 2</a>
+                      <div class="collapse" id="demo4">
+                        <a href="" class="list-group-item"id="sche_day_2_1">balabala</a>
+                        <a href="" class="list-group-item"id="sche_day_2_2">labalaba</a>
+                        <a href="" class="list-group-item"id="sche_day_2_3">chueilaba</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>        
+              </div>
+              <div class="col-sm-8" style="border:1pt solid; height:350pt;margin-top:30px; margin-bottom:30px;" id="empty_space">
+                <div class="container" style="height: 200pt; border: 1pt solid; margin-top:10pt;" >
+                   
+                </div>
+                <div class="container" style="height: 100pt;  margin-top:10pt;" >
+                  <div class="row">
+                    <div class="col-sm-8" style="height: 100pt; border: 1pt solid;">
+                    </div>
+                  </div>
+                </div>
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <footer class="page-footer font-small blue " style="background-color:white;">
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+          <a href="#">NCKU EE</a>
+        </div>
+
+        <footer>
+
+
+          <!--div  id="top_img"></div>
+        <div id="daily">
+          <figure id="daily_1">
+            <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+          </figure>
+          <figure id="daily_2">
+            <figcaption>Fig.2 - hashtag, watch, Taiwan.</figcaption>
+          </figure>
+          <figure id="daily_3">
+            <figcaption>Fig.3 - Blow, Beach, Skirt.</figcaption>
+          </figure>
+          </div-->
+        </body>
+        <script src="schedule.js"></script>
+        <html>
