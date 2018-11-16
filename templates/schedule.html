@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <title>schedule</title>
+    <title> schedule </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="schedule.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -56,19 +56,19 @@
                    <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="pk" value="{{pk}}">
                     選擇第幾天:
-                    <select name="whichday">
+                    <select name="whichday" id="whichday">
                         <option value="day_1">第1天
                         <option value="day_2">第2天
                         <option value="day_3">第3天
                     </select><br>
                     選擇時間:
-                    <select name="seq">
+                    <select name="seq" id="seq">
                         <option value=1>1
                         <option value=2>2
                         <option value=3>3
                     </select><br>
                     輸入描述或簡介:<br>
-                    <textarea name="title" cols="20" rows="1"></textarea><br>
+                    <textarea id='title' name="title" cols="20" rows="1"></textarea><br>
 
                     <button type="submit">上傳</button>
                 </form>
@@ -76,14 +76,13 @@
                 <div class="container" style="background-color: #f2f2f2;">
                   <div id="MainMenu">
                     <div class="list-group panel" >
-                      <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" id="day_1" >day 1</a>
-                      <div class="collapse" id="demo3">
-                        <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1"><i class="fa fa-caret-down" >keep</i></a>
-
+                      <a href="#day_1_collapse" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu" id="day_1" >day 1</a>
+                      <div class="collapse" id="day_1_collapse">
+                        <!--a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1"><i class="fa fa-caret-down" >keep</i></a-->
                         <a href="javascript:;" class="list-group-item" id="sche_day_1_2">pussy</a>
                       </div>
-                      <a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"id="day_2">day 2</a>
-                      <div class="collapse" id="demo4">
+                      <a href="#day_2_collapse" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu"id="day_2">day 2</a>
+                      <div class="collapse" id="day_2_collapse">
                         <a href="" class="list-group-item"id="sche_day_2_1">balabala</a>
                         <a href="" class="list-group-item"id="sche_day_2_2">labalaba</a>
                         <a href="" class="list-group-item"id="sche_day_2_3">chueilaba</a>
@@ -107,16 +106,14 @@
           </div>
         </div>
       </div>
+    </div>
 
 
       <footer class="page-footer font-small blue " style="background-color:white;">
         <div class="footer-copyright text-center py-3">© 2018 Copyright:
           <a href="#">NCKU EE</a>
         </div>
-
-        <footer>
-
-
+      </footer>
           <!--div  id="top_img"></div>
         <div id="daily">
           <figure id="daily_1">
@@ -129,6 +126,44 @@
             <figcaption>Fig.3 - Blow, Beach, Skirt.</figcaption>
           </figure>
           </div-->
-        </body>
-        <script src="schedule.js"></script>
-        <html>
+  </body>
+  <html>
+<script>
+var da=[
+  {% for sche in day_1_all %}
+        {% if not forloop.first %},{% endif %}
+        {
+            day:"{{ sche.day }}",
+            title: "{{ sche.title }}",
+            seq: "{{ sche.seq }}",
+        }
+    {% endfor %}
+]
+console.log(da[0]);
+console.log('<a href="javascript:;" class="list-group-item" id="sche_day_' + da[0].day + '_' +da[0].seq+'"');
+  $(document).ready(function(){
+      for(i=0;i<da.length;i++){
+
+        $('#day_'+da[i].day+'_collapse').append('<a href="javascript:;" class="list-group-item" id="sche_day_' + da[i].day + '_'+da[i].seq+'">' + da[i].title + '</a>');
+
+      }
+  }
+  )
+
+  $('button').click(function(){
+    var d=$('#whichday').val();
+    var s=$('#seq').val();
+    var t=$('#title').val();
+    alert('');
+    $.ajax({
+      url: './',
+      success: function(){
+        alert('success');
+      },
+      failure: function(){
+        alert('fail');
+      }
+    });
+  });
+
+</script>

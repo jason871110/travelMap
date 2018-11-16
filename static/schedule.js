@@ -9,3 +9,14 @@ $('#plus_button').click(function(){
   $('#demo3').append('<a href="javascript:;" class="list-group-item" id="sche_day_1_'+num+'">num'+num+'</a>');
   num++;
 })
+ $('button').click(){
+            $.ajax({
+              url: './',
+              success: function(){
+                alert('success');
+              },
+              failure: function(){
+                alert('fail');
+              }
+            });
+          }

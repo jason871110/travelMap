@@ -97,8 +97,16 @@ def addNewLineToDatabase(content):
 
 def schedule(request):
     content = {}
+    if request.method == 'GET':
+        day_1_all = Schedule_content.objects.all()
+        content['day_1_all'] = day_1_all
+        print(content['day_1_all'])
+        print("adad")
+        return render(request, 'schedule.html', content)
 
     if request.method == 'POST':
+        day_1_all = Schedule_content.objects.all()
+        content['day_1_all'] = day_1_all
         content['day']=int(request.POST['whichday'][4:])
         content['seq']=request.POST['seq']
         content['title'] = request.POST['title']
@@ -109,5 +117,5 @@ def schedule(request):
         # print(sites)
         f = Schedule_content(day=content['day'], seq=content['seq'], title=content['title'])
         f.save()
-    #content['pk'] = 6
-    return render(request, 'schedule.html', content)
+        #content['pk'] = 6
+        return render(request, 'schedule.html', content)

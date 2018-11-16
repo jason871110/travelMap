@@ -14,6 +14,9 @@ class Schedule_content(models.Model):
     seq = models.IntegerField(blank=True)
     day = models.IntegerField(blank=True)
 
+    def __str__(self):
+        return 'day_%s_%s %s'%(self.day , self.seq ,self.title)
+
 
 class Schedule(models.Model):
     title = models.CharField(max_length=100)
