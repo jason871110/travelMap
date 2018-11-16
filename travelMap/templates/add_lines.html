@@ -1,0 +1,35 @@
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="hidden" name="pk" value="{{pk}}">
+    選擇第幾天:
+    <select name="whichday">
+        <option value="dayone">第1天
+        <option value="daytwo">第2天
+        <option value="daythree">第3天
+    </select><br>
+    選擇時間:
+    <select name="time">
+        <option value="morning">早上
+        <option value="afternoon">下午
+        <option value="evening">晚上
+    </select><br>
+    下面填寫旅遊地點以及參觀的順序(若格子太多可空白不寫)<br>
+    旅遊地點:
+    <input type="text" name="small_location1"><br>
+    旅遊地點:
+    <input type="text" name="small_location2"><br>
+    旅遊地點:
+    <input type="text" name="small_location3"><br>
+    旅遊地點:
+    <input type="text" name="small_location4"><br>
+    旅遊地點:
+    <input type="text" name="small_location5"><br>
+    旅遊地點:
+    <input type="text" name="small_location6"><br>
+    旅遊地點:
+    <input type="text" name="small_location7"><br>
+    輸入描述或簡介:<br>
+    <textarea name="site_content" cols="45" rows="5"></textarea><br>
+
+    <button type="submit">上傳</button>
+</form>
