@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 # Create your views here.
 
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import TouristSite,IMG,Schedule_content,Schedule
 from django.http import JsonResponse
 import json
@@ -109,6 +110,13 @@ def schedule(request):
         content['day_1_all'] = day_1_all
         content['day']=int(request.POST['whichday'][4:])
         content['seq']=request.POST['seq']
+        for sch in day_1_all:
+            if sch.day == int(content['day']):
+                if sch.seq>=int(content['seq']):
+                    upload_sch=Schedule_content.objects.get(day= sch.day, seq=sch.seq, title=sch.title)
+                    upload_sch.seq+=1
+                    upload_sch.save()
+
         content['title'] = request.POST['title']
         # content['pk'] = request.POST['pk']#need to be added by html or javascript
         # newLine = addNewLineToDatabase(content)
@@ -118,4 +126,7 @@ def schedule(request):
         f = Schedule_content(day=content['day'], seq=content['seq'], title=content['title'])
         f.save()
         #content['pk'] = 6
-        return render(request, 'schedule.html', content)
+        day_1_all = Schedule_content.objects.all()
+        content['day_1_all'] = day_1_all
+        return HttpResponseRedirect(reverse('schedule'))
+        #return render(request, 'schedule.html', content)
