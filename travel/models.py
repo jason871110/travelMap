@@ -23,7 +23,7 @@ class Schedule(models.Model):
     author = models.CharField(max_length=100,blank=True)
     days = models.IntegerField(blank=True)
     schedule_content = models.ForeignKey(Schedule_content,on_delete=models.CASCADE)
-    #location = models.CharField(max_length=100)
+    # location = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -38,6 +38,7 @@ class TotalCourse(models.Model):
     def __str__(self):
         return self.day
 
+
 class TouristSite(models.Model):
     route_order = models.IntegerField()
     site_name = models.CharField(max_length=100)
@@ -47,6 +48,7 @@ class TouristSite(models.Model):
 
     def __str__(self):
         return self.site_name
+
 
 class IMG(models.Model):
     img = models.ImageField(upload_to='upload')
