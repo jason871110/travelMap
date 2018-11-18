@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import TouristSite,IMG,Schedule_content,Schedule
+from .models import TouristSite,IMG,Schedule_content,Schedule,TotalCourse
 from django.http import JsonResponse
 import json
 # Create your views here.
@@ -41,7 +41,7 @@ def insertNewSchedule(request):
         #return render(request,'create_course.html', content)
         return JsonResponse(content, safe=False)
 
-    return render(request,'create_course.html')
+    return render(request,'create_schedule.html')
 def editSchedule(request):
     content = {}
     if request.method == 'POST':
@@ -90,7 +90,7 @@ def addNewScheduleToDatabase(content):
     return obj
 
 def addNewLineToDatabase(content):
-    obj = TotalLines.objects.create(title=content['day'],site_content=content['site_content'],Course=content['pk'])
+    obj = TotalCourse.objects.create(title=content['day'],site_content=content['site_content'],Course=content['pk'])
     
     return obj
 
