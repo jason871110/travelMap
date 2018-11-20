@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^insert', insertNewSchedule),
     url(r'^addline', addCourseLines),
     # url(r'^index.(?P<file_type>\w+)/$', ind),
-    path('index', ind),
+    path('index', ind, name='index'),
     path('schedule', schedule, name='schedule'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
 

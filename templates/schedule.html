@@ -52,7 +52,7 @@
             <div class="row">
               <div class="col-sm-4" style="border:1pt; height:350pt;margin-top:30px; margin-bottom:30px;">
                 <div class="container">
-                   <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                   <!--form  enctype="multipart/form-data"-->{% csrf_token %}
                     <input type="hidden" name="pk" value="{{pk}}">
                     選擇第幾天:
                     <select name="whichday" id="whichday">
@@ -73,8 +73,8 @@
                     輸入描述或簡介:<br>
                     <textarea id='title' name="title" cols="20" rows="1"></textarea><br>
 
-                    <button type="submit">上傳</button>
-                </form>
+                    <button type="submit" name="add_schedule" id="add_schedule">上傳</button>
+                <!--/form-->
                 </div>
                 <div class="container" style="background-color: #f2f2f2;">
                   <div id="MainMenu">
@@ -99,10 +99,10 @@
                    
                 </div>
                 <div class="container" style="height: 100pt;  margin-top:10pt;" >
-                  <div class="row">
-                    <div class="col-sm-8" style="height: 100pt; border: 1pt solid;">
-                    </div>
-                  </div>
+                  <form enctype="multipart/form-data">{% csrf_token %}
+                    <textarea id="text_area_for_intro" rows="5" cols="60"></textarea>
+                    <button type="submit" name="rewrite_intro">save</button>
+                  </form>
                 </div>
               </div>        
             </div>
@@ -133,24 +133,32 @@
   <html>
 <script>
 var da=[
-  {% for sche in day_1_all %}
-        {% if not forloop.first %},{% endif %}
-        {
-            day:"{{ sche.day }}",
-            title: "{{ sche.title }}",
-            seq: "{{ sche.seq }}",
-        }
-    {% endfor %}
-]
+          {% for sche in day_1_all %}
+                {% if not forloop.first %},{% endif %}
+                {
+                    day:"{{ sche.day }}",
+                    title: "{{ sche.title }}",
+                    seq: "{{ sche.seq }}",
+                }
+            {% endfor %}
+      ]
 var seq_ar=[];
 var max_day=0;
-  $(document).ready(function(){
+$(document).ready(function(){
+
+  function reload_function(){
+      console.log('reload');
+      for(i=1;i<max_day;i++){
+        $('#day_' + i + '_collapse').empty();
+        console.log('empty day_'+i);
+      }
+      $('#seq').empty();
       $('#seq').append('<option class="opt" value=1> 1');
       for(i=1;i<=da.length;i++){
           for(j=0;j<da.length;j++){
               if (da[j].seq == i)
               {
-                  $('#day_'+da[j].day+'_collapse').append('<a href="javascript:;" class="list-group-item" id="sche_day_' + da[j].day + '_'+da[j].seq+'">' + da[j].title + '</a>');
+                  $('#day_' + da[j].day + '_collapse').append('<a href="javascript:;" class="list-group-item" id="sche_day_' + da[j].day + '_'+da[j].seq+'">' + da[j].title + '</a>');
                   if( da[j].day == 1){
                     $('#seq').append('<option class="opt" value='+(i+1)+'> '+(i+1));
                   }
@@ -163,35 +171,90 @@ var max_day=0;
           seq_ar[da[i-1].day]+=1;
       }
       for(i=1;i<=max_day;i++){
-        $('#whichday').append('<option value=day_' + i + '> 第' + i + '天');
+        $('#whichday').append('<option value=' + i + '> 第' + i + '天');
       }
       console.log(seq_ar);
-  })
+  }
+  reload_function();
 
   $('#whichday').change(function(){
     console.log('change');
     $('#seq').empty();
-    var wd_val=parseInt($('#whichday').val().substring(4));
+    var wd_val=$('#whichday').val();
     for(i=0;i<=seq_ar[wd_val];i++){
       $('#seq').append('<option class="opt" value='+(i+1)+'> '+(i+1));
     }
   })
 
-
-  $('button').click(function(){
-    var d=$('#whichday').val();
-    var s=$('#seq').val();
-    var t=$('#title').val();
-    alert('');
-    $.ajax({
-      url: './',
-      success: function(){
-        alert('success');
-      },
-      failure: function(){
-        alert('fail');
+  function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
       }
-    });
+      return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+      }
   });
+
+  $('#add_schedule').click(function(){
+      var d=$('#whichday').val();
+      var s=$('#seq').val();
+      var t=$('#title').val();
+      console.log('1');
+      $.ajax({
+          url: 'schedule',
+          type: "POST",
+          data:{
+            whichday : d,
+            seq : s,
+            title : t,
+          },
+          success: function(){
+              console.log('success');
+              reseq(d,s,t);
+              reload_function();
+          },
+          failure: function(){
+            console.log('fail');
+            alert();
+          },
+      });
+  });
+});
+
+function reseq(day,seq,title){
+  for(i=0;i<da.length;i++){
+      if(day == da[i].day){
+          if(seq >= da[i].seq){
+              da[i].seq = String(parseInt(da[i].seq) + 1);
+          }
+      }
+  }
+  da.push({
+      day: day,
+      seq: seq,
+      title: title,
+  })
+  console.log(da);
+}
 
 </script>

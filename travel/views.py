@@ -114,8 +114,8 @@ def schedule(request):
     if request.method == 'POST':
         day_1_all = Schedule_content.objects.all()
         content['day_1_all'] = day_1_all
-        content['day'] = int(request.POST['whichday'][4:])
-        content['seq'] = request.POST['seq']
+        content['day'] = request.POST.get('whichday')
+        content['seq'] = request.POST.get('seq')
         for sch in day_1_all:
             if sch.day == int(content['day']):
                 if sch.seq >= int(content['seq']):
@@ -136,3 +136,4 @@ def schedule(request):
         content['day_1_all'] = day_1_all
         return HttpResponseRedirect(reverse('schedule'))
         # return render(request, 'schedule.html', content)
+
