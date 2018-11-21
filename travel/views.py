@@ -112,28 +112,54 @@ def schedule(request):
         return render(request, 'schedule.html', content)
 
     if request.method == 'POST':
-        day_1_all = Schedule_content.objects.all()
-        content['day_1_all'] = day_1_all
-        content['day'] = request.POST.get('whichday')
-        content['seq'] = request.POST.get('seq')
-        for sch in day_1_all:
-            if sch.day == int(content['day']):
-                if sch.seq >= int(content['seq']):
-                    upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title)
-                    upload_sch.seq += 1
-                    upload_sch.save()
+        if request.POST.get('rewrite') == '0':
+            day_1_all = Schedule_content.objects.all()
+            content['day_1_all'] = day_1_all
+            content['day'] = request.POST.get('whichday')
+            content['seq'] = request.POST.get('seq')
+            for sch in day_1_all:
+                if sch.day == int(content['day']):
+                    if sch.seq >= int(content['seq']):
+                        upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title)
+                        upload_sch.seq += 1
+                        upload_sch.save()
 
-        content['title'] = request.POST['title']
-        # content['pk'] = request.POST['pk']#need to be added by html or javascript
-        # newLine = addNewLineToDatabase(content)
-        sites = []
-        i = 0
-        # print(sites)
-        f = Schedule_content(day=content['day'], seq=content['seq'], title=content['title'])
-        f.save()
-        # content['pk'] = 6
-        day_1_all = Schedule_content.objects.all()
-        content['day_1_all'] = day_1_all
-        return HttpResponseRedirect(reverse('schedule'))
+            content['title'] = request.POST['title']
+            content['intro'] = request.POST['intro']
+            # content['pk'] = request.POST['pk']#need to be added by html or javascript
+            # newLine = addNewLineToDatabase(content)
+            sites = []
+            i = 0
+            # print(sites)
+            f = Schedule_content(day=content['day'], seq=content['seq'], title=content['title'], intro=content['intro'])
+            f.save()
+            # content['pk'] = 6
+            day_1_all = Schedule_content.objects.all()
+            content['day_1_all'] = day_1_all
+            return HttpResponseRedirect(reverse('schedule'))
+        elif request.POST.get('rewrite') == '1':
+            day_1_all = Schedule_content.objects.all()
+            content['day_1_all'] = day_1_all
+            content['day'] = request.POST.get('whichday')
+            content['seq'] = request.POST.get('seq')
+            content['intro'] = request.POST.get('intro')
+            for sch in day_1_all:
+                if sch.day == int(content['day']):
+                    if sch.seq == int(content['seq']):
+                        upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title, intro=sch.intro)
+                        upload_sch.intro = content['intro']
+                        upload_sch.save()
+
+            # content['pk'] = request.POST['pk']#need to be added by html or javascript
+            # newLine = addNewLineToDatabase(content)
+            sites = []
+            i = 0
+            # print(sites)
+            # content['pk'] = 6
+            day_1_all = Schedule_content.objects.all()
+            content['day_1_all'] = day_1_all
+            return HttpResponseRedirect(reverse('schedule'))
+
+
         # return render(request, 'schedule.html', content)
 

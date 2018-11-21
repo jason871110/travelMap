@@ -101,7 +101,7 @@
                 <div class="container" style="height: 100pt;  margin-top:10pt;" >
                   <form enctype="multipart/form-data">{% csrf_token %}
                     <textarea id="text_area_for_intro" rows="5" cols="60"></textarea>
-                    <button type="submit" name="rewrite_intro">save</button>
+                    <button type="submit" name="rewrite_intro" id="rewrite_intro">save</button>
                   </form>
                 </div>
               </div>        
@@ -132,6 +132,10 @@
   </body>
   <html>
 <script>
+var seq_ar=[];
+var max_day=0;
+var now_day=0;
+var now_seq=0;
 var da=[
           {% for sche in day_1_all %}
                 {% if not forloop.first %},{% endif %}
@@ -139,17 +143,22 @@ var da=[
                     day:"{{ sche.day }}",
                     title: "{{ sche.title }}",
                     seq: "{{ sche.seq }}",
+                    intro: "{{ sche.intro }}",
                 }
-            {% endfor %}
+
+           {% endfor %}
       ]
-var seq_ar=[];
-var max_day=0;
+for (i=0;i<da.length;i++){
+  if(max_day<da[i].day){
+    max_day=da[i].day;
+  }
+}
 $(document).ready(function(){
 
   function reload_function(){
       console.log('reload');
-      for(i=1;i<max_day;i++){
-        $('#day_' + i + '_collapse').empty();
+      for(i=0;i<=max_day;i++){
+        $('#day_' + (i+1) + '_collapse').empty();
         console.log('empty day_'+i);
       }
       $('#seq').empty();
@@ -158,20 +167,22 @@ $(document).ready(function(){
           for(j=0;j<da.length;j++){
               if (da[j].seq == i)
               {
-                  $('#day_' + da[j].day + '_collapse').append('<a href="javascript:;" class="list-group-item" id="sche_day_' + da[j].day + '_'+da[j].seq+'">' + da[j].title + '</a>');
+                  $('#day_' + da[j].day + '_collapse').append('<a href="javascript:schedule_click(' + da[j].day + ',' + da[j].seq + ');" class="list-group-item" id="sche_day_' + da[j].day + '_'+da[j].seq+'">' + da[j].title + '</a>');
                   if( da[j].day == 1){
                     $('#seq').append('<option class="opt" value='+(i+1)+'> '+(i+1));
                   }
               }
           }
           if(da[i-1].day >max_day){
-            max_day=da[i-1].day;
             seq_ar[da[i-1].day]=0;
+          }else{
+            seq_ar[da[i-1].day]+=1;
           }
-          seq_ar[da[i-1].day]+=1;
+
       }
-      for(i=1;i<=max_day;i++){
-        $('#whichday').append('<option value=' + i + '> 第' + i + '天');
+      //$('#whichday').append('<option value=' + 1 + '> 第' + 1 + '天');
+      for(i=0;i<=max_day;i++){
+        $('#whichday').append('<option value=' + (i+1) + '> 第' + (i+1) + '天');
       }
       console.log(seq_ar);
   }
@@ -227,6 +238,8 @@ $(document).ready(function(){
             whichday : d,
             seq : s,
             title : t,
+            intro: '',
+            rewrite: '0',
           },
           success: function(){
               console.log('success');
@@ -239,13 +252,52 @@ $(document).ready(function(){
           },
       });
   });
+
+  $('#rewrite_intro').click(function(){
+  console.log('QQQQQ');
+      var d=now_day;
+      var s=now_seq;
+      $.ajax({
+          url: 'schedule',
+          type: "POST",
+          data:{
+            whichday : d,
+            seq : s,
+            rewrite : '1',
+            intro: $('#text_area_for_intro').html(),
+          },
+          success: function(){
+              console.log('success');
+          },
+          failure: function(){
+            console.log('fail');
+            alert();
+          },
+      });
+  });
+
+
 });
+
+function schedule_click(day,seq){
+    for(i=0;i<da.length;i++){
+        if(da[i].day==day && da[i].seq==seq){
+            $('#text_area_for_intro').html(da[i].intro);
+            now_day=day;
+            now_seq=seq;
+        }
+    }
+    $('#sche_day_' + day + '_'+seq).css('background-color' , '#f2f2f2');
+    console.log('click');
+}
+
 
 function reseq(day,seq,title){
   for(i=0;i<da.length;i++){
       if(day == da[i].day){
-          if(seq >= da[i].seq){
+          if(seq <= da[i].seq){
               da[i].seq = String(parseInt(da[i].seq) + 1);
+              console.log('change seq'+i);
           }
       }
   }
@@ -253,6 +305,7 @@ function reseq(day,seq,title){
       day: day,
       seq: seq,
       title: title,
+      intro: '',
   })
   console.log(da);
 }
