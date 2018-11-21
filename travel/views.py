@@ -6,6 +6,9 @@ from django.http import HttpResponse
 from .models import TouristSite,Schedule,TotalCourse,IMG
 from django.http import JsonResponse
 import json
+from jieba_space import jieba_test
+import os
+
 # Create your views here.
 
 
@@ -82,6 +85,14 @@ def addCourseLines(request):
     content['pk']= 6
     return render(request,'add_lines.html',content)
 
+
+def extract_article(request):
+    if request.method == 'POST':
+        sentence = request.POST['article']
+        result = jieba_test.find_sites(sentence)
+        print(result)
+        return render(request,'extract.html',locals())
+    return render(request,'extract.html')
 
 def addNewScheduleToDatabase(content):
     obj = Schedule.objects.create(title=content['title'],author=content['author'],days=content['days'],

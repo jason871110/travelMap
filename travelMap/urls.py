@@ -16,7 +16,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from travel.views import insertNewSchedule,addCourseLines,addNewScheduleToDatabase,uploadImg,showImg
+from travel.views import insertNewSchedule,addCourseLines,addNewScheduleToDatabase,uploadImg,showImg,extract_article
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^show', showImg),
     url(r'^insert', insertNewSchedule),
     url(r'^addline', addCourseLines),
+    url(r'^article', extract_article),
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
