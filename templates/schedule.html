@@ -99,10 +99,10 @@
                    
                 </div>
                 <div class="container" style="height: 100pt;  margin-top:10pt;" >
-                  <form enctype="multipart/form-data">{% csrf_token %}
+                  <!--form enctype="multipart/form-data"-->{% csrf_token %}
                     <textarea id="text_area_for_intro" rows="5" cols="60"></textarea>
                     <button type="submit" name="rewrite_intro" id="rewrite_intro">save</button>
-                  </form>
+                  <!--/form-->
                 </div>
               </div>        
             </div>
@@ -254,20 +254,22 @@ $(document).ready(function(){
   });
 
   $('#rewrite_intro').click(function(){
-  console.log('QQQQQ');
-      var d=now_day;
-      var s=now_seq;
+      console.log('QQQQQ');
+      var d = now_day;
+      var s = now_seq;
+      console.log(d+''+s);
       $.ajax({
           url: 'schedule',
           type: "POST",
           data:{
-            whichday : d,
-            seq : s,
+            whichday : now_day,
+            seq : now_seq,
             rewrite : '1',
-            intro: $('#text_area_for_intro').html(),
+            intro: $('#text_area_for_intro').val(),
           },
           success: function(){
               console.log('success');
+              alert('aaa');
           },
           failure: function(){
             console.log('fail');
