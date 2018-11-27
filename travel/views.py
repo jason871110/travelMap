@@ -163,3 +163,11 @@ def schedule(request):
 
         # return render(request, 'schedule.html', content)
 
+def main(request):
+    content={}
+    if request.method == 'GET':
+        day_1_all = Schedule_content.objects.all()
+        content['day_1_all'] = day_1_all
+        print(content['day_1_all'])
+        return render(request, 'main.html', content)
+    return render(request, 'main.html')

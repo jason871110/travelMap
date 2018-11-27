@@ -100,7 +100,8 @@
                 </div>
                 <div class="container" style="height: 100pt;  margin-top:10pt;" >
                   <!--form enctype="multipart/form-data"-->{% csrf_token %}
-                    <textarea id="text_area_for_intro" rows="5" cols="60"></textarea>
+                    <div id="text_area_for_intro"contenteditable="true" style> </div>
+                    <!--textarea id="text_area_for_intro" rows="5" cols="60"></textarea-->
                     <button type="submit" name="rewrite_intro" id="rewrite_intro">save</button>
                   <!--/form-->
                 </div>
@@ -143,7 +144,7 @@ var da=[
                     day:"{{ sche.day }}",
                     title: "{{ sche.title }}",
                     seq: "{{ sche.seq }}",
-                    intro: "{{ sche.intro }}",
+                    intro: "{{ sche.intro | linebreaksbr}}",
                 }
 
            {% endfor %}
@@ -265,7 +266,7 @@ $(document).ready(function(){
             whichday : now_day,
             seq : now_seq,
             rewrite : '1',
-            intro: $('#text_area_for_intro').val(),
+            intro: $('#text_area_for_intro p').val(),
           },
           success: function(){
               console.log('success');
@@ -282,9 +283,10 @@ $(document).ready(function(){
 });
 
 function schedule_click(day,seq){
+    $('#text_area_for_intro').empty();
     for(i=0;i<da.length;i++){
         if(da[i].day==day && da[i].seq==seq){
-            $('#text_area_for_intro').html(da[i].intro);
+            $('#text_area_for_intro').append(da[i].intro);
             now_day=day;
             now_seq=seq;
         }

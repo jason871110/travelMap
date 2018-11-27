@@ -17,7 +17,7 @@ from django.urls import path
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from travel.views import uploadImg, showImg, insertNewSchedule, addCourseLines, addNewScheduleToDatabase, ind, schedule
+from travel.views import uploadImg, showImg, main,insertNewSchedule, addCourseLines, addNewScheduleToDatabase, ind, schedule
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', uploadImg),
@@ -28,5 +28,6 @@ urlpatterns = [
     # url(r'^index.(?P<file_type>\w+)/$', ind),
     path('index', ind, name='index'),
     path('schedule', schedule, name='schedule'),
+    path('main', main, name='main'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
 

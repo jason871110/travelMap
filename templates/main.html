@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "gallery.css" %}" >
+        <script src="{% static "galary.js"%}"></script>
+        <script src="{% static "background.js"%}"></script>
+        <!-- <link rel="stylesheet" href="rd.css"> -->
+    </head>
+    <body >
+            <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">profile</a>
+                      </li>
+                    </ul>
+                    <form class="form-inline" id="searchBottom" action="/action_page.php" style="float:right;position: absolute;right:10%">
+                      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                      <button class="btn btn-success"  type="submit" >Search</button>
+                    </form>
+                </nav>
+            <div class="container-fluid">
+                <div class="row"></div>
+            </div>
+            <div id="button_place">
+            </div>
+                <div class="container" id="downGallery">
+                        <div class="row">
+                                <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                                    <div class="MultiCarousel-inner">
+                                        <!-->
+                                        <div class="item" id="p1" >
+                                           <img src="https://images.pexels.com/photos/35884/amazing-beautiful-beauty-blue.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px">
+                                        </div>
+                                        <div class="item" id="p2">
+                                            <img src="https://images.pexels.com/photos/733174/pexels-photo-733174.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px" s>
+                                        </div>
+                                        <div class="item" id="p3">
+                                             <img src="https://images.pexels.com/photos/35884/amazing-beautiful-beauty-blue.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px">
+                                        </div>
+                                        <div class="item" id="p4">
+                                            <img src="https://images.pexels.com/photos/733162/pexels-photo-733162.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px">
+                                        </div>
+                                        <div class="item" id="p5">
+                                            <img src="https://images.pexels.com/photos/269583/pexels-photo-269583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px">
+                                        </div>
+                                        <div class="item">
+                                        </div>
+                                        <div class="item">
+                                        </div>
+                                        <div class="item">
+                                        </div>
+                                        <div class="item">
+                                        </div>
+
+
+                                    </div>
+                                    <button class="btn btn-primary leftLst"></button>
+                                    <button class="btn btn-primary rightLst">></button>
+                                </div>
+                            </div>
+                </div>
+    </body>
+
+</html>
+<script>
+var max_day=0;
+var seq_ar=[];
+var da=[
+          {% for sche in day_1_all %}
+                {% if not forloop.first %},{% endif %}
+                {
+                    day:"{{ sche.day }}",
+                    title: "{{ sche.title }}",
+                    seq: "{{ sche.seq }}",
+                    intro: "{{ sche.intro | linebreaksbr}}",
+                    image: "{{ sche.image }}",
+                }
+
+           {% endfor %}
+      ]
+for (i=0;i<da.length;i++){
+    if(max_day<da[i].day){
+        max_day=da[i].day;
+        seq_ar[da[i].day]=1;
+    }else{
+        seq_ar[da[i].day]+=1;
+    }
+}
+$(document).ready(function(){
+    for(i=0;i<max_day;i++){
+        $('#button_place').append('<button onclick="img_show(' + (i+1) + ')">day_' + (i+1) + '</button>')
+    }
+    img_show(1);
+});
+
+function img_show(day){
+ $('.MultiCarousel-inner').empty();
+    for(i=0;i<seq_ar[day];i++){
+    console.log('aa');
+        for(j=0;j<da.length;j++){
+            if(da[j].day == day){
+                if(da[j].seq==i+1){
+                    $('.MultiCarousel-inner').append('<div class="item" id="p' + (i+1) + '" ><img src="' + da[j].image + '" width="180px" height="200px"></div>');
+                }
+            }
+        }
+    }
+      $('.MultiCarousel-inner').append("<div class='item'></div>");
+}
+
+</script>
