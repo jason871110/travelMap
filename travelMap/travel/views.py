@@ -1,18 +1,62 @@
 from __future__ import unicode_literals
 # Create your views here.
-
 from django.shortcuts import render, redirect,render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import TouristSite,IMG,Schedule_content,Schedule
+from .models import TouristSite,IMG,Schedule_content,Schedule,TotalCourse
 from django.http import JsonResponse
 import json
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
-# Create your views here.
 
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+from django.http import JsonResponse
+def sch(request):
+    s = Schedule.objects.all()
+    tc = TotalCourse.objects.all()
+    if 'ok' in request.POST:
+        site_name = request.POST['site_name']
+        time = request.POST['time']
+        a = int(request.POST['whichday'])
+        tcc = TotalCourse.objects.get(day = a)
+        TouristSite.objects.create(route_order =tcc.touristsite_set.count()+1,site_name = site_name, time = time, line = tcc)
+    #reorder
+    ptr = 0
+    
+    if 'order' in request.POST:
+        order = request.POST['order']
+        pos = order.find('>', ptr)
+        while(pos>0):  
+            old = int(order[pos-1])
+            new = int(order[pos+1])
+            temp = TouristSite.objects.get(route_order = old) 
+            temp.route_order = new
+            if old > new:
+                for i in range(old-1, new-1, -1):
+                    a = TouristSite.objects.get(route_order = i)
+                    a.route_order += 1
+                    a.save()
+            elif old < new:
+                for j in range(old+1,new+1):
+                    b = TouristSite.objects.get(route_order = j)
+                    b.route_order-=1
+                    b.save()
+            temp.save()
+            ptr = pos+1
+            pos = order.find('>', ptr)
+    return render_to_response('ns.html',locals())
+
+def query(request):
+    r=request.GET.get("toolsname")
+    name_dict="123"
+    return JsonResponse(name_dict)
+# Create your views here.
+def form(request):
+    return render_to_response('form.html',locals())
 def ind(request):
     return render(request,'index.html')
-
+def drag(request):
+    return render_to_response('drag.html',locals())
 def uploadImg(request):
     if request.method == 'POST':
         new_img = IMG(img=request.FILES.get('img'))

@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from travel.views import uploadImg,showImg,insertNewSchedule,addCourseLines,addNewScheduleToDatabase,ind,schedule
-from travel.views import login, logout, register
+from travel.views import login, logout, register, drag, query,form
+from django.views.generic import TemplateView
+from travel.views import sch
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', uploadImg),
@@ -28,7 +30,11 @@ urlpatterns = [
     url(r'^addline', addCourseLines),
     path('index',ind),
     path('schedule',schedule),
-	url(r'^accounts/login/$', login),
-	url(r'^accounts/logout/$', logout),
-	url(r'^accounts/register/$', register),
+    url(r'^accounts/login/$', login),
+    url(r'^accounts/logout/$', logout),
+    url(r'^accounts/register/$', register),
+    url(r'drag',drag),
+    url(r'query/$',query),
+    url(r'form',form),
+    url(r'ns',sch),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

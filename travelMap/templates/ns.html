@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+	<style>
+[draggable="true"] {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+ul.items #moveable{
+  list-style: none;
+  margin: 0px;
+}
+ul.items #moveable{
+  list-style-image: none;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 4px;
+  border-radius: 4px;
+  color: #666;
+  cursor: move;
+}
+ul.items #moveable:hover {
+  background-color: #eee;
+}
+
+	</style>
+		<title> Schedule </title>
+		<meta charset='utf-8'>
+	</head>
+	<body>
+		{% for r in s %}
+		<h2> {{ r.title }} </h2>
+		<h2> author: {{r.author}} </h2>
+		<h2> days:{{r.days}}</h2>
+		<ul id="items-list" class="items">	
+			
+			{% for t in tc %}
+				{% if t.touristsite_set.all %}
+					{% if t.day != 0 %}
+					<li id= "unmoveable">第{{t.day}}天的行程</li>
+					{% else %}
+					<li id= "unmoveable">我的最愛</li>
+					{% endif %}
+					{% for ts in t.touristsite_set.all %}
+						<li id = "moveable">route_order:{{ts.route_order}} site name:{{ts.site_name}} time:{{ts.time}} </li>
+					{% endfor%}
+					
+				{% endif %}		
+			{% endfor %}
+			
+		</ul>
+		{% endfor %}
+		 <form action="" method="post">
+            <table>
+                <tr>
+                    <td> <label for="site_name">景點:</label> </td>
+                    <td> <input id="site_name" type="text" name="site_name"> </td>
+                </tr>
+                <tr>
+                    <td> <label for="time">時間:</label> </td>
+                    <td> <input id="time" type="text" name="time"> </td>
+                </tr>
+				 <tr>
+                    <td> <label for="whichday">第幾天:</label> </td>
+                    <td> <input id="whichday" type="text" name="whichday"> </td>
+                </tr>
+            </table>
+            <input type="hidden" name="ok" value="yes">
+       
+            <br />
+            <input type="submit" value="新增景點">
+        </form>
+        <form action="" method="post">
+			<input id="order" type="hidden" name="order" value="0">
+			<input type="submit" value="儲存順序">
+		</form>
+		<br /><br />
+		<p id = "pp" value="1"></p>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	</body>
+<script>
+let items = document.querySelectorAll('#items-list >  #moveable')
+
+items.forEach(item => {
+  $(item).prop('draggable', true)
+  item.addEventListener('dragstart', dragStart)
+  item.addEventListener('drop', dropped)
+  item.addEventListener('dragenter', cancelDefault)
+  item.addEventListener('dragover', cancelDefault)
+})
+
+function dragStart (e) {
+  var index = $(e.target).index()
+  console.log('dragStart')
+  e.dataTransfer.setData('text/plain', index)
+  console.log(index)
+
+}
+
+function dropped (e) {
+  cancelDefault(e)
+  
+  // get new and old index
+  let oldIndex = e.dataTransfer.getData('text/plain')
+  let target = $(e.target)
+  let newIndex = target.index()
+ 
+  $( "#pp" ).append( oldIndex+">"+newIndex+"  ")
+  //alert($("#pp").text())
+  var order = $("#pp").text()
+  //alert(order)
+  $( "#order" ).val(order)
+  //$( "#order" ).append( oldIndex+">"+newIndex+"  ");
+  // remove dropped items at old place
+  if(newIndex != oldIndex){
+	let dropped = $(this).parent().children().eq(oldIndex).remove()
+  // insert the dropped items at new place
+  if (newIndex < oldIndex) {
+    target.before(dropped)
+  } else {
+    target.after(dropped)
+  }
+ }
+  console.log('dragEnd')
+
+}
+
+function cancelDefault (e) {
+  e.preventDefault()
+  e.stopPropagation()
+  return false
+}</script>
+</html>

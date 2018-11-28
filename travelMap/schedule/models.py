@@ -1,22 +1,4 @@
-
-# Create your models here.
-from __future__ import unicode_literals
 from django.db import models
-
-
-# Create your models here.
-
-class Schedule_content(models.Model):
-    image = models.ImageField(blank=True)
-    intro = models.CharField(max_length=100, blank=True)
-    title = models.CharField(max_length=100, blank=True)
-    location = models.CharField(max_length=100, blank=True)
-    seq = models.IntegerField(blank=True)
-    day = models.IntegerField(blank=True)
-
-    def __str__(self):
-        return 'day_%s_%s %s'%(self.day , self.seq ,self.title)
-
 
 class Schedule(models.Model):
     title = models.CharField(max_length=100)
@@ -29,14 +11,14 @@ class Schedule(models.Model):
     def __str__(self):
         return self.title
 
-
 class TotalCourse(models.Model):
     day = models.IntegerField(blank=True)
     site_content = models.TextField(blank=True)
     course = models.ForeignKey(Schedule,    on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Day'+str(self.day)
+        return self.site_content
+
 
 class TouristSite(models.Model):
     route_order = models.IntegerField()
@@ -44,10 +26,7 @@ class TouristSite(models.Model):
     time =  models.TextField(blank=True)
     image = models.ImageField(upload_to='upload',blank=True)
     line = models.ForeignKey(TotalCourse,    on_delete=models.CASCADE)
-    class Meta:
-         ordering = ['route_order']
+
     def __str__(self):
         return self.site_name
-
-class IMG(models.Model):
-    img = models.ImageField(upload_to='upload')
+# Create your models here.
