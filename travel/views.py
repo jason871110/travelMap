@@ -4,14 +4,20 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import TouristSite, IMG, Schedule_content, Schedule,TotalCourse
+from .models import TouristSite, IMG, Schedule, TotalCourse
+from django.db.models import Max
 from django.http import JsonResponse
+from django.db.models import Count
+
 import static
 import json
 
 
 def ind(request):
-    return render(request, 'index.html')
+    if request.method == 'GET':
+        content={}
+        #content['id_num']=Schedule_content.objects.all().aggregate(Max('id_num'))['id_num__max']+1
+        return render(request, 'index.html',content)
 
 
 def uploadImg(request):
@@ -102,25 +108,28 @@ def addNewLineToDatabase(content):
     return obj
 
 
-def schedule(request):
+'''
+def schedule(request,id_num):
     content = {}
     if request.method == 'GET':
-        day_1_all = Schedule_content.objects.all()
+        day_1_all = Schedule_content.objects.all().filter(id_num=id_num)
         content['day_1_all'] = day_1_all
+        content['id_num']=id_num
         print(content['day_1_all'])
         print("adad")
         return render(request, 'schedule.html', content)
 
     if request.method == 'POST':
         if request.POST.get('rewrite') == '0':
-            day_1_all = Schedule_content.objects.all()
+            day_1_all = Schedule_content.objects.all().filter(id_num=id_num)
             content['day_1_all'] = day_1_all
             content['day'] = request.POST.get('whichday')
             content['seq'] = request.POST.get('seq')
+            content['id_num']=id_num
             for sch in day_1_all:
                 if sch.day == int(content['day']):
                     if sch.seq >= int(content['seq']):
-                        upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title)
+                        upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title,id_num=id_num)
                         upload_sch.seq += 1
                         upload_sch.save()
 
@@ -131,23 +140,19 @@ def schedule(request):
             sites = []
             i = 0
             # print(sites)
-            f = Schedule_content(day=content['day'], seq=content['seq'], title=content['title'], intro=content['intro'])
+            f = Schedule_content(day=content['day'], seq=content['seq'], title=content['title'], intro=content['intro'], id_num=id_num)
             f.save()
             # content['pk'] = 6
             day_1_all = Schedule_content.objects.all()
             content['day_1_all'] = day_1_all
-            return HttpResponseRedirect(reverse('schedule'))
+            return HttpResponseRedirect(reverse('schedule',kwargs={'id_num':id_num}))
         elif request.POST.get('rewrite') == '1':
             day_1_all = Schedule_content.objects.all()
-            content['day_1_all'] = day_1_all
-            content['day'] = request.POST.get('whichday')
-            content['seq'] = request.POST.get('seq')
-            content['intro'] = request.POST.get('intro')
             for sch in day_1_all:
                 if sch.day == int(content['day']):
                     if sch.seq == int(content['seq']):
-                        upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title, intro=sch.intro)
-                        upload_sch.intro = content['intro']
+                        upload_sch = Schedule_content.objects.get(day=sch.day, seq=sch.seq, title=sch.title, intro=sch.intro, id_num=id_num)
+                        upload_sch.intro = request.POST.get('intro')
                         upload_sch.save()
 
             # content['pk'] = request.POST['pk']#need to be added by html or javascript
@@ -156,18 +161,54 @@ def schedule(request):
             i = 0
             # print(sites)
             # content['pk'] = 6
-            day_1_all = Schedule_content.objects.all()
-            content['day_1_all'] = day_1_all
             return HttpResponseRedirect(reverse('schedule'))
 
 
         # return render(request, 'schedule.html', content)
-
-def main(request):
+'''
+def main(request, id_num):
     content={}
     if request.method == 'GET':
-        day_1_all = Schedule_content.objects.all()
-        content['day_1_all'] = day_1_all
-        print(content['day_1_all'])
+        schedule_all = Schedule.objects.get(id_num=id_num)
+        schedule_day_all = schedule_all.totalcourse_set.all()
+        print(schedule_all.days)
+        num_of_day = [0]*(schedule_all.days+1)
+
+        for sche in schedule_day_all:
+            for site in sche.touristsite_set.all():
+                num_of_day[sche.day]+=1
+
+
+        content['schedule_day_all']=schedule_day_all
+        content['max_day']=schedule_all.days
+        content['num_of_day']=num_of_day
+        content['origin']=schedule_day_all.get(day=1).touristsite_set.all().get(route_order=1).location
+        content['destination']=schedule_day_all.get(day=1).touristsite_set.all().get(route_order=num_of_day[1]).location
+        content['waypoints']=[]
+        for i in range(2,num_of_day[1]):
+            content['waypoints'].append(schedule_day_all.get(day=1).touristsite_set.all().get(route_order=i).location)
+        print(content['origin']+"%%%from get")
         return render(request, 'main.html', content)
+    elif request.method == 'POST':
+        target_day = request.POST['day']
+        schedule_all = Schedule.objects.get(id_num=id_num)
+        schedule_day_all = schedule_all.totalcourse_set.all()
+        print(schedule_all.days)
+        num_of_day = [0] * (schedule_all.days + 1)
+
+        for sche in schedule_day_all:
+            for site in sche.touristsite_set.all():
+                num_of_day[sche.day] += 1
+
+        content['schedule_day_all'] = schedule_day_all
+        content['max_day'] = schedule_all.days
+        content['num_of_day'] = num_of_day
+        content['origin'] = schedule_day_all.get(day=target_day).touristsite_set.all().get(route_order=1).location
+        content['destination'] = schedule_day_all.get(day=target_day).touristsite_set.all().get(
+            route_order=num_of_day[int(target_day)]).location
+        content['waypoints'] = []
+        for i in range(2, num_of_day[int(target_day)]):
+            content['waypoints'].append(schedule_day_all.get(day=target_day).touristsite_set.all().get(route_order=i).location)
+        print(content['origin']+'%%%from post')
+        return HttpResponseRedirect(reverse('main',kwargs={'id_num':0}))
     return render(request, 'main.html')

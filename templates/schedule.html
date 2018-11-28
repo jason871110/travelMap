@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   </head>
+
   <body style="background-color:hsl(1, 0%, 50%,10%)">
     <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
       <a class="navbar-brand" href="#">
@@ -155,7 +156,8 @@ for (i=0;i<da.length;i++){
   }
 }
 $(document).ready(function(){
-
+  console.log('id_num');
+  console.log({{ id_num }});
   function reload_function(){
       console.log('reload');
       for(i=0;i<=max_day;i++){
@@ -232,8 +234,9 @@ $(document).ready(function(){
       var s=$('#seq').val();
       var t=$('#title').val();
       console.log('1');
+      console.log({{id_num}});
       $.ajax({
-          url: 'schedule',
+          url: './{{id_num}}',
           type: "POST",
           data:{
             whichday : d,
@@ -260,7 +263,7 @@ $(document).ready(function(){
       var s = now_seq;
       console.log(d+''+s);
       $.ajax({
-          url: 'schedule',
+          url: './{{id_num}}',
           type: "POST",
           data:{
             whichday : now_day,

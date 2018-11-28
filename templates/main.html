@@ -15,8 +15,9 @@
         <link rel="stylesheet" href="{% static "gallery.css" %}" >
         <script src="{% static "galary.js"%}"></script>
         <script src="{% static "background.js"%}"></script>
-        <!-- <link rel="stylesheet" href="rd.css"> -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS54PJ0zmirq0QNN29mKfPaJVE0KDCiTc&callback=initMap"></script>
     </head>
+    {% load static %}
     <body >
             <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
                     <ul class="navbar-nav">
@@ -36,12 +37,14 @@
                 <div class="row"></div>
             </div>
             <div id="button_place">
+                {% csrf_token%}
             </div>
+                <div id="map" style="height: 200pt; width:200pt;        "></div>
                 <div class="container" id="downGallery">
                         <div class="row">
                                 <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
                                     <div class="MultiCarousel-inner">
-                                        <!-->
+
                                         <div class="item" id="p1" >
                                            <img src="https://images.pexels.com/photos/35884/amazing-beautiful-beauty-blue.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px">
                                         </div>
@@ -56,15 +59,8 @@
                                         </div>
                                         <div class="item" id="p5">
                                             <img src="https://images.pexels.com/photos/269583/pexels-photo-269583.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" width="180px" height="200px">
-                                        </div>
-                                        <div class="item">
-                                        </div>
-                                        <div class="item">
-                                        </div>
-                                        <div class="item">
-                                        </div>
-                                        <div class="item">
-                                        </div>
+
+
 
 
                                     </div>
@@ -76,50 +72,167 @@
     </body>
 
 </html>
-<script>
-var max_day=0;
-var seq_ar=[];
-var da=[
-          {% for sche in day_1_all %}
-                {% if not forloop.first %},{% endif %}
-                {
-                    day:"{{ sche.day }}",
-                    title: "{{ sche.title }}",
-                    seq: "{{ sche.seq }}",
-                    intro: "{{ sche.intro | linebreaksbr}}",
-                    image: "{{ sche.image }}",
-                }
 
-           {% endfor %}
+<script>
+var da=[
+          {% for sche in schedule_day_all %}
+                {% for obj in sche.touristsite_set.all %}
+                    {
+                        day:"{{ sche.day }}",
+                        title: "{{ obj.site_name }}",
+                        seq: "{{ obj.route_order }}",
+                        intro: "{{ obj.site_content | linebreaksbr}}",
+                        image: "{{ obj.image }}",
+                        location: "{{obj.location}}",
+                    },
+                {% endfor %}
+          {% endfor %}
       ]
-for (i=0;i<da.length;i++){
-    if(max_day<da[i].day){
-        max_day=da[i].day;
-        seq_ar[da[i].day]=1;
-    }else{
-        seq_ar[da[i].day]+=1;
-    }
-}
+var seq_ar={{num_of_day}};
+
 $(document).ready(function(){
-    for(i=0;i<max_day;i++){
-        $('#button_place').append('<button onclick="img_show(' + (i+1) + ')">day_' + (i+1) + '</button>')
+    $('#button_place').empty();
+    for(i=0;i<{{max_day}};i++){
+        $('#button_place').append('<button onclick="post(' + (i+1) + ')">day_' + (i+1) + '</button>');
     }
     img_show(1);
+    initMap();
 });
 
 function img_show(day){
- $('.MultiCarousel-inner').empty();
+    $('.MultiCarousel-inner').empty();
     for(i=0;i<seq_ar[day];i++){
     console.log('aa');
         for(j=0;j<da.length;j++){
             if(da[j].day == day){
                 if(da[j].seq==i+1){
-                    $('.MultiCarousel-inner').append('<div class="item" id="p' + (i+1) + '" ><img src="' + da[j].image + '" width="180px" height="200px"></div>');
+                    $('.MultiCarousel-inner').append('<div class="item" id="p' + (i+1) + '" ><a href="javascript:background_change(' + i +')"><img src="'+da[j].image+'" width="180px" height="200px"></a></div>');
                 }
             }
         }
     }
       $('.MultiCarousel-inner').append("<div class='item'></div>");
 }
+function background_change(num){
+        console.log(num);
+        console.log('aaa');
 
+        $('body').css({
+            'background-image': 'url('+da[num].image+')',
+            'background-size' : 'cover',
+            'background-position' :'center',
+
+        });
+}
+var directionsService
+var directionsDisplay
+var map
+function initMap() {
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: {lat: 22.9988465,lng: 120.2173261 }
+        });
+        directionsDisplay.setMap(map);
+        var begin="";
+        var end="";
+        var pts=[];
+        for(i=0;i<seq_ar[1]-2;i++){
+        }
+        {% for pt in waypoints %}
+            pts.push({stopover: true, location: { placeId: "{{ pt }}" }});
+        {% endfor %}
+        begin={placeId:"{{origin}}"};
+        console.log("{{origin}}");
+
+        end= {placeId: "{{ destination }}"};
+          calculateAndDisplayRoute(directionsService, directionsDisplay,begin,end,pts);
+      }
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay, begin, end, pts) {
+
+    var ori='22.9988465, 120.2173261';
+    console.log('begin={{origin}}');
+    console.log('end={{destination}}');
+    console.log('pts='+pts);
+    var request={
+        waypoints: pts,
+        origin: begin,
+        destination: end,
+        optimizeWaypoints: true,
+        travelMode: 'WALKING',
+    }
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+        }else{
+        console.log('error');
+        }
+    });
+  }
+/*
+function post(day){
+    img_show(day)
+      $.ajax({
+          url: './0',
+          type: "POST",
+          data:{
+            day : day,
+          },
+          success: function(){
+              console.log('success');
+
+              var begin="";
+              var end="";
+              var pts=[];
+              {% for pt in waypoints %}
+                  pts.push({stopover: true, location: { placeId: "{{ pt }}" }});
+              {% endfor %}
+              begin={placeId:"{{origin}}"};
+              console.log("{{origin}}");
+              end= {placeId: "{{ destination }}"};
+              calculateAndDisplayRoute(directionsService, directionsDisplay, begin, end, pts);
+
+          },
+          failure: function(){
+            console.log('fail');
+            alert();
+          },
+      });
+
+  };
+      */
+
+
+//set up
+  function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+      }
+  });
 </script>
+
