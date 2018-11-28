@@ -6,7 +6,7 @@ site_path = os.path.join(settings.BASE_DIR, 'jieba_space/site.txt')
 
 def find_sites(sentence):
     jieba.load_userdict(my_dict_path)
-    useless_word=[' ','，','!','！','。','、','\n','\"','＂','（','）','～','～','也','的','和','與','在','再']
+    useless_word=[' ','，','!','！','。','、','\n','\"','＂','（','）','～','～','[',']','也','的','和','與','在','再']
     words = jieba.cut(sentence, cut_all=False)
     reduced_word = []
     for w in words:
@@ -18,7 +18,7 @@ def find_sites(sentence):
 
     temp= []
     result = []
-    with open(site_path, 'r') as f:
+    with open(site_path, 'r',encoding='utf-8') as f:
         temp = [line[:-1] for line in f]
         #print(temp)
     for w in reduced_word:

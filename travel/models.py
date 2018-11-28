@@ -23,7 +23,7 @@ class TotalCourse(models.Model):
     course = models.ForeignKey(Schedule, on_delete=models.CASCADE,)
 
     def __str__(self):
-        return self.day
+        return str(self.day)
 
 class TouristSite(models.Model):
     route_order = models.IntegerField()

@@ -11,7 +11,7 @@ import os
 
 # Create your views here.
 
-
+result = []
 def uploadImg(request):
     if request.method == 'POST':
         new_img = IMG(image=request.FILES.get('img'))
@@ -85,13 +85,16 @@ def addCourseLines(request):
     content['pk']= 6
     return render(request,'add_lines.html',content)
 
+def show_result(request):
+    results = result
+    render(request,'result.html',locals())
 
 def extract_article(request):
     if request.method == 'POST':
         sentence = request.POST['article']
         result = jieba_test.find_sites(sentence)
         print(result)
-        return render(request,'extract.html',locals())
+        return render(request,'result.html',locals())
     return render(request,'extract.html')
 
 def addNewScheduleToDatabase(content):
