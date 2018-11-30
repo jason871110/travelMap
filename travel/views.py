@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 # Create your views here.
 
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect,render_to_response
 from django.urls import reverse
+from django.template import RequestContext
 from .models import TouristSite, IMG, Schedule, TotalCourse
 from django.db.models import Max
 from django.http import JsonResponse
@@ -210,5 +210,7 @@ def main(request, id_num):
         for i in range(2, num_of_day[int(target_day)]):
             content['waypoints'].append(schedule_day_all.get(day=target_day).touristsite_set.all().get(route_order=i).location)
         print(content['origin']+'%%%from post')
-        return HttpResponseRedirect(reverse('main',kwargs={'id_num':0}))
+        return render(request,'main.html',content)
+        #return render_to_response('main.html', content,context_instance = RequestContext(request))
+        #return HttpResponseRedirect(reverse('main',kwargs={'id_num':0}))
     return render(request, 'main.html')
