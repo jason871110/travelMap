@@ -18,7 +18,6 @@ class Schedule(models.Model):
 
 class TotalCourse(models.Model):
     day = models.IntegerField(blank=True)
-    site_content = models.TextField(blank=True)
     course = models.ForeignKey(Schedule,    on_delete=models.CASCADE)
 
     def __str__(self):
@@ -26,11 +25,13 @@ class TotalCourse(models.Model):
 
 class TouristSite(models.Model):
     route_order = models.IntegerField()
+    site_id = models.IntegerField()
     site_name = models.CharField(max_length=100)
     time =  models.TextField(blank=True)
     image = models.ImageField(upload_to='upload',blank=True)
     line = models.ForeignKey(TotalCourse,    on_delete=models.CASCADE)
-    location = models.CharField(max_length=100,,blank=True)
+    site_content = models.TextField(blank=True)
+    location = models.CharField(max_length=100,blank=True)
     class Meta:
          ordering = ['route_order']
     def __str__(self):

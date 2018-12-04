@@ -20,7 +20,7 @@ from django.conf import settings
 from travel.views import uploadImg,showImg,insertNewSchedule,addCourseLines,addNewScheduleToDatabase,ind,schedule
 from travel.views import login, logout, register, drag, query,form
 from django.views.generic import TemplateView
-from travel.views import sch
+from travel.views import sch,aaa
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', uploadImg),
@@ -37,4 +37,5 @@ urlpatterns = [
     url(r'query/$',query),
     url(r'form',form),
     url(r'ns',sch),
+    url(r'aaa',aaa),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

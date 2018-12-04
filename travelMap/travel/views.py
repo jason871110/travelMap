@@ -2,25 +2,67 @@ from __future__ import unicode_literals
 # Create your views here.
 from django.shortcuts import render, redirect,render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import TouristSite,IMG,Schedule_content,Schedule,TotalCourse
+from .models import TouristSite,IMG,Schedule,TotalCourse
 from django.http import JsonResponse
-import json
+import json,re
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.http import JsonResponse
+
+def aaa(request):
+        return render(request, 'aaa.html')
+
 def sch(request):
     s = Schedule.objects.all()
-    tc = TotalCourse.objects.all()
+    tc = TotalCourse.objects.all();
+    tc0 = TotalCourse.objects.get(day = 0)
+    tc1 = TotalCourse.objects.get(day = 1)
+    tc2 = TotalCourse.objects.get(day = 2)
+    tc3 = TotalCourse.objects.get(day = 3)
+    
     if 'ok' in request.POST:
         site_name = request.POST['site_name']
         time = request.POST['time']
         a = int(request.POST['whichday'])
         tcc = TotalCourse.objects.get(day = a)
         TouristSite.objects.create(route_order =tcc.touristsite_set.count()+1,site_name = site_name, time = time, line = tcc)
-    #reorder
+    #reorder use sortable and re
+    if 'order' in request.POST:
+        course = request.POST['course']
+        order = request.POST['order0']
+        newOrder = re.findall(r'[0-9]+',order)
+        i=0
+        while(i<len(newOrder)): 
+            try:
+                temp = TouristSite.objects.get(site_id = newOrder[i])
+                TouristSite.objects.get(site_id = newOrder[i])
+                temp = TouristSite.objects.get(site_id = newOrder[i])
+                if(temp.line != tc0):
+                    temp.line = tc0
+                temp.route_order = i
+                temp.save()
+                i+=1
+            except:
+                i = len(newOrder)+1
+        order = request.POST['order1']
+        newOrder = re.findall(r'[0-9]+',order)
+        i=0
+        while(i<len(newOrder)): 
+            try:
+                temp = TouristSite.objects.get(site_id = newOrder[i])
+                if(temp.line != tc1):
+                    temp.line = tc1
+                temp.route_order = i
+                temp.save()
+                i+=1
+            except:
+                i = len(newOrder)+1
+    return render_to_response('ns.html',locals())
+    #reorder use draggable and index
+"""
     ptr = 0
     
     if 'order' in request.POST:
@@ -44,8 +86,9 @@ def sch(request):
             temp.save()
             ptr = pos+1
             pos = order.find('>', ptr)
-    return render_to_response('ns.html',locals())
 
+    return render_to_response('ns.html',locals())
+"""
 def query(request):
     r=request.GET.get("toolsname")
     name_dict="123"
