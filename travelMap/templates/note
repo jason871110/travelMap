@@ -1,0 +1,7 @@
+11/26 TODO:
+ajax表單
+新增進db
+db回傳資料，新增物件
+物件具drag屬性
+排完順序後送出，db紀錄順序(by 物件位址or other)
+下次開有一樣order

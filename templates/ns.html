@@ -1,0 +1,465 @@
+<!doctype html>
+<html>
+	<head>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+
+		<title> Schedule </title>
+		<meta charset='utf-8'>
+	</head>
+	<body id = "body">
+
+		<div class="ui inverted menu">
+			<a class="item">
+				<i class="home icon"></i> Home
+			</a>
+			<a class="item">
+				<i class="user circle icon"></i> Profile
+			</a>
+			<a class="item">
+				<i class="calendar alternarte outline icon"></i> My Schedules
+			</a>
+			<!--a class="item"> 
+	   <div class="ui input">
+	   <input type="text" placeholder="Search...">
+	   </div>
+	   </a-->
+	   <div class="right item">
+
+		   <a class="item">
+			   <i class="user icon"></i> Sign in & Sign up
+		   </a>
+	   </div>
+		</div>
+		<div class="ui grid">
+			<div class = "four column centered row">
+				<div class = "four wide column">
+					<h1 class="ui brown inverted huge header">Let's create your own schedule!</h1>
+				</div>
+			</div>
+			<div class = "row">
+				<div class=" three wide column" id = "fav">
+					<div class="ui inverted segment">
+						我的最愛
+					</div>
+				</div>
+				<div class=" six wide column" id = "middle">
+					<div class="ui inverted segment" >
+						Day1
+					</div>
+				</div>
+			</div>
+			<div class = "row">
+				<div class=" three wide column" id = "list0">
+					<div>
+						<ul id= "Day{{tc0.day}}" class="ui orange segment sortable-list">
+							{% for ts in tc0.touristsite_set.all %}
+							<li class="ui inverted orange button" id = {{ts.site_id}} >{{ts.site_name}} &nbsp;&nbsp;&nbsp; {{ts.time}}</li>
+							{% endfor%}	
+						</ul>
+					</div>
+				</div>
+				<div class=" three wide column" id = "middle">
+					<div class="ui inverted segment" >修改後</div>
+					<div>
+						<ul id= "Day{{tc1.day}}" class="ui violet segment sortable-list">
+							{% for ts in tc1.touristsite_set.all %}
+							
+							<li class="ui inverted violet button" id = {{ts.site_id}}>{{ts.site_name}}&nbsp;&nbsp;&nbsp;{{ts.time}}</li>
+							
+							{% endfor%}	
+						</ul>
+						 <form action="" method="post">
+			<input id="order" type="hidden" name="order" value="0">
+			<input id="order0" type="hidden" name="order0" value="0">
+			<input id="order1" type="hidden" name="order1" value="0">
+	 		<input id="course" type="hidden" name="course" value="0">
+			<input class = "ui button"type="submit" value="儲存順序">
+</form>
+					</div>
+
+
+				</div>
+				<div class=" three wide column" id = "middle">
+					<div class="ui inverted segment">原順序</div>		
+					<div>
+						<ul id= "unsort-item" class="ui black segment">
+							{% for ts in tc1.touristsite_set.all %}
+							
+							<li class="ui inverted green button" id = {{ts.site_id}}>{{ts.site_name}}&nbsp;&nbsp;&nbsp;</li>
+				
+							{% endfor%}	
+						</ul>
+						
+					</div>
+				</div>
+				<div class=" four wide column" id = "mmap">
+					 <div id="map" style="height: 400pt; width:400pt;"></div>
+				</div>
+			</div>
+
+				<div id = "img_place">
+
+					<img id ="imgg"class="ui medium bordered image" src="">
+
+				</div>
+				<div id = "content_place">
+					<p id = "site-content" class = "ui red segment"></p>
+				</div>
+
+
+
+
+
+
+
+			<!--h2> {{ r.title }} </h2>
+	   <h2> author: {{r.author}} </h2>
+	   <h2> days:{{r.days}}</h2-->
+
+
+	   <!--form action="" method="post">
+		<input id="order" type="hidden" name="order" value="0">
+		<input class = "ui button"type="submit" value="儲存順序">
+		</form-->
+
+
+
+
+		<br /><br />
+
+
+
+	</body>
+	<script type="text/javascript">
+var img = [
+{% for tcss in tc %}
+{% for t in tcss.touristsite_set.all %}
+{
+	route_order : "{{t.route_order}}",
+	image : "{{ t.image }}",
+	line : "{{ t.line }}",
+	site_content : "{{ t.site_content }}",
+	site_id : "{{t.site_id}}",
+},
+{% endfor %}
+{% endfor %}
+]
+
+$(document).ready(function(){
+	$(".sortable-list>li,#unsort-item>li").dblclick(function(){
+		var pid = $(this).closest('ul').attr('id')
+		var img_url = "";
+		var content = "";
+		for(i=0;i<img.length;i++){
+			if(img[i].site_id==(this).id){
+				img_url=img[i].image;
+				content = img[i].site_content;
+			}
+		}
+		console.log("/media/"+img_url);
+		$('#imgg').attr('src',"/media/"+img_url);
+		$('#site-content').text(content);
+		/*
+		   $('#imgg').css({
+		   'background-image': 'url(/media/upload/john-cena2.jpg.jpg)',
+		   'background-position' :'center',
+
+
+		   });
+		 */
+	});
+});
+
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+	console.log('origin'+'{{origin}}');
+	console.log('{{destination}}');
+    var ori='22.9988465, 120.2173261';
+
+    var pts=[];
+    {% for pt in waypoints %}
+        pts.push({stopover: true, location: { placeId: "{{ pt }}" }});
+    {% endfor %}
+    var request={
+        waypoints: pts,
+        origin: {placeId:"{{origin}}"},
+        destination: {placeId: "{{ destination }}"},
+        optimizeWaypoints: true,
+        travelMode: 'WALKING',
+    }
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+        }else{
+        console.log('error');
+        }
+    });
+  }
+
+function initMap() {
+	console.log('aa');
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 6,
+          center: {lat: 22.9988465,lng: 120.2173261 },
+          styles: [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#523735"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#c9b2a6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#dcd2be"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#ae9e90"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#93817c"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#a5b076"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#447530"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#fdfcf8"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#f8c967"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#e9bc62"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#e98d58"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#db8555"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#806b63"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8f7d77"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#ebe3cd"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#b9d3c2"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#92998d"
+      }
+    ]
+  }
+]
+        });
+        directionsDisplay.setMap(map);
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+      }
+
+	</script>
+        <script type="text/javascript " src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCS54PJ0zmirq0QNN29mKfPaJVE0KDCiTc&callback=initMap"></script>
+	{% load static %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'ns.css' %}" />
+		<script src="{% static '/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'ns.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'semantic.min.css' %}">
+		<script type="text/javascript" src="{% static 'semantic.min.js'%}"></script>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+
+</html>
