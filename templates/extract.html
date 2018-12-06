@@ -1,0 +1,72 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<!--<link rel="stylesheet" type="text/css" href="{% static 'extract.css' %}">-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<title>Extract Article</title>
+
+</head>
+
+<body id= "body">
+    <div class="ui inverted menu">
+        <a class="item">
+            <i class="home icon"></i> Home
+        </a>
+        <a class="item">
+            <i class="user circle icon"></i> Profile
+        </a>
+        <a class="item">
+            <i class="calendar alternarte outline icon"></i> My Schedules
+        </a>
+        <!--a class="item"> 
+   <div class="ui input">
+   <input type="text" placeholder="Search...">
+   </div>
+   </a-->
+   <div class="right item">
+
+       <a class="item">
+           <i class="user icon"></i> Sign in & Sign up
+       </a>
+   </div>
+    </div>
+<div class="div1">
+<form method="POST" enctype="multipart/form-data">
+
+	<div class="form-group">
+		<label for="exampleFormControlTextarea1" style="color:white">輸入想抓取景點的文章</label>
+		<textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="article"></textarea>
+	</div>
+    <button type="submit" class="btn btn-primary" id="button1" >上傳</button>
+</form>
+</div>
+<p id="p1" style="display: none"> result:</p>
+{% for i in result%}
+{{i}}<br>
+{%endfor%}
+<style>
+    #body{
+   background-image: url("/media/upload/background.jpeg");
+	background-size: cover;
+}
+
+</style>
+<script>
+function show_result()
+{
+    document.getElementById("p1").style.display="";
+}
+</script>
+</body>
+{% load static %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'ns.css' %}" />
+		<script src="{% static '/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
+		<script src="{% static 'ns.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'semantic.min.css' %}">
+		<script type="text/javascript" src="{% static 'semantic.min.js'%}"></script>
+		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
