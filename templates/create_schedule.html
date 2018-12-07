@@ -1,0 +1,23 @@
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    旅遊標題:
+    <input type="text" name="title"><br>
+    作者:
+    <input type="text" name="author"><br>
+    選擇旅遊的天數:
+    <select name="days">
+        <option value="oneday">1天
+        <option value="twoday">2天
+        <option value="threeday">3天
+    </select><br>
+    旅遊地點:
+    <input type="text" name="location"><br>
+    輸入描述或簡介<br>
+    <textarea name="course_content" cols="45" rows="5"></textarea><br>
+
+    <button type="submit">上傳</button>
+</form>
+{{title}}
+{{author}}
+

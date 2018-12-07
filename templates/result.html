@@ -1,0 +1,52 @@
+<html>
+    <head>
+    <title>Extract article</title>
+    </head>
+    <body id= "body">
+            <div class="ui inverted menu">
+                    <a class="item">
+                        <i class="home icon"></i> Home
+                    </a>
+                    <a class="item">
+                        <i class="user circle icon"></i> Profile
+                    </a>
+                    <a class="item">
+                        <i class="calendar alternarte outline icon"></i> My Schedules
+                    </a>
+                    <!--a class="item"> 
+               <div class="ui input">
+               <input type="text" placeholder="Search...">
+               </div>
+               </a-->
+               <div class="right item">
+            
+                   <a class="item">
+                       <i class="user icon"></i> Sign in & Sign up
+                   </a>
+               </div>
+                </div>
+            <p style="color:white; font-size: 2rem">
+            result:<br>
+
+            {% for r in result %}
+            {{r}}<br>
+            {% endfor %}
+            </p>
+            <style>
+                    #body{
+                   background-image: url("/media/upload/background.jpeg");
+                    background-size: cover;
+                }
+                
+                </style>
+    </body>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'ns.css' %}" />
+    <script src="{% static '/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'ns.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'semantic.min.css' %}">
+    <script type="text/javascript" src="{% static 'semantic.min.js'%}"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+
+</html>
