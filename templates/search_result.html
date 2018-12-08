@@ -1,0 +1,178 @@
+<!doctype html>
+<head>
+<meta charset="utf-8">
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'extract.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<title>Extract Article</title>
+
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                </div>
+              </nav>
+<div class="div1" id="all_cards">
+    
+	<div>
+            <div class="card" style="width: 18rem; display: none;" id='container' >
+                <div class="card-body">
+                    <h5 class="card-title">Special title treatment</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>   
+            
+        <!--{% for r in result1 %}
+        id_num:{{r.id_num}} title:{{r.title}} author:{{r.author}} days:{{r.days}}<br>
+        {% endfor %}-->
+
+        
+        <div id="detail" style="display: none;">
+            <!--{% for r in result2 %}
+            {% for r1 in r %}
+            day:{{r1.day}}<br>
+            {% endfor %}
+            {% endfor %}
+            <ul>
+            {% for list in result3 %}
+            {% for li in list %}
+           
+            {{li.line}}:
+            <li>{{li.site_name}}</li>
+            {% endfor %}
+            
+            {% endfor %}
+            
+            </ul>-->
+        </div>
+	</div>
+</div>
+
+<script>
+var data1 = [
+        {% for li in result1 %}
+        {
+            id_num:"{{li.id_num}}",
+            title:"{{li.title}}",
+            author:"{{li.author}}",
+            days:"{{li.days}}"
+        },
+        {% endfor %}
+        ];
+var data2 = [
+        {% for list in result2 %}
+            {% for li in  list%}
+            {
+                day:"{{li.day}}",
+                course:"{{li.course}}",
+            },
+            {% endfor %}
+        {% endfor %}
+        ];
+var data3 = [
+        {% for list in result3 %}
+            {% for li in  list%}
+            {
+                route_order:"{{li.route_order}}",
+                site_name:"{{li.site_name}}",
+                time:"{{li.time}}",
+                image:"{{li.image}}",
+                location:"{{li.location}}",
+                site_content:"{{li.site_content}}",
+                line:"{{li.line}}",
+                id_num:"{{li.line.course.id_num}}",
+            },
+            {% endfor %}
+        {% endfor %}
+        ];
+        //console.log('data')
+        var container =document.getElementById('container');
+	    var node=container.nextSibling;
+        for(i=0; i<data1.length;i++)
+        {
+            oDiv = document.createElement('div');
+            oDiv.innerHTML = '<div class="card" style="width: 18rem;" id="container'+i+'"><div class="card-body"><h5 class="card-title">'
+                    +data1[i]["title"]+'</h5><p class="card-text">It\'s a schedule about Tainan.</p><button type="button" id="button'+i+
+                    '" class="btn btn-primary" value='+ data1[i]["id_num"] +' onclick="show_detail(this.value)">Click button to go inside</button></div></div> ';
+            
+            container.parentNode.insertBefore(oDiv, node);
+	        node=oDiv.nextSibling;
+            
+        }
+        
+        
+function show_detail(clicked_id_num)
+{
+    $( ".card" ).remove();
+    //var clicked_id_num = $(this).attr('value');
+    console.log('%s',clicked_id_num);
+    document.getElementById("detail").style.display = "";
+    var target_list = '';
+        for(i=0; i<data1.length;i++)
+        {
+            console.log('data1 loop');
+            console.log('%s',data1[i]["id_num"]);
+            if(data1[i]["id_num"]==clicked_id_num)
+            {
+                //var main_div = document.createElement('div');
+                //document.body.appendChild(main_div);
+                //main_div.innerHTML = '<ul>'
+                console.log('data1 if');
+                target_list='<ul>';
+                var counter = 0;
+                var current_day = data3[0]["line"];
+                for (j=0; j<data3.length; j++)
+                {
+                    console.log('data3 loop');
+                    if(data3[j]["id_num"]==clicked_id_num)
+                    {
+                        console.log('data3 if');
+                        console.log('%s',data3[j]["id_num"]);
+
+                        if(current_day!=data3[j]["line"] ||  counter==0)
+                        {
+                            console.log('data3 if in');
+                            current_day = data3[j]["line"];
+                            target_list += data3[j]["line"];
+                            target_list += '<li>'+ data3[j]["site_name"]+ '</li>';
+                            counter++;
+                        }
+                        else
+                        {
+                            target_list += '<li>'+ data3[j]["site_name"]+ '</li>';
+                        }
+                    }
+                }
+                target_list+='</ul>';
+
+
+            }
+        }
+        console.log('%s',target_list);
+        $('#detail').append(target_list);
+        
+       
+}
+</script>
+</body>
+

@@ -1,0 +1,39 @@
+{
+	{
+		"name":"赤崁樓",
+		"sort":"site",
+		"location":"123456",
+		"stay":"120"
+	},
+	{
+		"name":"孔廟",
+		"sort":"site",
+		"location":"123456",
+		"stay":"120"
+	},
+	{
+		"name":"成功大學",
+		"sort":"site",
+		"location":"123456",
+		"stay":"120"
+	},
+	{
+		
+		"name":"台南一中",
+		"sort":"site",
+		"location":"123456",
+		"stay":"60"
+	},
+	{
+		"name":"六千牛肉湯",
+		"sort":"food",
+		"location":"123456",
+		"stay":"60"
+	},
+	{
+		"name":"神農街",
+		"sort":"site",
+		"location":"123456",
+		"stay":"60"
+	}
+}
