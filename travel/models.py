@@ -10,6 +10,9 @@ class Schedule(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100,blank=True)
     days = models.IntegerField(blank=True)
+    style = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='upload',blank=True)
+    content = models.CharField(max_length=200,blank=True)
     #created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -39,3 +42,13 @@ class TouristSite(models.Model):
 
 class IMG(models.Model):
     img = models.ImageField(upload_to='upload')
+
+class MapSite(models.Model):
+    name = models.CharField(max_length=100)
+    site_type = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    stay = models.IntegerField(blank=True,default=30)
+    image = models.ImageField(upload_to='upload',blank=True)
+
+    def __str__(self):
+        return self.name

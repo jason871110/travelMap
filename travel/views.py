@@ -3,14 +3,14 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse,HttpResponseRedirect
-from .models import TouristSite,Schedule,TotalCourse,IMG
+from .models import TouristSite,Schedule,TotalCourse,IMG,MapSite
 from django.template.context import RequestContext
 from django.http import JsonResponse
 from django.urls import reverse
 import json
 from jieba_space import jieba_test
 import os
-
+import requests
 # Create your views here.
 
 result = []
@@ -56,7 +56,7 @@ def ind(request):
 
 def uploadImg(request):
     if request.method == 'POST':
-        new_img = IMG(image=request.FILES.get('img'))
+        new_img = IMG(img=request.FILES.get('img'))
         #後面的'img'對應到html的name='img'
         new_img.save()
         return redirect('showimg.html')#view or html is ok
@@ -205,6 +205,41 @@ def main(request, id_num):
         #return HttpResponseRedirect(reverse('main',kwargs={'id_num':0}))
     return render(request, 'main.html')
 
+def search(name):
+    if not (type(name) is str):
+        raise ValueError("Should be string")
+    fo = open('total_results.json', encoding='utf-8')
+    json_dict = json.loads(fo.read())
+    for key, value in json_dict.items():
+        if key.find(name) != -1:
+            print(key)
+            return value
+    fo.close()
+    url_temp = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +
+                "input=" + name +
+                "&key=" + "AIzaSyCS54PJ0zmirq0QNN29mKfPaJVE0KDCiTc" +
+                "&inputtype=" + "textquery" +
+                "&locationbias=" + "ipbias")
+    res = requests.get(url_temp)
+    # print(res)
+    # print(type(res.content))
+    # print(str(res.content))
+
+    result = res.content.decode("utf-8")
+    result = json.loads(result)
+    print(list(result))
+    if (len(result["candidates"]) == 0):
+        return None
+    result_id = result['candidates'][0]["place_id"]
+    result_name = name
+    fo = open('total_results.json', 'r+', encoding='utf-8')
+
+    file_str = fo.read()
+    file_json = json.loads(file_str)
+    file_json[result_name] = result_id
+    fo.write(json.dumps(file_json, ensure_ascii=False, indent=2))
+    fo.close()
+    return result_id
 
 def decide_course(original_course):
     result = []
