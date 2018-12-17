@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# from usersys
+LOGIN_REDIRECT_URL = '/profiles/home'
+
 
 # Application definition
 

@@ -1,0 +1,31 @@
+{% if request.user.is_authenticated %}
+            <p>{{request.user}} 您已經登入囉 <a href="/accounts/logout/">登出</a></p>
+            
+            <a href="/ns">See your schedules</a>
+
+            <form action="" method="post">
+            <table>
+                <tr>
+                    <td> <label for="site_name">景點:</label> </td>
+                    <td> <input id="site_name" type="text" name="site_name"> </td>
+                </tr>
+                <tr>
+                    <td> <label for="time">時間:</label> </td>
+                    <td> <input id="time" type="text" name="time"> </td>
+                </tr>
+                 <tr>
+                    <td> <label for="whichday">第幾天:</label> </td>
+                    <td> <input id="whichday" type="text" name="whichday"> </td>
+                </tr>
+            </table>
+            <input type="hidden" name="ok" value="yes">
+       
+            <br />
+            <input type="submit" value="新增景點">
+        </form>
+
+        {% else %}
+            <p>您尚未登入喔~<a href="/accounts/login/">登入</a><a href="/accounts/register/">&nbsp Register</a></p>
+
+        {% endif %}
+

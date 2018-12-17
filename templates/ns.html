@@ -188,7 +188,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         waypoints: pts,
         origin: {placeId:"{{origin}}"},
         destination: {placeId: "{{ destination }}"},
-        optimizeWaypoints: true,
+        optimizeWaypoints: false,
         travelMode: 'WALKING',
     }
     directionsService.route(request, function (result, status) {

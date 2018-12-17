@@ -30,7 +30,8 @@ $('.sortable-list').sortable({
              'csrfmiddlewaretoken': "{{ csrf_token }}",
             },
             success:function(data, status, xhr){
-                $('#map').html(data);
+				var myHTML = $(data).not('script');
+                $('#map').html(myHTML);
                 console.log('google map changed');
               }
             ,

@@ -8,12 +8,78 @@ from django.urls import reverse
 from django.template import RequestContext
 from .models import TouristSite, IMG, Schedule, TotalCourse
 from django.db.models import Max
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from django.db.models import Count
 from jieba_space import jieba_test
 import static
 import json
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
+import random
+def develop(request):
+  
+    schedule_idset = [1,2,3,4,5,6,7,8,9,10]
+    random.shuffle(schedule_idset)
+    schedule_item = list()
+    for i in range(0,len(schedule_idset)):
+        schedule_item.append(Schedule())   
+        schedule_item[i] = Schedule.objects.get(id_num=schedule_idset[i])
+        
+    return render_to_response('develop.html',{'schedule_item':schedule_item}) 
 
+class siteForm(forms.ModelForm):
+    class Meta:
+        model = TouristSite
+        fields = ['site_name','site_content', 'time', 'line']
+
+def create_form(request):
+    if request.method == 'POST':
+        form = siteForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            tcc = data['line']
+            TouristSite.objects.create(route_order =tcc.touristsite_set.count()+1,site_id=TouristSite.objects.all().count()+1,site_name = data['site_name'], time = data['time'], site_content=data['site_content'],line = tcc)
+            if request.user.is_authenticated:
+                print(request.user.username)
+            #print(data['line'])
+            #form.save()
+            return HttpResponseRedirect('compre_form.html')
+
+    form = siteForm()
+    return render(request, 'compre_form.html', {'form': form})
+
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/form')
+
+def login(request):
+
+    if request.user.is_authenticated: 
+        return HttpResponseRedirect('/form')
+
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    
+    user = auth.authenticate(username=username, password=password)
+
+    if user is not None and user.is_active:
+        auth.login(request, user)
+        return HttpResponseRedirect('form.html')
+    else:
+        return render_to_response('login.html') 
+def home(request):
+    return render_to_response('home.html',locals()) 
+def register(request):
+    if request.method =="POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return HttpResponseRedirect('/accounts/login/')
+    else:
+        form = UserCreationForm()
+    return render_to_response('register.html',locals())
 
 def ind(request):
     if request.method == 'GET':
@@ -104,7 +170,14 @@ def addCourseLines(request):
         # print(sites)
     content['pk'] = 6
     return render(request, 'add_lines.html', content)
-
+def form(request):
+    if 'ok' in request.POST:
+        site_name = request.POST['site_name']
+        time = request.POST['time']
+        a = int(request.POST['whichday'])
+        tcc = TotalCourse.objects.get(day = a)
+        TouristSite.objects.create(route_order =tcc.touristsite_set.count()+1,site_id=TouristSite.objects.all().count()+1,site_name = site_name, time = time, line = tcc)
+    return render_to_response('form.html',locals())
 
 def addNewScheduleToDatabase(content):
     obj = Schedule.objects.create(title=content['title'], author=content['author'], days=content['days'],
@@ -123,7 +196,7 @@ def main(request, id_num):
     if request.method == 'GET':
         schedule_all = Schedule.objects.get(id_num=id_num)
         schedule_day_all = schedule_all.totalcourse_set.all()
-        print(schedule_all.days)
+        #print(schedule_all.days)
         num_of_day = [0]*(schedule_all.days+1)
 
         for sche in schedule_day_all:
@@ -134,7 +207,7 @@ def main(request, id_num):
         content['schedule_day_all'] = schedule_day_all
         content['max_day'] = schedule_all.days
         content['num_of_day'] = num_of_day
-        print(schedule_day_all.get(day=1).touristsite_set.all().get(route_order=0).location)
+        #print(schedule_day_all.get(day=1).touristsite_set.all().get(route_order=0).location)
         content['origin'] = schedule_day_all.get(day=1).touristsite_set.all().get(route_order=0).location
         content['destination'] = schedule_day_all.get(day=1).touristsite_set.all().get(route_order=num_of_day[1]-1).location
         content['waypoints'] = []
@@ -154,7 +227,7 @@ def main(request, id_num):
                 num_of_day[sche.day] += 1
                 content['img_site'].append(site.image)
                 print(site.image)
-        print(content['img_site'])
+        #print(content['img_site'])
 
         content['schedule_day_all'] = schedule_day_all
         content['max_day'] = schedule_all.days
@@ -164,7 +237,7 @@ def main(request, id_num):
         content['waypoints'] = []
         for i in range(2, num_of_day[int(target_day)]):
             content['waypoints'].append(schedule_day_all.get(day=target_day).touristsite_set.all().get(route_order=i).location)
-        print(content['origin']+'%%%from post')
+        #print(content['origin']+'%%%from post')
         return render(request,'main.html',content)
         #return render_to_response('main.html', content,context_instance = RequestContext(request))
         #return HttpResponseRedirect(reverse('main',kwargs={'id_num':0}))
@@ -232,7 +305,7 @@ def sch(request):
         content['waypoints'] = []
         for i in range(1, num_of_day[1]-1):
             content['waypoints'].append(schedule_day_all.get(day=1).touristsite_set.all().get(route_order=i).location)
-        print(content)
+        #print(content)
         render(request,'ns.html',content)
 
     if request.method =="POST":
@@ -251,7 +324,7 @@ def sch(request):
 
         # reorder use sortable and re
         #if 'order' in request.POST:
-        print('inorder')
+       #print('inorder')
         #course = request.POST['course']
         order = request.POST.get('order0','')
         newOrder = re.findall(r'[0-9]+', order)
@@ -295,7 +368,7 @@ def sch(request):
         content['destination'] = TouristSite.objects.get(site_id=newOrder[len(newOrder)-1]).location
         content['waypoints'] = []
         for i in range(1, len(newOrder)-1):
-            print(newOrder[i])
+            #print(newOrder[i])
             content['waypoints'].append(TouristSite.objects.get(site_id=newOrder[i]).location)
 
 

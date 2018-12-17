@@ -1,0 +1,15 @@
+<form>
+<input type="text" id="tn">
+<button type="button" id="formquery">提交</button>
+</form>
+<span id='result'></span>
+<script>
+    $(document).ready(function(){
+      $("#formquery").click(function(){
+        var toolsname = $("#tn").val();
+        $.get("/query/",{'toolsname':toolsname}, function(ret){
+            $('#result').html(ret) #在页面中显示。可以用用$.ajax方法代替$.get
+        })
+      });
+    });
+</script>

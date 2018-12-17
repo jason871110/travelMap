@@ -10,7 +10,11 @@ class Schedule(models.Model):
     id_num = models.IntegerField(blank=True)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100,blank=True)
+    content = models.CharField(max_length=1000,blank=True)
+    style = models.CharField(max_length=100,blank=True)
     days = models.IntegerField(blank=True)
+    image = models.CharField(max_length=100,blank=True)
+
     #created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -22,7 +26,10 @@ class TotalCourse(models.Model):
     course = models.ForeignKey(Schedule,    on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Day'+str(self.day)
+        if (self.day!=0):
+            return 'Day'+str(self.day)
+        else:
+            return '我的最愛'
 
 class TouristSite(models.Model):
     route_order = models.IntegerField()
