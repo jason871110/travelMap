@@ -17,25 +17,13 @@ from django.urls import path
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from travel.views import uploadImg,showImg,insertNewSchedule,addCourseLines,addNewScheduleToDatabase,ind,schedule
-from travel.views import login, logout, register, drag, query,form
-from django.views.generic import TemplateView
-from travel.views import sch,aaa
+from travel.views import uploadImg, showImg, sch, main,insertNewSchedule, addCourseLines, addNewScheduleToDatabase, ind,extract_article
+#from travel.views import form, login, logout
+from django.contrib.auth.views import LoginView
+from travel.views import logout, register
+from travel.views import form, home, create_form, develop,search_dis
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', uploadImg),
-    url(r'^upload', uploadImg),
-    url(r'^show', showImg),
-    url(r'^insert', insertNewSchedule),
-    url(r'^addline', addCourseLines),
-    path('index',ind),
-    path('schedule',schedule),
-    url(r'^accounts/login/$', login),
-    url(r'^accounts/logout/$', logout),
-    url(r'^accounts/register/$', register),
-    url(r'drag',drag),
-    url(r'query/$',query),
-    url(r'form',form),
-    url(r'ns',sch),
-    url(r'aaa',aaa),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^develop', develop),
+    url(r'^search', search_dis),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
+

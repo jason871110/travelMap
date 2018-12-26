@@ -23,7 +23,10 @@ li{
 #fav{
 	position:relative;
 	left:50px;
-
+}
+#mmap{
+    position:relative;
+	left:11%;
 }
 #middle{
 	position:relative;
@@ -34,7 +37,18 @@ li{
 	left:10px;
 	
 }
-
+#img_place{
+    position:absolute;
+    top:70%;
+    left:10%;
+}
+#content_place{
+    position:absolute;
+    top:70%;
+    left:30%;
+    width:30%;
+    display:none;
+}
 #body{
    background-image: url("/media/upload/background.jpeg");
 	background-size: cover;

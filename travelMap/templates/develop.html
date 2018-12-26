@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{% static 'semantic.min.css' %}">
+  <script type="text/javascript" src="{% static 'semantic.min.js'%}"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'FullScrean.css' %}">
+ 
+</head>
+<style>
+  body{
+    padding: 0;
+  }
+
+</style>
+<body>
+  <div class="ui left vertical inverted sidebar labeled icon menu">
+    <a class="item">
+      <i class="home icon"></i>
+      Home
+    </a>
+    <a class="item">
+      <i class="block layout icon"></i>
+      Topics
+    </a>
+    <a class="item">
+      <i class="smile icon"></i>
+      Friends
+    </a>
+  </div>
+  <div class="pusher" style="min-height: 100vh;">
+    <div id="cover_img"style="border: 1pt solid; width: 100%; height:20vh; background-image:url(
+    {% static '/image/4zxDCCF.jpg' %}); background-size: cover; background-position: center;">
+    </div>
+    <div class="ui vertical divided grid"id="app-container"style="background-color: #ffffe6;">
+      <div class="eight wide column">
+        <div class="ui card" onclick="click_img('{{schedule_item.0.image}}', '{{schedule_item.0.content}}' )">
+          <div class="image">
+            <img src='/media/{{schedule_item.0.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.0.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.0.days}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="eight wide column">
+        <div class="ui card"onclick="click_img('{{schedule_item.1.image}}', '{{schedule_item.1.content}}' )">
+          <div class="image">
+            <img src='/media/{{schedule_item.1.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.1.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.1.days}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="eight wide column">
+        <div class="ui card">
+          <div class="image"onclick="click_img('{{schedule_item.2.image}}', '{{schedule_item.2.content}}')">
+            <img src='/media/{{schedule_item.2.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.2.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.2.days}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="eight wide column">
+        <div class="ui card">
+          <div class="image"onclick="click_img('{{schedule_item.3.image}}', '{{schedule_item.3.content}}')">
+            <img src='/media/{{schedule_item.3.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.3.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.3.days}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="eight wide column">
+        <div class="ui card">
+          <div class="image"onclick="click_img('{{schedule_item.4.image}}', '{{schedule_item.4.content}}')">
+            <img src='/media/{{schedule_item.4.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.4.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.4.days}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="eight wide column">
+        <div class="ui card">
+          <div class="image"onclick="click_img('{{schedule_item.5.image}}', '{{schedule_item.5.content}}')">
+            <img src='/media/{{schedule_item.5.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.5.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.5.days}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="eight wide column">
+        <div class="ui card">
+          <div class="image"onclick="click_img('{{schedule_item.6.image}}', '{{schedule_item.6.content}}')">
+            <img src='/media/{{schedule_item.6.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.6.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.6.days}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="eight wide column">
+        <div class="ui card">
+          <div class="image"onclick="click_img('{{schedule_item.7.image}}', '{{schedule_item.7.content}}')">
+            <img src='/media/{{schedule_item.7.image}}' style="height: 15vh;">
+          </div>
+          <div class="content">
+            <a class="header">{{schedule_item.7.title}}</a>
+            <div class="meta">
+              <span class="date">72 views</span>
+            </div>
+            <div class="description">
+              建議遊玩天數：{{schedule_item.7.days}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <div class="ui modal">
+    <div class="image content">
+      <div class="ui medium image">
+        <img src="" id="modal_img">
+      </div>
+      <div class="description" id="modal_description">
+        change here by jquery(maybe?)
+      </div>
+    </div>
+</body>
+<script>
+  var data = [
+{% for s in schedule_item %}
+
+{
+  image : "{{s.image}}",
+  content : "{{ s.content }}",
+},
+
+{% endfor %}
+]
+</script>
+<script>
+$('.item').click(function(){
+  console.log('onclick');
+});
+function click_img(img_url, content){
+  $('#modal_img').attr('src', "/media/"+img_url );
+  $('#modal_description').text(content)
+  console.log("/media/"+img_url)
+  console.log(content)
+  $('.ui.modal').modal('show');
+
+}
+var origin_height;
+  $(document).ready(function(){
+    console.log('st');
+    origin_height = $('.pusher').height();
+    //    $('#cover_img').transition('fade up');
+  });
+$(document).keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13'){
+    $('.ui.modal').modal('show');
+  }
+});
+/*
+   $(function(){
+   $('.pusher').on( "swiperight", swipeHandler );
+   function swipeHandler( event ){
+//$( event.target ).addClass( "swiperight" );
+$('.ui.sidebar').sidebar('toggle');
+}
+});
+ */
+var sidebarstate = 0;
+$('.pusher').on('swiperight',function(){
+  $('.ui.sidebar').sidebar({closable: false});
+  $('.ui.sidebar').sidebar('toggle');
+  $('#sidebar_icon').hide();
+  console.log(sidebarstate);
+  setTimeout(function(){sidebarstate = 1;},500);
+});
+/*
+   $(document).on('swipeleft',function(){
+   console.log('swipe left detected');
+   if(sidebarstate==1){
+   console.log('from swipeleft');
+   $('.ui.sidebar').sidebar('toggle');
+   $('#sidebar_icon').show();
+   sidebarstate=0;
+   }
+   });
+ */
+/*
+ */
+$(document).click(function(){
+  if(sidebarstate==1){
+    $('.ui.sidebar').sidebar('toggle');
+    $('#sidebar_icon').show();
+    $('.pusher').height(origin_height);
+    sidebarstate=0;
+  }
+});
+</script>
+
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </html>
+

@@ -5,7 +5,7 @@ $('.sortable-list').sortable({
     var changedList = this.id;
     var order = $(this).sortable('toArray');
     var positions = order.join(';');
-	  var order0,order1
+	var order0,order1
 	if (changedList == "Day0"){
 		order0 = positions;
 		$( "#order0" ).val(order0);
@@ -20,6 +20,26 @@ $('.sortable-list').sortable({
       order0: order0,
 	  order1: order1,
     });
+
+    $.ajax({
+            url: '',
+            type: "POST",
+            data:{
+             order1 : order1,
+             order0 : order0,
+             'csrfmiddlewaretoken': "{{ csrf_token }}",
+            },
+            success:function(data, status, xhr){
+				var myHTML = $(data).not('script');
+                $('#map').html(myHTML);
+                console.log('google map changed');
+              }
+            ,
+            failure: function(){
+             console.log('fail');
+             alert();
+            },
+        });
   }
 
 });

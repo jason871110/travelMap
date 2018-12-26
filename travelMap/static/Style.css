@@ -1,0 +1,79 @@
+
+
+.selectNum{
+    opacity: 0.8;
+    background-color:grey;
+    height: 30px;
+    width:40px;
+    color: white;
+    margin-top: 6%;
+    margin-left:-2%;
+    border-radius:15px;
+    
+
+}
+
+
+#bt1{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt2{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt3{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt4{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt5{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt6{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt7{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+
+#bt8{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+#bt9{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+#bt10{
+    background-image: linear-gradient(to right, #f5ce62, #e43603, #fa7199, #e85a19) !important;
+    color:white !important;
+    opacity:0.8;
+}
+#tran1,#tran2,#tran3,#tran4,#tran5,#tran6{
+    background-color: white !important;
+}
+#atran1,#atran2,#atran3,#atran4,#atran5,#atran6{
+    background-color:grey !important;
+}

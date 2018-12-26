@@ -71,12 +71,13 @@ figcaption{
   color: white;
 }
 */
-p{
-  text-align: center;
+p {
+    text-align: center;
 }
-#div_for_set{
-  background-image: url(https://images.pexels.com/photos/297755/pexels-photo-297755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
-  height: 250pt;
-  background-size: cover;
-  background-position: center;
+
+#div_for_set {
+    background-image: url(https://images.pexels.com/photos/297755/pexels-photo-297755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    height: 250pt;
+    background-size: cover;
+    background-position: center;
 }

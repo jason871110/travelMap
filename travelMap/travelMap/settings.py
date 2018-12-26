@@ -25,7 +25,11 @@ SECRET_KEY = '=jm+b065&tx1-h=!y40h(0fyu#=+v%mi@47t!9o9fy=qo9x(8^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["luffy.ee.ncku.edu.tw",
+                 "localhost"]
+
+# from usersys
+LOGIN_REDIRECT_URL = '/profiles/home'
 
 
 # Application definition
@@ -38,7 +42,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'travel',
-    'schedule',
 )
 
 MIDDLEWARE = (
@@ -46,7 +49,6 @@ MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -65,7 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+                ],
         },
     },
 ]
@@ -101,9 +103,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
