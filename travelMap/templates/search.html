@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic.min.css' %}">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'semantic.min.js' %}">
+    </script>
+    <!--button-->
+    <link rel="stylesheet" type="text/css" href="{% static 'button.css' %}">
+    <script src="{% static 'button.js' %}"></script>
+    <!--icon-->
+    <link rel="stylesheet" type="text/css" href="{% static 'icon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon.min.css'%}">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.css"> -->
+    <!--fontawesome-->
+    <!-- <link rel="stylesheet" type="text/css" href="all.css">
+    <script src="all.js"></script> -->
+
+
+    <!--try fullscrean-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'normalize.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'FullScrean.css'%}">
+
+    <!--main css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'Style.css' %}">
+
+</head>
+<body>
+
+<div class="ui vertically divided grid" id="app-container">
+
+    <div class="ui fluid category search" id="search" style="position: absolute;top:5%;right:40%">
+        <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Your s...">
+            <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+    </div>
+    <h2 style="color:grey;font-size:15px">Selected</h2>
+    <div class="selectNum">
+        <h1 id="intNum" style="font-size: 12px;margin-top:50%;margin-left:-60%">0/10</h1>
+    </div>
+    <!-- <div id="app-header" class="ui fluid category search" style="background-color:white">
+
+            <div class="ui icon input">
+              <input class="prompt" type="text" placeholder="Your dick...">
+              <i class="search icon"></i>
+            </div>
+            <div class="results"></div>
+
+
+    </div> -->
+    <div class="row ui grid container" id="firstButtom">
+        <div class="ui four wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un1" onclick="changeBack(this.id)"
+                    style="height:100%;width:200%;float:right">熱血
+            </button>
+        </div>
+        <div class="ui eight wide column" style="overflow: hidden;height:90%;">
+            <!-- <img class="ui circular image" src="cropped-qtq50-UArAnS-2.jpeg"  >  -->
+            <button class="ui circular grey basic button" id="un2" onclick="changeBack(this.id)"
+                    style="width:100%;height:100%;">
+                文青
+            </button>
+        </div>
+        <div class="ui four wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un3" onclick="changeBack(this.id)"
+                    style="height:100%;width:200%">放鬆
+            </button>
+        </div>
+
+    </div>
+    <div class="row ui grid container" id="secondButtom">
+        <div class="ui eight wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un4" onclick="changeBack(this.id)"
+                    style="height:100%;width:100%">empty
+            </button>
+        </div>
+        <div class="ui eight wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un5" onclick="changeBack(this.id)"
+                    style="width:100%;height:100%;">empty
+            </button>
+        </div>
+    </div>
+    <div class="row ui grid container" id="thirdButtom">
+        <div class="ui four wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un6" onclick="changeBack(this.id)"
+                    style="height:100%;width:200%;float:right">一日遊
+            </button>
+        </div>
+        <div class="ui eight wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un7" onclick="changeBack(this.id)"
+                    style="width:100%;height:100%;">兩日遊
+            </button>
+        </div>
+        <div class="ui four wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un8" onclick="changeBack(this.id)"
+                    style="height:100%;width:200%">三日遊
+            </button>
+        </div>
+    </div>
+    <div class="row ui grid container" id="fourthButtom">
+        <div class="ui eight wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un9" onclick="changeBack(this.id)"
+                    style="height:100%;width:100%">四人混戰
+            </button>
+        </div>
+        <div class="ui eight wide column" style="overflow: hidden;height:90%">
+            <button class="ui circular grey basic button" id="un10" onclick="changeBack(this.id)"
+                    style="width:100%;height:100%;">傳說對決
+            </button>
+        </div>
+    </div>
+    <div class="row" id="Transporttype">
+
+        <h1 style="color:gray;font-size:20px;font-family: 'Times New Roman', Times, serif;">Transport type</h1>
+        <h2 style="color:gray;font-size:15px;font-family: 'Times New Roman', Times, serif;">Selected</h2>
+        <div class="selectNum" style="margin-left:10px">
+            <h1 id="intNum2" style="font-size: 12px;margin-top:6px;margin-left:6px">0/6</h1>
+        </div>
+    </div>
+    <div class="row" id="transportation">
+        <div class="ui six icon buttons">
+            <button class="ui circular button" id="tran1" onclick="changeBack(this.id)"><i class="bicycle icon"></i>
+            </button>
+            <button class="ui circular button" id="tran2" onclick="changeBack(this.id)"><i class="motorcycle icon"></i>
+            </button>
+            <button class="circular ui button" id="tran3" onclick="changeBack(this.id)"><i class="car icon"></i>
+            </button>
+            <button class="circular ui button" id="tran4" onclick="changeBack(this.id)"><i class="wheelchair icon"></i>
+            </button>
+            <button class="circular ui button" id="tran5" onclick="changeBack(this.id)"><i class="subway icon"></i>
+            </button>
+            <button class="circular ui button" id="tran6" onclick="changeBack(this.id)"><i class="ambulance icon"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row ui grid" id="checkbutton">
+        <div class="ui seven wide column">
+        </div>
+        <button class="small circular ui button"><i class="check icon"></i></button>
+    </div>
+</div>
+</body>
+<script>
+    $('#checkbutton > button').click(function(){
+        console.log('click');
+        return_array=[];
+        for(i=1;i<=10;i++){
+            if($('#bt'+i).length!=0){
+                return_array.push(i);
+            }
+        }
+        console.log(return_array);
+        return_array_string = return_array.join('-');
+        if(return_array.length==0 || return_array == undefined){
+            alert('別讓我難做人');
+        }else{
+            window.location.href= '../show/'+return_array_string;
+        }
+    });
+
+</script>
+
+</html>

@@ -14,16 +14,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.urls import path
-from django.contrib import admin
+# from django.contrib import admin
+# from django.contrib.auth.views import LoginView
 from django.conf.urls.static import static
 from django.conf import settings
-from travel.views import uploadImg, showImg, sch, main,insertNewSchedule, addCourseLines, addNewScheduleToDatabase, ind,extract_article
-#from travel.views import form, login, logout
-from django.contrib.auth.views import LoginView
-from travel.views import logout, register
-from travel.views import form, home, create_form, develop,search_dis
+from travel.views import show
+from travel.views import develop, search_dis,sch
 urlpatterns = [
     url(r'^develop', develop),
     url(r'^search', search_dis),
+    path('sch/<int:id_num>', sch),
+    path('show/<slug:slug>',show),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
 
