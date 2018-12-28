@@ -9,9 +9,9 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'semantic.min.css' %}">
-    <script type="text/javascript" src="{% static 'semantic.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'jquery-ui.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'jquery.ui.touch-punch.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'semantic.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'jquery-ui.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'jquery.ui.touch-punch.min.js'%}"></script>
     <link rel="stylesheet" href="{% static 'normalize.css' %}">
     <link rel="stylesheet" href="{% static 'FullScrean.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,22 +21,34 @@
           rel="stylesheet">
 </head>
 <style>
-    body {
-        padding: 0;
-    }
+  .upperPic{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity:1.0;
+  }
+  body{
+    padding: 0;
+  }
+  li{
+    width: 100%;
 
-    li {
-        width: 100%;
+  }
+  .item{
+    height: 10vh;
+    vertical-align: middle;
+    background-color: white;
+    border-radius: 4px;
+    border: 1pt solid;
+    border-left: 6px solid burlywood;
+    padding: 1vh !important;
 
-    }
+  }
 
-    .item {
-        height: 10vh;
-        vertical-align: middle;
-        background-color: white;
-        border: 1pt solid;
-        padding: 1vh !important;
-    }
+  #hayBorder{
+    border: 0pt !important;
+  }
+
 </style>
 <body>
 <div class="ui left vertical inverted sidebar labeled icon menu">
@@ -54,58 +66,53 @@
     </a>
 </div>
 <div class="pusher" style="min-height: 100vh;">
-    <div class="ui fluid image"
-         style="position:absolute; top:0;background-image: url(/media/image/empty.jpeg);height: 20vh; background-size: cover; background-position: center;">
-    </div>
+    <div class="ui segment">
+        <div class="ui dimmer" id="loader">
+            <div class="ui loader"></div>
+        </div>
     <div class="ui vertical divided grid" id="app-container" style="margin-top: 10vh;">
-        <div data-role="content" data-theme="c" style="width: 100%;" id="schedule">
-            <div style="border: 1pt solid;">
-                {% for day_course in site_information %}
-                    <div id="day{{ forloop.counter }}_tag" onclick="change_day({{ forloop.counter }})" class="day_tag">
-                        day{{ forloop.counter }}</div>
-                    <div id="day{{ forloop.counter }}" class="day_content" style="display:none;">
-                        <div class="ui list" style="padding: 1vh;" data-role="listview" data-inset="true" data-theme="d"
-                             id="sortable_day{{ forloop.counter }}">
-                            <!--從後端拿地點資訊(包括google map api details)
-                              <div class="item" id="1" onclick="edit_site('/media/image/文學館.jpg','1','台灣文學館')">
-                                <img class="ui avatar image" style="height: 8vh; width: 8vh;" src="/media/image/文學館.jpg">
-                                <div class="content">
-                                  <div class="header">台灣文學館</div>
-                                  <div class="description">
-                                    tainan destination
-                                  </div>
-                                </div>
-                              </div>
+        <div class="upperPic"
+             style="height:40vh;width:100%;margin-top:-25% !important;background-image:url('/media/image/2.jpg')">
+            <h1 style="color: aliceblue;margin-top: 10%">台南深度之旅</h1>
+            <p style="color: aliceblue;"> 多久沒有逃離喧囂的城市，<br>繁重的工作總讓自己喘不過氣。<br>
+                來一段與古都台南的一趟深度旅行，<br>從心體會這世界的美好。</p>
+        </div>
+        <div id="daybutton" class="ui vertical buttons" style="width:140% ;margin-top:-15%">
+            {% for day_course in site_information%}
+                <button onclick="change_day({{forloop.counter}})" class="fluid ui basic button" id={{forloop.counter}}>Day{{forloop.counter}}</button>
+            {% endfor %}
+            <button onclick="day_plus_function()"class="fluid ui blue basic button" id="day_plus">Plus+</button>
+        </div>
 
-                              現有行程-->
-                            {% for site in day_course %}
-                                <div class="item" id="{{ site.site_id }}"
-                                     onclick="edit_site('{{ site.image }}','{{ site.site_id }}','{{ site.site_name }}')">
-                                    <img class="ui avatar image" style="height: 8vh; width: 8vh;"
-                                         src="{{ site.image }}">
-                                    <div class="content">
-                                        <div class="header">{{ site.site_name }}</div>
-                                        <div class="description">
-                                            {{ site.site_content }}
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            <div class="item" onclick="add_site({{ forloop.counter }})"
-                                 id="item_add_site_day{{ forloop.counter }}">
-                                <img class="ui avatar image" style="height: 8vh; width: 8vh; border: 1pt solid;"
-                                     src="/media/image/plus.jpg">
-                                <div class="content">
-                                    <div class="header">新增行程</div>
-                                </div>
-                            </div>
-                            <!--list 範圍-->
+        <div data-role="content" data-theme="c" style="width: 100%;" id="schedule">
+            {% for day_course in site_information%}
+            <div id="day{{forloop.counter}}" class="day_content" style="display:none;height:100%;">
+                <div class="ui list" style="padding: 1vh;" data-role="listview" data-inset="true" data-theme="d" id="sortable_day{{forloop.counter}}">
+
+                    {% for site in day_course%}
+                    <div class="item" id="{{site.site_id}}"
+                         onclick="edit_site('{{site.image}}','{{site.site_id}}','{{site.site_name}}')">
+                        <img class="ui avatar image" style="height: 8vh; width: 8vh;" src="{{site.image}}">
+                        <div class="content">
+                            <div class="header">{{site.site_name}}</div>
+                            <div class="description"><span>{{site.site_content}}</span></div>
                         </div>
                     </div>
-                {% endfor %}
-
-
+                    {% endfor %}
+                    <div class="item" onclick="add_site({{forloop.counter}})"
+                         id="item_add_site_day{{forloop.counter}}">
+                        <img class="ui avatar image" style="height: 8vh; width: 8vh; border: 1pt solid;"
+                             src="/media/image/plus.jpg">
+                        <div class="content">
+                            <div class="header">新增行程</div>
+                        </div>
+                    </div>
+                    <!--list 範圍-->
+                </div>
             </div>
+            {% endfor %}
+
+            <!--button id="day_plus">day plus</button-->
 
         </div>
         <!--google map-->
@@ -114,7 +121,7 @@
     </div>
 </div>
 <!--modal-->
-<div class="ui modal" id="site_detal">
+<div class="ui small modal" id="site_detail">
     <i class="close icon"></i>
     <div class="header">
         <span id="modal_header"></span>
@@ -147,6 +154,8 @@
                 </div>
             </div>
         </div>
+        <div class="ui green button" style="float:right;" id="edit_site_button">save</div>
+        <div class="ui red button" style="float:right;" id="edit_site_delete">delete</div>
     </div>
 </div>
 <div class="ui small modal" id="new_site">
@@ -173,253 +182,423 @@
 </body>
 
 <script>
-    var day_site = [
-        {% for site in site_information %}
-            {
-                site_name: "{{site.site_name}}",
-                image: "{{site.image}}",
-                content: "{{ site.site_content }}",
-                route_order: "{{site.route_order}}",
-                line: "{{ site.line }}",
-                site_id: "{{site.site_id}}",
-            },
-        {% endfor %}
-    ]
-    console.log(day_site);
-    for (i = 0; i < day_site.length; i++) {
-        console.log(day_site[i].site_name);
+  var day_site = [
+{% for site_course in site_information %}
+{% for site in site_course%}
+{
+  site_name : "{{site.site_name}}",
+  image : "{{site.image}}",
+  content : "{{ site.site_content }}",
+  route_order : "{{site.route_order}}",
+  line : "{{ site.line }}",
+  site_id : "{{site.site_id}}",
+  phone: "{{site.phone_number}}",
+  address: "{{site.address}}",
+},
+{% endfor %}
+{% endfor %}
+]
+$(document).ready(function(){
+    color_array=['teal','blue','violet']
+    for(i=1;i<={{max_day}};i++){
+        $('#'+i).addClass(color_array[i%3]);
     }
+});
 </script>
+//day_plus
 <script>
-    //let ui rating working
-    $(document).ready(function () {
-        $(".rating").rating();
-        $('.list').sortable();
-
-    });
-    //ui sortable working $('#sortable'.sortable('toArray'))is the result
-    var day_cur = 0;
-
-    function change_day(day_num) {
-        console.log('triggle change_day');
-        day_cur = day_num;
-        $('.day_content').css('display', 'none');
-        $('#day' + day_num).css('display', 'block');
-        $('.list').unbind('sortstop');
-        $("#sortable_day" + day_num).disableSelection();
-        $("#sortable_day" + day_num).bind("sortstop", function (event, ui) {
-            $('#sortable_day' + day_num).listview('refresh');
-            console.log($('#sortable_day' + day_num).sortable('toArray'));
-            $.ajax({
-                url: '',
-                type: "POST",
-                data: {
-                    sorted_order: $('#sortable_day' + day_num).sortable('toArray').join(';'),
-                    day_cur: day_num,
-                    'csrfmiddlewaretoken': "{{ csrf_token }}",
-                    type: 'change_day',
-                },
-                dataType: 'json',
-                success: function (content) {
-                    directionsService = new google.maps.DirectionsService;
-                    directionsDisplay = new google.maps.DirectionsRenderer;
-                    map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 18,
-                        center: {lat: 22.9988465, lng: 120.2173261},
-                    });
-                    directionsDisplay.setMap(map);
-                    console.log(content['waypoints']);
-                    var request = {
-                        waypoints: content['waypoints'],
-                        origin: content['origin'],
-                        destination: content['destination'],
-                        optimizeWaypoints: false,
-                        travelMode: 'WALKING',
-                    }
-                    directionsService.route(request, function (result, status) {
-                        if (status == google.maps.DirectionsStatus.OK) {
-                            directionsDisplay.setDirections(result);
-                        } else {
-                            console.log('error');
-                        }
-                    });
-                    directionsDisplay.setMap(map);
-                    map.setZoom(12);
-                }
-                ,
-                failure: function () {
-                    console.log('fail');
-                    alert();
-                },
-            });
-
-        });
-
-    }
-
-    //add new site
-    function add_site(day) {
-        console.log('add_site' + day);
-        $('#add_site_position').val('');
-        $('#new_site').modal('show');
-    }
-
-    $('#add_site_button').click(function () {
+    function day_plus_function(){
+        $('.list').css('display','none');
         $.ajax({
             url: '',
             type: "POST",
-            data: {
-                day_cur: day_cur,
-                site_name: $('#add_site_position').val(),
-                'csrfmiddlewaretoken': "{{ csrf_token }}",
-                type: 'add_site',
+            data:{
+             'csrfmiddlewaretoken': "{{ csrf_token }}",
+             type : 'add_day',
             },
             dataType: 'json',
-            success: function (content) {
-                directionsService = new google.maps.DirectionsService;
-                directionsDisplay = new google.maps.DirectionsRenderer;
-                map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 18,
-                    center: {lat: 22.9988465, lng: 120.2173261},
-                });
-                directionsDisplay.setMap(map);
-                console.log(content['waypoints']);
-                var request = {
-                    waypoints: content['waypoints'],
-                    origin: content['origin'],
-                    destination: content['destination'],
-                    optimizeWaypoints: false,
-                    travelMode: 'WALKING',
-                }
-                directionsService.route(request, function (result, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        directionsDisplay.setDirections(result);
-                    } else {
-                        console.log('error');
-                    }
-                });
-                directionsDisplay.setMap(map);
-                map.setZoom(12);
+            success: function(content){
+                $('#day_plus').remove();
+                $('#daybutton').append("<button onclick='change_day("+content['day_num']+")' class='fluid ui basic button' id="+content['day_num']+">Day"+content['day_num']+"</button>");
+                 color_array=['teal','blue','violet']
+                 $('#'+content['day_num']).addClass(color_array[content['day_num']%3]);
+                $('#daybutton').append("<button onclick='day_plus_function()' class='fluid ui blue basic button' id='day_plus'>Plus+</button>");
+
             }
             ,
-            failure: function () {
-                console.log('fail');
-                alert();
+            failure: function(){
+             console.log('fail');
+             alert();
             },
         });
-        $('#new_site').modal('hide');
-        $('#item_add_site').remove();
-        $('#sortable').append("<div class=\"item\" id=\"6\"onclick=\"edit_site('','1','" + $('#add_site_position').val() + "')\"><img class=\"ui avatar image\" style=\"height: 8vh; width: 8vh;\"src=\"\"><div class=\"content\"><div class=\"header\">" + $('#add_site_position').val() + "</div><div class=\"description\">tainan destination</div></div></div>");
-        $('#sortable').append("<div class='item' onclick='add_site()'id='item_add_site'><img class='ui avatar image' style='height: 8vh; width: 8vh; border: 1pt solid;'src='./image/plus.jpg'><div class='content'><div class='header'>新增行程</div></div></div>");
-
-    });
-
-    //click site call the modal
-    function edit_site(img_url, site_id, site_title) {
-        console.log(img_url);
-        $('#modal_img').attr('src', img_url);
-        $('#modal_header').text(site_title);
-        $('#site_detal').modal('show');
-        $('.rating').rating(0);//從後端拿取是否為最愛 是則為1否則為0 (後端)
     }
-</script>
 
+
+</script>
+//drag list change day
 <script>
-    //滑動
-    var origin_height;//record origin height prevent height change
-    var sche_height;//as origin_height
-    $(document).ready(function () {
-        origin_height = $('.pusher').height();
-        $('.pusher').height(origin_height);
-        sche_height = $('#schedule').height();
-    });
-    //change to google map(左滑)
-    var mapstate = 0;
-    $('.pusher').on('swipeleft', function () {
-        if (mapstate == 0) {
-            console.log('left');
-            $('#schedule').transition('fade right');
-            $('#schedule').height('0');
-            setTimeout(function () {
-                $('#map').height('50vh');
-                $('#map').transition('fade left');
-                map.setZoom(12);
+  //let ui rating working
+$(document).ready(function(){
+  $(".rating").rating();
+  $('.list').sortable();
+});
+//ui sortable working $('#sortable'.sortable('toArray'))is the result
+var day_cur=0;
+function change_day(day_num){
+  console.log('triggle change_day');
+  day_cur=day_num;
+  $.ajax({
+            url: '',
+            type: "POST",
+            data:{  
+             day_cur : day_num,
+             'csrfmiddlewaretoken': "{{ csrf_token }}",
+             type : 'change_day_init',
+            },
+            dataType: 'json',
+            success: function(content){
+            directionsService = new google.maps.DirectionsService;
+            directionsDisplay = new google.maps.DirectionsRenderer;
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 18,
+              center: {lat: 22.9988465,lng: 120.2173261 },
             });
-            mapstate = 1;
-        }
-    });
-    //右滑 1.若從最左邊開始則打開sidebar 2. else 則判斷是否為google map 頁面再決定是否切換
-    var sidebarstate = 0;
-    $('.pusher').on('swiperight', function (e) {
-        if (e.swipestart.coords[0] < 0.1 * $(document).width()) {
-            console.log('ww');
-            $('.ui.sidebar').sidebar({closable: false});
-            $('.ui.sidebar').sidebar('toggle');
-            $('#sidebar_icon').hide();
-            console.log(sidebarstate);
-            setTimeout(function () {
-                sidebarstate = 1;
-            }, 500);
-        } else {
-            if (mapstate == 1 && e.swipestart.coords[1] > 0.7 * $(window).height()) {
-                //change to schedule
-                $('#map').transition('fade left');
-                $('#map').height('0');
-                $('#schedule').height(sche_height);
-                $('#schedule').transition('fade right');
-                mapstate = 0;
+            directionsDisplay.setMap(map);
+            console.log(content['waypoints']);
+              var request={
+                  waypoints: content['waypoints'],
+                  origin: content['origin'],
+                  destination: content['destination'],
+                  optimizeWaypoints: false,
+                  travelMode: 'WALKING',
+              }
+              directionsService.route(request, function (result, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(result);
+                  }else{
+                  console.log('error');
+                  }
+              });
+                  directionsDisplay.setMap(map);
+               map.setZoom(12);
             }
-        }
-    });
+            ,
+            failure: function(){
+             console.log('fail');
+             alert();
+            },
+        });
+  $('.day_content').css('display','none');
+  $('#day'+day_num).css('display','block');
+  $('#sortable_day'+day_num).css('display','block');
+  $('.list').unbind('sortstop');
+  $( "#sortable_day"+day_num ).disableSelection();
+  $( "#sortable_day"+day_num ).bind( "sortstop", function(event, ui) {
+     $('#sortable_day'+day_num).listview('refresh');
+     console.log($('#sortable_day'+day_num).sortable('toArray'));
+     $.ajax({
+            url: '',
+            type: "POST",
+            data:{
+             sorted_order : $('#sortable_day'+day_num).sortable('toArray').join(';'),
+             day_cur : day_num,
+             'csrfmiddlewaretoken': "{{ csrf_token }}",
+             type : 'change_day',
+            },
+            dataType: 'json',
+            success: function(content){
+            directionsService = new google.maps.DirectionsService;
+            directionsDisplay = new google.maps.DirectionsRenderer;
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 18,
+              center: {lat: 22.9988465,lng: 120.2173261 },
+            });
+            directionsDisplay.setMap(map);
+            console.log(content['waypoints']);
+              var request={
+                  waypoints: content['waypoints'],
+                  origin: content['origin'],
+                  destination: content['destination'],
+                  optimizeWaypoints: false,
+                  travelMode: 'WALKING',
+              }
+              directionsService.route(request, function (result, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(result);
+                  }else{
+                  console.log('error');
+                  }
+              });
+                  directionsDisplay.setMap(map);
+               map.setZoom(12);
+            }
+            ,
+            failure: function(){
+             console.log('fail');
+             alert();
+            },
+        });
 
-    $(document).click(function () {
-        if (sidebarstate == 1) {
-            $('.ui.sidebar').sidebar('toggle');
-            $('#sidebar_icon').show();
-            $('.pusher').height(origin_height);
-            sidebarstate = 0;
-        }
-    });
-    //close sidebar
+  });
+
+}
 </script>
-
+//add new site
 <script>
-    //google map
-    function initMap() {
-        directionsService = new google.maps.DirectionsService;
-        directionsDisplay = new google.maps.DirectionsRenderer;
-        map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
-            center: {lat: 22.9988465, lng: 120.2173261},
-        });
-        directionsDisplay.setMap(map);
-        //calculateAndDisplayRoute(directionsService, directionsDisplay);
-    }
+  function add_site(day){
+   console.log('add_site'+day);
+   $('#add_site_position').val('');
+   $('#new_site').modal('show');
+  }
 
-    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-
-        var pts = [];
-        {% for pt in waypoints %}
-            pts.push({stopover: true, location: {placeId: "{{ pt }}"}});
-        {% endfor %}
-        var request = {
-            waypoints: pts,
-            origin: {placeId: "{{origin}}"},
-            destination: {placeId: "{{ destination }}"},
-            optimizeWaypoints: false,
-            travelMode: 'WALKING',
-        }
-        directionsService.route(request, function (result, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(result);
-            } else {
-                console.log('error');
+  $('#add_site_button').click(function(){
+   $('#new_site').modal('hide');
+   $("#loader").addClass('active');
+    $.ajax({
+            url: '',
+            type: "POST",
+            data:{
+             day_cur : day_cur.toString(),
+             site_name :    $('#add_site_position').val(),
+             'csrfmiddlewaretoken': "{{ csrf_token }}",
+             type : 'add_site',
+            },
+            dataType: 'json',
+            success: function(content){
+            $('#item_add_site_day'+day_cur).remove();
+            $("#sortable_day"+day_cur ).append("<div class=\"item\" id="+content['site_id']+" onclick=\"edit_site('"+content['image_url']+"',"+content['site_id']+",'"+$('#add_site_position').val()+"')\"><img class=\"ui avatar image\" style=\"height: 8vh; width: 8vh;\"src=\"\"><div class=\"content\"><div class=\"header\">"+$('#add_site_position').val()+"</div><div class=\"description\"></div></div></div>");
+            $("#sortable_day"+day_cur).append("<div class='item' onclick='add_site()'id='item_add_site_day"+day_cur+"'><img class='ui avatar image' style='height: 8vh; width: 8vh; border: 1pt solid;'src='/media/image/plus.jpg'><div class='content'><div class='header'>新增行程</div></div></div>");
+            $('#'+content['site_id']+'>img').attr('src',content['image_url']); console.log(content['image_url']);
+            $("#loader").removeClass('active');
+            day_site.push({site_name : content['site_name'],
+                          image : content['image_url'],
+                          content : "",
+                          route_order : content['route_order'],
+                          line : content['line_id'],
+                          site_id : content['site_id'],
+                          phone: content['phone'],
+                          address: content['address'],});
+            directionsService = new google.maps.DirectionsService;
+            directionsDisplay = new google.maps.DirectionsRenderer;
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 18,
+              center: {lat: 22.9988465,lng: 120.2173261 },
+            });
+            directionsDisplay.setMap(map);
+            console.log(content['waypoints']);
+              var request={
+                  waypoints: content['waypoints'],
+                  origin: content['origin'],
+                  destination: content['destination'],
+                  optimizeWaypoints: false,
+                  travelMode: 'WALKING',
+              }
+              directionsService.route(request, function (result, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(result);
+                  }else{
+                  console.log('error');
+                  }
+              });
+                  directionsDisplay.setMap(map);
+               map.setZoom(12);
             }
+            ,
+            failure: function(){
+             console.log('fail');
+             alert();
+            },
         });
-    }
+
+
+
+  });
+
+
 
 </script>
-<script type="text/javascript "
+//edit site and delete site
+<script>
+//click site call the modal
+  function edit_site(img_url,site_id,site_title){
+  for(i=0;i<day_site.length;i++){
+        if(day_site[i]['site_id']==site_id){
+            console.log(day_site[i]);
+            $('#site_phone').attr('placeholder',day_site[i]['phone']);
+            $('#site_position').attr('placeholder',day_site[i]['address']);
+            $('#site_description').val(day_site[i]['content']);
+            i=day_site.length;
+        }
+  }
+  $('#modal_img').attr('src',img_url);
+  $('#site_detail').modal('show');
+  $('.rating').rating(0);//從後端拿取是否為最愛 是則為1否則為0 (後端)
+  $('#edit_site_button').click(function(){
+        $.ajax({
+            url: '',
+            type: "POST",
+            data:{
+                site_id: site_id,
+                site_content:$('#site_description').val(),
+                'csrfmiddlewaretoken': "{{ csrf_token }}",
+                type : 'update_content',
+
+            },
+            dataType: 'json',
+            success: function(content){
+                cont=$('#site_description').val();
+                $('#site_detail').modal('hide');
+                $('#'+site_id+">.content > .description >span").text(cont);
+                 for(i=0;i<day_site.length;i++){
+                    if(day_site[i]['site_id']==site_id){
+                        day_site[i]['content']=cont;
+                        i=day_site.length;
+                    }
+                 }
+            }
+            ,
+            failure: function(){
+             console.log('fail');
+            },
+        });
+  });
+  $('#edit_site_delete').click(function(){
+
+        $.ajax({
+            url: '',
+            type: "POST",
+            data:{
+                site_id: site_id,
+                'csrfmiddlewaretoken': "{{ csrf_token }}",
+                type : 'delete_site',
+            },
+            dataType: 'json',
+            success: function(content){
+                console.log('delete site');
+                $('#'+site_id).remove();
+                $('#site_detail').modal('hide')
+            }
+            ,
+            failure: function(){
+             console.log('fail');
+            },
+        });
+  });
+
+}
+
+</script>
+//swipe
+<script>
+  //滑動
+  var origin_height;//record origin height prevent height change
+  var sche_height;//as origin_height
+  $(document).ready(function(){
+    origin_height = $('.pusher').height();
+    $('.pusher').height(origin_height);
+    sche_height=$('#schedule').height();
+    $('#loader').height(origin_height);
+  });
+//change to google map(左滑)
+var mapstate=0;
+$('.pusher').on('swipeleft',function(){
+  if(mapstate==0){
+    console.log('left');
+    $('#schedule').transition('fade right');
+    $('#schedule').height('0');
+    setTimeout(function(){
+      $('#map').height('50vh');
+      $('#map').transition('fade left');
+      map.setZoom(12);
+    });
+    mapstate=1;
+  }
+});
+//右滑 1.若從最左邊開始則打開sidebar 2. else 則判斷是否為google map 頁面再決定是否切換
+var sidebarstate = 0;
+$('.pusher').on('swiperight',function(e){
+  if(e.swipestart.coords[0]< 0.1*$(document).width()){
+    console.log('ww');
+    $('.ui.sidebar').sidebar({closable: false});
+    $('.ui.sidebar').sidebar('toggle');
+    $('#sidebar_icon').hide();
+    console.log(sidebarstate);
+    setTimeout(function(){sidebarstate = 1;},500);
+  }else{
+    if(mapstate == 1 && e.swipestart.coords[1]> 0.7*$(window).height())
+    {
+      //change to schedule
+      $('#map').transition('fade left');
+      $('#map').height('0');
+      $('#schedule').height(sche_height);
+      $('#schedule').transition('fade right');
+      mapstate=0;
+    }
+  }
+});
+
+$(document).click(function(){
+  if(sidebarstate==1){
+    $('.ui.sidebar').sidebar('toggle');
+    $('#sidebar_icon').show();
+    $('.pusher').height(origin_height);
+    sidebarstate=0;
+  }
+});
+//close sidebar
+
+
+</script>
+//google map
+<script>
+//google map
+  function initMap() {
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: {lat: 22.9988465,lng: 120.2173261 },
+    });
+    directionsDisplay.setMap(map);
+        console.log('map');
+     if({{first_time_load}}==1){
+         calculateAndDisplayRoute(directionsService, directionsDisplay);
+     }
+
+  }
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+    var pts=[];
+    {% for pt in waypoints %}
+        pts.push({stopover: true, location: { placeId: "{{ pt }}" }});
+    {% endfor %}
+    var request={
+        waypoints: pts,
+        origin: {placeId:"{{origin}}"},
+        destination: {placeId: "{{ destination }}"},
+        optimizeWaypoints: false,
+        travelMode: 'WALKING',
+    }
+    console.log(pts);
+    console.log('{{origin}}');
+    console.log('{{destination}}');
+    console.log('end');
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+        }else{
+        console.log('error');
+        console.log(status);
+        }
+    });
+  }
+
+
+
+</script>
+
+<script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8&callback=initMap"></script>
 
 </html>
