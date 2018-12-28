@@ -21,9 +21,10 @@ from travel.views import uploadImg, showImg, sch, main,insertNewSchedule, addCou
 #from travel.views import form, login, logout
 from django.contrib.auth.views import LoginView
 from travel.views import logout, register
-from travel.views import form, home, create_form, develop,search_dis
+from travel.views import form, home, create_form, develop , display
 urlpatterns = [
     url(r'^develop', develop),
-    url(r'^search', search_dis),
+    # url(r'^search', search_dis),
+    url(r'^display/(?P<input_day>[-\w]+)/$', display, name="display")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
 

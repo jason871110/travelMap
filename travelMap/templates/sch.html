@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sch</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'semantic.min.css' %}">
+    <script type="text/javascript" src="{% static 'semantic.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'jquery.ui.touch-punch.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'FullScrean.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+</head>
+<style>
+    body {
+        padding: 0;
+    }
+
+    li {
+        width: 100%;
+
+    }
+
+    .item {
+        height: 10vh;
+        vertical-align: middle;
+        background-color: white;
+        border: 1pt solid;
+        padding: 1vh !important;
+    }
+</style>
+<body>
+<div class="ui left vertical inverted sidebar labeled icon menu">
+    <a class="item">
+        <i class="home icon"></i>
+        Home
+    </a>
+    <a class="item">
+        <i class="block layout icon"></i>
+        Topics
+    </a>
+    <a class="item">
+        <i class="smile icon"></i>
+        Friends
+    </a>
+</div>
+<div class="pusher" style="min-height: 100vh;">
+    <div class="ui fluid image"
+         style="position:absolute; top:0;background-image: url(/media/image/empty.jpeg);height: 20vh; background-size: cover; background-position: center;">
+    </div>
+    <div class="ui vertical divided grid" id="app-container" style="margin-top: 10vh;">
+        <div data-role="content" data-theme="c" style="width: 100%;" id="schedule">
+            <div style="border: 1pt solid;">
+                {% for day_course in site_information %}
+                    <div id="day{{ forloop.counter }}_tag" onclick="change_day({{ forloop.counter }})" class="day_tag">
+                        day{{ forloop.counter }}</div>
+                    <div id="day{{ forloop.counter }}" class="day_content" style="display:none;">
+                        <div class="ui list" style="padding: 1vh;" data-role="listview" data-inset="true" data-theme="d"
+                             id="sortable_day{{ forloop.counter }}">
+                            <!--從後端拿地點資訊(包括google map api details)
+                              <div class="item" id="1" onclick="edit_site('/media/image/文學館.jpg','1','台灣文學館')">
+                                <img class="ui avatar image" style="height: 8vh; width: 8vh;" src="/media/image/文學館.jpg">
+                                <div class="content">
+                                  <div class="header">台灣文學館</div>
+                                  <div class="description">
+                                    tainan destination
+                                  </div>
+                                </div>
+                              </div>
+
+                              現有行程-->
+                            {% for site in day_course %}
+                                <div class="item" id="{{ site.site_id }}"
+                                     onclick="edit_site('{{ site.image }}','{{ site.site_id }}','{{ site.site_name }}')">
+                                    <img class="ui avatar image" style="height: 8vh; width: 8vh;"
+                                         src="{{ site.image }}">
+                                    <div class="content">
+                                        <div class="header">{{ site.site_name }}</div>
+                                        <div class="description">
+                                            {{ site.site_content }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="item" onclick="add_site({{ forloop.counter }})"
+                                 id="item_add_site_day{{ forloop.counter }}">
+                                <img class="ui avatar image" style="height: 8vh; width: 8vh; border: 1pt solid;"
+                                     src="/media/image/plus.jpg">
+                                <div class="content">
+                                    <div class="header">新增行程</div>
+                                </div>
+                            </div>
+                            <!--list 範圍-->
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+        <!--google map-->
+        <div id="map" style="width:100%; border: 1pt solid;" class="transition hidden"></div>
+
+    </div>
+</div>
+<!--modal-->
+<div class="ui modal" id="site_detal">
+    <i class="close icon"></i>
+    <div class="header">
+        <span id="modal_header"></span>
+        <div class="ui heart rating" data-max-rating="1" id="favorite"><!--我的最愛-->
+        </div>
+    </div>
+    <div class="image content">
+        <div class="ui fluid image">
+            <img src="" id="modal_img"><!--change by javascript 不用接-->
+        </div>
+    </div>
+    <div class="content">
+        <div class="ui form">
+            <div class="fields">
+                <div class="eight wide field">
+                    <label>地址</label>
+                    <input placeholder="台南市東區民族路一段1號" type="text" readonly="" id="site_position">
+                    <!--placeholder 放google map 抓下來的地址-->
+                </div>
+                <div class="eight wide field">
+                    <label>電話</label>
+                    <input placeholder="(06)2757575" type="text" readonly="" id="site_phone">
+                    <!--placeholder 放google map 抓下來的電話-->
+                </div>
+            </div>
+            <div class="two field">
+                <div class="field">
+                    <label>景點敘述</label>
+                    <textarea rows="2" id="site_description"></textarea><!--若曾輸入過要讓後端傳進來-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui small modal" id="new_site">
+    <i class="close icon"></i>
+    <div class="header">新增景點</div>
+    <div class="content">
+        <div class="ui form">
+            <div class="inline field">
+                <div class="ui checkbox">
+                    <input type="checkbox" tabindex="0" class="hidden">
+                    <label>加入我的最愛</label>
+                </div>
+            </div>
+            <div class="field">
+                <label>景點名稱</label>
+                <input placeholder="輸入景點名稱" type="text" id="add_site_position">
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui green button" id="add_site_button">新增</div>
+    </div>
+</div>
+</body>
+
+<script>
+    var day_site = [
+        {% for site in site_information %}
+            {
+                site_name: "{{site.site_name}}",
+                image: "{{site.image}}",
+                content: "{{ site.site_content }}",
+                route_order: "{{site.route_order}}",
+                line: "{{ site.line }}",
+                site_id: "{{site.site_id}}",
+            },
+        {% endfor %}
+    ]
+    console.log(day_site);
+    for (i = 0; i < day_site.length; i++) {
+        console.log(day_site[i].site_name);
+    }
+</script>
+<script>
+    //let ui rating working
+    $(document).ready(function () {
+        $(".rating").rating();
+        $('.list').sortable();
+
+    });
+    //ui sortable working $('#sortable'.sortable('toArray'))is the result
+    var day_cur = 0;
+
+    function change_day(day_num) {
+        console.log('triggle change_day');
+        day_cur = day_num;
+        $('.day_content').css('display', 'none');
+        $('#day' + day_num).css('display', 'block');
+        $('.list').unbind('sortstop');
+        $("#sortable_day" + day_num).disableSelection();
+        $("#sortable_day" + day_num).bind("sortstop", function (event, ui) {
+            $('#sortable_day' + day_num).listview('refresh');
+            console.log($('#sortable_day' + day_num).sortable('toArray'));
+            $.ajax({
+                url: '',
+                type: "POST",
+                data: {
+                    sorted_order: $('#sortable_day' + day_num).sortable('toArray').join(';'),
+                    day_cur: day_num,
+                    'csrfmiddlewaretoken': "{{ csrf_token }}",
+                    type: 'change_day',
+                },
+                dataType: 'json',
+                success: function (content) {
+                    directionsService = new google.maps.DirectionsService;
+                    directionsDisplay = new google.maps.DirectionsRenderer;
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 18,
+                        center: {lat: 22.9988465, lng: 120.2173261},
+                    });
+                    directionsDisplay.setMap(map);
+                    console.log(content['waypoints']);
+                    var request = {
+                        waypoints: content['waypoints'],
+                        origin: content['origin'],
+                        destination: content['destination'],
+                        optimizeWaypoints: false,
+                        travelMode: 'WALKING',
+                    }
+                    directionsService.route(request, function (result, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(result);
+                        } else {
+                            console.log('error');
+                        }
+                    });
+                    directionsDisplay.setMap(map);
+                    map.setZoom(12);
+                }
+                ,
+                failure: function () {
+                    console.log('fail');
+                    alert();
+                },
+            });
+
+        });
+
+    }
+
+    //add new site
+    function add_site(day) {
+        console.log('add_site' + day);
+        $('#add_site_position').val('');
+        $('#new_site').modal('show');
+    }
+
+    $('#add_site_button').click(function () {
+        $.ajax({
+            url: '',
+            type: "POST",
+            data: {
+                day_cur: day_cur,
+                site_name: $('#add_site_position').val(),
+                'csrfmiddlewaretoken': "{{ csrf_token }}",
+                type: 'add_site',
+            },
+            dataType: 'json',
+            success: function (content) {
+                directionsService = new google.maps.DirectionsService;
+                directionsDisplay = new google.maps.DirectionsRenderer;
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 18,
+                    center: {lat: 22.9988465, lng: 120.2173261},
+                });
+                directionsDisplay.setMap(map);
+                console.log(content['waypoints']);
+                var request = {
+                    waypoints: content['waypoints'],
+                    origin: content['origin'],
+                    destination: content['destination'],
+                    optimizeWaypoints: false,
+                    travelMode: 'WALKING',
+                }
+                directionsService.route(request, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(result);
+                    } else {
+                        console.log('error');
+                    }
+                });
+                directionsDisplay.setMap(map);
+                map.setZoom(12);
+            }
+            ,
+            failure: function () {
+                console.log('fail');
+                alert();
+            },
+        });
+        $('#new_site').modal('hide');
+        $('#item_add_site').remove();
+        $('#sortable').append("<div class=\"item\" id=\"6\"onclick=\"edit_site('','1','" + $('#add_site_position').val() + "')\"><img class=\"ui avatar image\" style=\"height: 8vh; width: 8vh;\"src=\"\"><div class=\"content\"><div class=\"header\">" + $('#add_site_position').val() + "</div><div class=\"description\">tainan destination</div></div></div>");
+        $('#sortable').append("<div class='item' onclick='add_site()'id='item_add_site'><img class='ui avatar image' style='height: 8vh; width: 8vh; border: 1pt solid;'src='./image/plus.jpg'><div class='content'><div class='header'>新增行程</div></div></div>");
+
+    });
+
+    //click site call the modal
+    function edit_site(img_url, site_id, site_title) {
+        console.log(img_url);
+        $('#modal_img').attr('src', img_url);
+        $('#modal_header').text(site_title);
+        $('#site_detal').modal('show');
+        $('.rating').rating(0);//從後端拿取是否為最愛 是則為1否則為0 (後端)
+    }
+</script>
+
+<script>
+    //滑動
+    var origin_height;//record origin height prevent height change
+    var sche_height;//as origin_height
+    $(document).ready(function () {
+        origin_height = $('.pusher').height();
+        $('.pusher').height(origin_height);
+        sche_height = $('#schedule').height();
+    });
+    //change to google map(左滑)
+    var mapstate = 0;
+    $('.pusher').on('swipeleft', function () {
+        if (mapstate == 0) {
+            console.log('left');
+            $('#schedule').transition('fade right');
+            $('#schedule').height('0');
+            setTimeout(function () {
+                $('#map').height('50vh');
+                $('#map').transition('fade left');
+                map.setZoom(12);
+            });
+            mapstate = 1;
+        }
+    });
+    //右滑 1.若從最左邊開始則打開sidebar 2. else 則判斷是否為google map 頁面再決定是否切換
+    var sidebarstate = 0;
+    $('.pusher').on('swiperight', function (e) {
+        if (e.swipestart.coords[0] < 0.1 * $(document).width()) {
+            console.log('ww');
+            $('.ui.sidebar').sidebar({closable: false});
+            $('.ui.sidebar').sidebar('toggle');
+            $('#sidebar_icon').hide();
+            console.log(sidebarstate);
+            setTimeout(function () {
+                sidebarstate = 1;
+            }, 500);
+        } else {
+            if (mapstate == 1 && e.swipestart.coords[1] > 0.7 * $(window).height()) {
+                //change to schedule
+                $('#map').transition('fade left');
+                $('#map').height('0');
+                $('#schedule').height(sche_height);
+                $('#schedule').transition('fade right');
+                mapstate = 0;
+            }
+        }
+    });
+
+    $(document).click(function () {
+        if (sidebarstate == 1) {
+            $('.ui.sidebar').sidebar('toggle');
+            $('#sidebar_icon').show();
+            $('.pusher').height(origin_height);
+            sidebarstate = 0;
+        }
+    });
+    //close sidebar
+</script>
+
+<script>
+    //google map
+    function initMap() {
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 6,
+            center: {lat: 22.9988465, lng: 120.2173261},
+        });
+        directionsDisplay.setMap(map);
+        //calculateAndDisplayRoute(directionsService, directionsDisplay);
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+        var pts = [];
+        {% for pt in waypoints %}
+            pts.push({stopover: true, location: {placeId: "{{ pt }}"}});
+        {% endfor %}
+        var request = {
+            waypoints: pts,
+            origin: {placeId: "{{origin}}"},
+            destination: {placeId: "{{ destination }}"},
+            optimizeWaypoints: false,
+            travelMode: 'WALKING',
+        }
+        directionsService.route(request, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(result);
+            } else {
+                console.log('error');
+            }
+        });
+    }
+
+</script>
+<script type="text/javascript "
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8&callback=initMap"></script>
+
+</html>
+
+
