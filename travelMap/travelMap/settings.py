@@ -26,7 +26,8 @@ SECRET_KEY = '=jm+b065&tx1-h=!y40h(0fyu#=+v%mi@47t!9o9fy=qo9x(8^'
 DEBUG = True
 
 ALLOWED_HOSTS = ["luffy.ee.ncku.edu.tw",
-                 "localhost"]
+                 "localhost",
+                 ]
 
 # from usersys
 LOGIN_REDIRECT_URL = '/profiles/home'

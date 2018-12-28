@@ -1,0 +1,39 @@
+
+.picContent1{
+    position:absolute;
+    top:80px;
+    left:170px;
+    width:200px; /*300*/
+    height:0px; /*250*/
+    /* background-image:url('imgAnimate/1/1.jpg');  */
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+.picContent2{
+    position:absolute;
+    top:60%;
+    left:15%;
+    width:0px;  /*200*/
+    height:250px; /*250*/
+    box-sizing:border-box;
+    /* background-image:url("imgAnimate/003.jpg"); */
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+.picContent3{
+    position:absolute;
+    top:70%;
+    left:47%;
+    width:0px; /*150*/
+    height:0px;
+    box-sizing:border-box;
+    /* background-image:url("imgAnimate/002.jpg"); */
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+ #p1-1 ,#p1-2{
+     background-image:url('imgAnimate/1/1.jpeg');  
+} 
