@@ -26,10 +26,8 @@ class TotalCourse(models.Model):
     course = models.ForeignKey(Schedule,    on_delete=models.CASCADE)
 
     def __str__(self):
-        if (self.day!=0):
-            return 'Day'+str(self.day)
-        else:
-            return '我的最愛'
+        return str(self.day)
+
 
 class TouristSite(models.Model):
     route_order = models.IntegerField()
@@ -40,6 +38,8 @@ class TouristSite(models.Model):
     line = models.ForeignKey(TotalCourse,    on_delete=models.CASCADE)
     location = models.CharField(max_length=100,blank=True)
     site_content = models.TextField(blank=True)
+    phone_number = models.CharField(max_length=100,blank=True)
+    address = models.CharField(max_length=100,blank=True)
 
     class Meta:
          ordering = ['route_order']

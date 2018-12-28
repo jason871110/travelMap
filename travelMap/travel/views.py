@@ -58,7 +58,7 @@ def show(request,slug):
                         continue
                     else:
                         schedule_search.append(sc.id)
-            else:
+            elif int(chose_option)>5:
                 search_tem = Schedule.objects.filter(days=type_array[int(chose_option)])
                 for sc in search_tem:
                     if sc.id in schedule_search:
