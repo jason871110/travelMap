@@ -17,11 +17,11 @@ from django.urls import path
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from travel.views import uploadImg, showImg, sch, main,insertNewSchedule, addCourseLines, addNewScheduleToDatabase, ind,extract_article
-#from travel.views import form, login, logout
+
+# from travel.views import form, login, logout
 from django.contrib.auth.views import LoginView
-from travel.views import logout, register
-from travel.views import form, home, create_form, develop,search_dis, display
+# from travel.views import logout, register
+from travel.views import develop,search_dis, display
 urlpatterns = [
     url(r'^develop', develop),
     url(r'^display/(?P<input_day>[-\w]+)/$', display, name="display"),
