@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["luffy.ee.ncku.edu.tw",
                  "localhost",
-                 ]
+                 '127.0.0.1',]
 
 # from usersys
 LOGIN_REDIRECT_URL = '/profiles/home'

@@ -34,7 +34,8 @@
     width: 100%;
 
   }
-  .item{
+
+  .list > .item{
     height: 10vh;
     vertical-align: middle;
     background-color: white;
@@ -42,27 +43,40 @@
     border: 1pt solid;
     border-left: 6px solid burlywood;
     padding: 1vh !important;
-
   }
-
   #hayBorder{
     border: 0pt !important;
   }
-
+  .daybtn{
+    margin-top: 2% !important;
+    margin-bottom: 3%;
+  }
 </style>
 <body>
 <div class="ui left vertical inverted sidebar labeled icon menu">
+     <a class="item" id="user_icon">
+        <i class="user icon"></i>
+        {% if user.is_authenticated %}
+        {{ user.username }}
+        {% else %}
+        Login
+        {% endif %}
+    </a>
     <a class="item">
         <i class="home icon"></i>
         Home
     </a>
-    <a class="item">
-        <i class="block layout icon"></i>
-        Topics
+    <a class="item" id="search_icon">
+        <i class="search icon"></i>
+        search
     </a>
-    <a class="item">
-        <i class="smile icon"></i>
-        Friends
+    <a class="item" id="edit_icon">
+        <i class="edit icon"></i>
+        create
+    </a>
+    <a class="item" id="logout_icon">
+        <i class="user times icon"></i>
+        logout
     </a>
 </div>
 <div class="pusher" style="min-height: 100vh;">
@@ -70,117 +84,187 @@
         <div class="ui dimmer" id="loader">
             <div class="ui loader"></div>
         </div>
-    <div class="ui vertical divided grid" id="app-container" style="margin-top: 10vh;">
-        <div class="upperPic"
-             style="height:40vh;width:100%;margin-top:-25% !important;background-image:url('/media/image/2.jpg')">
-            <h1 style="color: aliceblue;margin-top: 10%">台南深度之旅</h1>
-            <p style="color: aliceblue;"> 多久沒有逃離喧囂的城市，<br>繁重的工作總讓自己喘不過氣。<br>
-                來一段與古都台南的一趟深度旅行，<br>從心體會這世界的美好。</p>
-        </div>
-        <div id="daybutton" class="ui vertical buttons" style="width:140% ;margin-top:-15%">
-            {% for day_course in site_information%}
-                <button onclick="change_day({{forloop.counter}})" class="fluid ui basic button" id={{forloop.counter}}>Day{{forloop.counter}}</button>
-            {% endfor %}
-            <button onclick="day_plus_function()"class="fluid ui blue basic button" id="day_plus">Plus+</button>
+    </div>
+        <div class="ui vertical divided grid" id="app-container" style="margin-top: 10vh;">
+            <div class="upperPic"
+                 style="height:40vh;width:100%;margin-top:-25% !important;background-image:url('/media/image/2.jpg')">
+                <h1 style="color: aliceblue;margin-top: 10%" id="schedule_title">{{schedule_title}}</h1>
+                <p style="color: aliceblue;" id="schedule_content"> {{schedule_content}}</p>
+            </div>
+
+            <div data-role="content" data-theme="c" style="width: 100%;" id="schedule">
+                {% for day_course in site_information%}
+                <button onclick="change_day({{forloop.counter}})" class="fluid ui basic button" id={{forloop.counter}}>
+                    Day{{forloop.counter}}
+                </button>
+                <div id="day{{forloop.counter}}" class="day_content" style="display:none;height:auto;">
+                    <div class="ui list" style="padding: 1vh;" data-role="listview" data-inset="true" data-theme="d"
+                         id="sortable_day{{forloop.counter}}">
+
+                        {% for site in day_course%}
+                        <div class="item" id="{{site.site_id}}"
+                             onclick="edit_site('{{site.image}}','{{site.site_id}}','{{site.site_name}}')">
+                            <img class="ui avatar image" style="height: 8vh; width: 8vh;" src="{{site.image}}">
+                            <div class="content">
+                                <div class="header">{{site.site_name}}</div>
+                                <div class="description"><span>{{site.site_content}}</span></div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="item" onclick="add_site({{forloop.counter}})"
+                             id="item_add_site_day{{forloop.counter}}">
+                            <img class="ui avatar image" style="height: 8vh; width: 8vh; border: 1pt solid;"
+                                 src="/media/image/plus.jpg">
+                            <div class="content">
+                                <div class="header">新增行程</div>
+                            </div>
+                        </div>
+                        <!--list 範圍-->
+                    </div>
+                </div>
+                {% endfor %}
+                <button onclick="day_plus_function()" class="fluid ui blue basic button" id="day_plus">Plus+</button>
+
+                <!--button id="day_plus">day plus</button-->
+
+            </div>
+            <!--google map-->
+            <div id="map" style="width:100%; border: 1pt solid;" class="transition hidden"></div>
+
         </div>
 
-        <div data-role="content" data-theme="c" style="width: 100%;" id="schedule">
-            {% for day_course in site_information%}
-            <div id="day{{forloop.counter}}" class="day_content" style="display:none;height:100%;">
-                <div class="ui list" style="padding: 1vh;" data-role="listview" data-inset="true" data-theme="d" id="sortable_day{{forloop.counter}}">
-
-                    {% for site in day_course%}
-                    <div class="item" id="{{site.site_id}}"
-                         onclick="edit_site('{{site.image}}','{{site.site_id}}','{{site.site_name}}')">
-                        <img class="ui avatar image" style="height: 8vh; width: 8vh;" src="{{site.image}}">
-                        <div class="content">
-                            <div class="header">{{site.site_name}}</div>
-                            <div class="description"><span>{{site.site_content}}</span></div>
-                        </div>
+    <!--modal-->
+    <div class="ui small modal" id="site_detail">
+        <i class="close icon"></i>
+        <div class="header">
+            <span id="modal_header"></span>
+            <div class="ui heart rating" data-max-rating="1" id="favorite"><!--我的最愛-->
+            </div>
+        </div>
+        <div class="image content">
+            <div class="ui fluid image">
+                <img src="" id="modal_img"><!--change by javascript 不用接-->
+            </div>
+        </div>
+        <div class="content">
+            <div class="ui form">
+                <div class="fields">
+                    <div class="eight wide field">
+                        <label>地址</label>
+                        <input placeholder="台南市東區民族路一段1號" type="text" readonly="" id="site_position">
+                        <!--placeholder 放google map 抓下來的地址-->
                     </div>
-                    {% endfor %}
-                    <div class="item" onclick="add_site({{forloop.counter}})"
-                         id="item_add_site_day{{forloop.counter}}">
-                        <img class="ui avatar image" style="height: 8vh; width: 8vh; border: 1pt solid;"
-                             src="/media/image/plus.jpg">
-                        <div class="content">
-                            <div class="header">新增行程</div>
-                        </div>
+                    <div class="eight wide field">
+                        <label>電話</label>
+                        <input placeholder="(06)2757575" type="text" readonly="" id="site_phone">
+                        <!--placeholder 放google map 抓下來的電話-->
                     </div>
-                    <!--list 範圍-->
+                </div>
+                <div class="two field">
+                    <div class="field">
+                        <label>景點敘述</label>
+                        <textarea rows="2" id="site_description"></textarea><!--若曾輸入過要讓後端傳進來-->
+                    </div>
                 </div>
             </div>
-            {% endfor %}
-
-            <!--button id="day_plus">day plus</button-->
-
-        </div>
-        <!--google map-->
-        <div id="map" style="width:100%; border: 1pt solid;" class="transition hidden"></div>
-
-    </div>
-</div>
-<!--modal-->
-<div class="ui small modal" id="site_detail">
-    <i class="close icon"></i>
-    <div class="header">
-        <span id="modal_header"></span>
-        <div class="ui heart rating" data-max-rating="1" id="favorite"><!--我的最愛-->
+            <div class="ui green button" style="float:right;" id="edit_site_button">save</div>
+            <div class="ui red button" style="float:right;" id="edit_site_delete">delete</div>
         </div>
     </div>
-    <div class="image content">
-        <div class="ui fluid image">
-            <img src="" id="modal_img"><!--change by javascript 不用接-->
-        </div>
-    </div>
-    <div class="content">
-        <div class="ui form">
-            <div class="fields">
-                <div class="eight wide field">
-                    <label>地址</label>
-                    <input placeholder="台南市東區民族路一段1號" type="text" readonly="" id="site_position">
-                    <!--placeholder 放google map 抓下來的地址-->
+    <div class="ui small modal" id="new_site">
+        <i class="close icon"></i>
+        <div class="header">新增景點</div>
+        <div class="content">
+            <div class="ui form">
+                <div class="inline field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" tabindex="0" class="hidden">
+                        <label>加入我的最愛</label>
+                    </div>
                 </div>
-                <div class="eight wide field">
-                    <label>電話</label>
-                    <input placeholder="(06)2757575" type="text" readonly="" id="site_phone">
-                    <!--placeholder 放google map 抓下來的電話-->
-                </div>
-            </div>
-            <div class="two field">
                 <div class="field">
-                    <label>景點敘述</label>
-                    <textarea rows="2" id="site_description"></textarea><!--若曾輸入過要讓後端傳進來-->
+                    <label>景點名稱</label>
+                    <input placeholder="輸入景點名稱" type="text" id="add_site_position">
                 </div>
             </div>
         </div>
-        <div class="ui green button" style="float:right;" id="edit_site_button">save</div>
-        <div class="ui red button" style="float:right;" id="edit_site_delete">delete</div>
-    </div>
-</div>
-<div class="ui small modal" id="new_site">
-    <i class="close icon"></i>
-    <div class="header">新增景點</div>
-    <div class="content">
-        <div class="ui form">
-            <div class="inline field">
-                <div class="ui checkbox">
-                    <input type="checkbox" tabindex="0" class="hidden">
-                    <label>加入我的最愛</label>
-                </div>
-            </div>
-            <div class="field">
-                <label>景點名稱</label>
-                <input placeholder="輸入景點名稱" type="text" id="add_site_position">
-            </div>
+        <div class="actions">
+            <div class="ui green button" id="add_site_button">新增</div>
         </div>
     </div>
-    <div class="actions">
-        <div class="ui green button" id="add_site_button">新增</div>
+    <div class="ui small modal" id="create_form">
+        <i class="close icon"></i>
+        <div class="header">開始編輯行程</div>
+        <div class="content">
+            <div class="ui form">
+                <div class="inline field" id="create_inline_field">
+                    <div class="ui checkbox" id="jieba">
+                        <input type="checkbox" tabindex="0" class="hidden">
+                        <label>使用文章自動編排行程</label>
+                    </div>
+
+                </div>
+                <div class="field">
+                    <label>行程名稱</label>
+                    <textarea placeholder="輸入行程名稱" rows=1 type="text" id="input_schedule_name"></textarea>
+                </div>
+                <div class="field">
+                    <label>介紹行程</label>
+                    <textarea placeholder="輸入行程介紹" type="text" id="input_schedule_content"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui green button" id="create_schedule_button">確認</div>
+        </div>
     </div>
 </div>
 </body>
 
+
+<script>
+$(document).ready(function(){
+    if({{create}}==1){
+       $('#create_form').modal('show');
+    }
+});
+$('#jieba').click(function(){
+    $('#jieba').remove();
+    $('#create_inline_field').append("<div class='field'><label>輸入文章</label><textarea rows='2' id='jieba_input'></textarea></div>");
+});
+$('#create_schedule_button').click(function(){
+
+    var jieba_input_result = ''
+    if($('#jieba_input').length !=0){
+        jieba_input_result = $('#jieba_input').val();
+    }
+    console.log($('#input_schedule_name').val());
+    console.log($('#input_schedule_content').val());
+    $.ajax({
+        url: '',
+        type: "POST",
+        data:{
+         jieba_input_result : jieba_input_result,
+         schedule_name : $('#input_schedule_name').val(),
+         schedule_content : $('#input_schedule_content').val(),
+         'csrfmiddlewaretoken': "{{ csrf_token }}",
+         type : 'create_schedule',
+        },
+        dataType: 'json',
+        success: function(content){
+            $('#create_form').modal('hide');
+            location.reload();
+        },
+        failure: function(){
+         console.log('fail');
+        },
+    });
+
+});
+
+
+
+</script>
 <script>
   var day_site = [
 {% for site_course in site_information %}
@@ -204,8 +288,11 @@ $(document).ready(function(){
         $('#'+i).addClass(color_array[i%3]);
     }
 });
+
+
+
+
 </script>
-//day_plus
 <script>
     function day_plus_function(){
         $('.list').css('display','none');
@@ -218,12 +305,14 @@ $(document).ready(function(){
             },
             dataType: 'json',
             success: function(content){
+                /*
                 $('#day_plus').remove();
                 $('#daybutton').append("<button onclick='change_day("+content['day_num']+")' class='fluid ui basic button' id="+content['day_num']+">Day"+content['day_num']+"</button>");
                  color_array=['teal','blue','violet']
                  $('#'+content['day_num']).addClass(color_array[content['day_num']%3]);
                 $('#daybutton').append("<button onclick='day_plus_function()' class='fluid ui blue basic button' id='day_plus'>Plus+</button>");
-
+                */
+                location.reload();
             }
             ,
             failure: function(){
@@ -234,8 +323,11 @@ $(document).ready(function(){
     }
 
 
+
+
+
+
 </script>
-//drag list change day
 <script>
   //let ui rating working
 $(document).ready(function(){
@@ -250,7 +342,7 @@ function change_day(day_num){
   $.ajax({
             url: '',
             type: "POST",
-            data:{  
+            data:{
              day_cur : day_num,
              'csrfmiddlewaretoken': "{{ csrf_token }}",
              type : 'change_day_init',
@@ -342,8 +434,11 @@ function change_day(day_num){
   });
 
 }
+
+
+
+
 </script>
-//add new site
 <script>
   function add_site(day){
    console.log('add_site'+day);
@@ -416,8 +511,11 @@ function change_day(day_num){
 
 
 
+
+
+
+
 </script>
-//edit site and delete site
 <script>
 //click site call the modal
   function edit_site(img_url,site_id,site_title){
@@ -487,8 +585,11 @@ function change_day(day_num){
 
 }
 
+
+
+
+
 </script>
-//swipe
 <script>
   //滑動
   var origin_height;//record origin height prevent height change
@@ -548,8 +649,11 @@ $(document).click(function(){
 //close sidebar
 
 
+
+
+
+
 </script>
-//google map
 <script>
 //google map
   function initMap() {
@@ -596,6 +700,37 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 
 
+
+
+
+
+</script>
+
+<script>
+    $('#user_icon').click(function(){
+        {% if user.is_authenticated %}
+            window.location.href='../profile';
+        {% else %}
+            window.location.href='../accounts/login';
+        {% endif %}
+    });
+    $('#logout_icon').click(function(){
+        {% if user.is_authenticated %}
+            window.location.href="../accounts/logout";
+        {% else %}
+            alert('你沒登入阿!')
+        {% endif %}
+    });
+    $('#search_icon').click(function(){
+        window.location.href='../search';
+    });
+     $('#home_icon').click(function(){
+        window.location.href='../develop';
+    });
+     $('#edit_icon').click(function(){
+        console.log('check');
+        window.location.href = '../sch/0';
+    });
 </script>
 
 <script type="text/javascript"

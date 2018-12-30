@@ -5,35 +5,253 @@
     <!--jquery mobile-->
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "semantic.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic.css' %}">
     <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
-    <script src="{% static "semantic.min.js" %}">
-    </script>
+    <script src="{% static 'semantic.min.js' %}"></script>
     <!--button-->
-    <link rel="stylesheet" type="text/css" href="{% static "button.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'button.css' %}">
     <!--icon-->
-    <link rel="stylesheet" type="text/css" href="{% static "icon.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static  "icon.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon.min.css'%}">
     <!--try fullscrean-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static "normalize.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "FullScrean.css" %}">
 
-    <!--my css-->
-    <link rel="stylesheet" type="text/css" href="{% static "finalDisplay.css" %}">
-    <script src="{% static 'jquery-ui.min.js' %}"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'FullScrean.css' %}">
+
+        <!--my css-->
+        <link rel="stylesheet" type="text/css" href="{% static 'finalDisplay.css' %}">
+        <script src="{% static 'jquery-ui.min.js' %}"></script>
     <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
 
 
     <!--my js-->
-    <script src="{% static "final.js" %}"></script>
-    <script>
+    <script src="{% static 'final.js' %}"></script>
+
+
+</head>
+<style>
+
+    li {
+        width: 100%;
+
+    }
+/*
+    .item {
+        height: 10vh;
+        vertical-align: middle;
+        background-color: white;
+        border: 1pt solid;
+        padding: 1vh !important;
+    }
+    /*
+</style>
+<body>
+<div class="ui left vertical inverted sidebar labeled icon menu">
+     <a class="item" id="user_icon">
+        <i class="user icon"></i>
+        {% if user.is_authenticated %}
+        {{ user.username }}
+        {% else %}
+        Login
+        {% endif %}
+    </a>
+    <a class="item">
+        <i class="home icon"></i>
+        Home
+    </a>
+    <a class="item" id="search_icon">
+        <i class="search icon"></i>
+        search
+    </a>
+    <a class="item" id="edit_icon">
+        <i class="edit icon"></i>
+        create
+    </a>
+    <a class="item" id="logout_icon">
+        <i class="user times icon"></i>
+        logout
+    </a>
+</div>
+<div class="pusher" style="min-height: 100vh;">
+    <div id="app-container" style="margin-top: 10vh;overflow: hidden;">
+        <div class="headerPic" style="height:30vh;width:100%;"></div>
+        {% for day in days_schedule %}
+            <div class="day" onclick="showsch(this.id)" id="{{ forloop.counter }}"
+                 style="margin-top:10px !important;color:aqua;">
+                <h1>DAY{{ forloop.counter }}-----------------------></h1>
+            </div>
+        {% endfor %}
+        {% comment %}
+        <div class="day" onclick="showsch(this.id)" id="2" style="color:lightcoral">
+            <h1>DAY2-----------------------></h1>
+        </div>
+        <div class="day" onclick="showsch(this.id)" id="3" style="color:lawngreen">
+            <h1>DAY3-----------------------></h1>
+        </div>
+        {% endcomment %}
+        {% for day in days_schedule %}
+            <div class="whole" id="{{ forloop.counter }}day" style="display: none">
+                {% comment %}
+            {% if forloop.counter == 1 %}
+                <div class="whole" id="{{forloop.counter}}day" display="">
+            {% else %}
+                <div class="whole" id="{{forloop.counter}}day" display="none">
+            {% endif %}
+            {% endcomment %}
+                {% for scence in day %}
+                    <div class="part">
+                        <div class="list ui grid" style="margin-top:2vh">
+                            <div class="four wide column">
+                                <h1 style="font-size:150%">10:00</h1>
+                                <i class="big bus icon"></i>
+                            </div>
+                            <div class="twelve wide column">
+                                <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                    <div class="row">
+                                        <h1 style="font-size:3vh;margin-left:2%">{{ scence.site_name }}</h1>
+                                    </div>
+                                    <div class="row">
+                                        <h1 style="font-size:3vh;margin-left:20%">停留{{ scence.time }}分鐘</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trans">
+                            <i class="bus icon" style="display:inline;"></i>
+                            <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% comment %}
+            <div class="part">
+                <div class="list ui grid" style="margin-top:2vh">
+                    <div class="four wide column">
+                        <h1 style="font-size:150%">10:00</h1>
+                        <i class="big bus icon"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                            <div class="row">
+                                {{ for  }}
+                                <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                            </div>
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trans">
+                    <i class="bus icon" style="display:inline;"></i>
+                    <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                </div>
+            </div>
+            <div class="part">
+                <div class="list ui grid" style="margin-top:2vh">
+                    <div class="four wide column">
+                        <h1 style="font-size:150%">10:00</h1>
+                        <i class="big bus icon"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                            </div>
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trans">
+                    <i class="bus icon" style="display:inline;"></i>
+                    <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                </div>
+            </div>
+            <div class="part">
+                <div class="list ui grid" style="margin-top:2vh">
+                    <div class="four wide column">
+                        <h1 style="font-size:150%">10:00</h1>
+                        <i class="big bus icon"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                            </div>
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trans">
+                    <i class="bus icon" style="display:inline;"></i>
+                    <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                </div>
+            </div>
+            <div class="part">
+                <div class="list ui grid" style="margin-top:2vh">
+                    <div class="four wide column">
+                        <h1 style="font-size:150%">10:00</h1>
+                        <i class="big bus icon"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                            </div>
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trans">
+                    <i class="bus icon" style="display:inline;"></i>
+                    <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                </div>
+            </div>
+            <div class="part">
+                <div class="list ui grid" style="margin-top:2vh">
+                    <div class="four wide column">
+                        <h1 style="font-size:150%">10:00</h1>
+                        <i class="big bus icon"></i>
+                    </div>
+                    <div class="twelve wide column">
+                        <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                            </div>
+                            <div class="row">
+                                <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trans">
+                    <i class="bus icon" style="display:inline;"></i>
+                    <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                </div>
+            </div>
+            {% endcomment %}
+
+            </div>
+        {% endfor %}
+        <div id="map" style="width:100%; border: 1pt solid;" class="transition hidden"></div>
+
+
+    </div>
+</div>
+</body>
+<script>
         $(document).ready(function () {
                 (function () {
                     for (i = 0; i <={{ total_day }}; i++) {
@@ -43,7 +261,6 @@
                 }())
             }
         );
-
         //get color
         function getRandomColor() {
             var letters = '0123456789ABCDEF';
@@ -73,199 +290,188 @@
             $(".whole#" + id + "day").fadeIn(150);
             for (z = a + 1; z <= 3; z++) {
                 //console.log(getRandomColor());
-                $(".whole").append('<div class="day" onclick="showsch(this.id)" id="' + z + '" style="color:' + getRandomColor() + '" > <h1>DAY"' + z + '"-----------------------></h1> </div>');
+                $(".whole").append("<div class='day' onclick='showsch(this.id)' id='" + z + "' style='color:" + getRandomColor() + "' > <h1>DAY'" + z + "'-----------------------></h1> </div>");
             }
+             $.ajax({
+            url: '',
+            type: "POST",
+            data:{
+             day_cur : id,
+             'csrfmiddlewaretoken': "{{ csrf_token }}",
+            },
+            dataType: 'json',
+            success: function(content){
+            directionsService = new google.maps.DirectionsService;
+            directionsDisplay = new google.maps.DirectionsRenderer;
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 18,
+              center: {lat: 22.9988465,lng: 120.2173261 },
+            });
+            directionsDisplay.setMap(map);
+            console.log(content['waypoints']);
+              var request={
+                  waypoints: content['waypoints'],
+                  origin: content['origin'],
+                  destination: content['destination'],
+                  optimizeWaypoints: false,
+                  travelMode: 'WALKING',
+              }
+              directionsService.route(request, function (result, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(result);
+                  }else{
+                  console.log('error');
+                  }
+              });
+                  directionsDisplay.setMap(map);
+               map.setZoom(12);
+            }
+            ,
+            failure: function(){
+             console.log('fail');
+             alert();
+            },
+        });
         }
-
         {% comment %}{% endcomment %}
-    </script>
+</script>
 
-</head>
-<style>
+<script>
+//google map
+  function initMap() {
+    directionsService = new google.maps.DirectionsService;
+    directionsDisplay = new google.maps.DirectionsRenderer;
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: {lat: 22.9988465,lng: 120.2173261 },
+    });
+    directionsDisplay.setMap(map);
+        console.log('map');
+     if({{first_time_load}}==1){
+         calculateAndDisplayRoute(directionsService, directionsDisplay);
+     }
 
-    li {
-        width: 100%;
+  }
 
-    }
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
-    .item {
-        height: 10vh;
-        vertical-align: middle;
-        background-color: white;
-        border: 1pt solid;
-        padding: 1vh !important;
-    }
-</style>
-<body>
-<div id="app-container" style="margin-top: 10vh;overflow: hidden;">
-    <div class="headerPic" style="height:30vh;width:100%;"></div>
-    {% for day in days_schedule %}
-        <div class="day" onclick="showsch(this.id)" id="{{ forloop.counter }}"
-             style="margin-top:10px !important;color:aqua;">
-            <h1>DAY{{ forloop.counter }}-----------------------></h1>
-        </div>
+    var pts=[];
+    {% for pt in waypoints %}
+        pts.push({stopover: true, location: { placeId: "{{ pt }}" }});
     {% endfor %}
-    {% comment %}
-    <div class="day" onclick="showsch(this.id)" id="2" style="color:lightcoral">
-        <h1>DAY2-----------------------></h1>
-    </div>
-    <div class="day" onclick="showsch(this.id)" id="3" style="color:lawngreen">
-        <h1>DAY3-----------------------></h1>
-    </div>
-    {% endcomment %}
-    {% for day in days_schedule %}
-        <div class="whole" id="{{ forloop.counter }}day" style="display: none">
-            {% comment %}
-        {% if forloop.counter == 1 %}
-            <div class="whole" id="{{forloop.counter}}day" display="">
+    var request={
+        waypoints: pts,
+        origin: {placeId:"{{origin}}"},
+        destination: {placeId: "{{ destination }}"},
+        optimizeWaypoints: false,
+        travelMode: 'WALKING',
+    }
+    console.log(pts);
+    console.log('{{origin}}');
+    console.log('{{destination}}');
+    console.log('end');
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(result);
+        }else{
+        console.log('error');
+        console.log(status);
+        }
+    });
+  }
+</script>
+<script>
+  //滑動
+  var origin_height;//record origin height prevent height change
+  var sche_height;//as origin_height
+  $(document).ready(function(){
+    origin_height = $('.pusher').height();
+    $('.pusher').height(origin_height);
+    sche_height=$('#schedule').height();
+    $('#loader').height(origin_height);
+  });
+//change to google map(左滑)
+var mapstate=0;
+$('.pusher').on('swipeleft',function(){
+  if(mapstate==0){
+    console.log('left');
+    $('#schedule').transition('fade right');
+    $('#schedule').height('0');
+    setTimeout(function(){
+      $('#map').height('50vh');
+      $('#map').transition('fade left');
+      map.setZoom(12);
+    });
+    mapstate=1;
+  }
+});
+//右滑 1.若從最左邊開始則打開sidebar 2. else 則判斷是否為google map 頁面再決定是否切換
+var sidebarstate = 0;
+$('.pusher').on('swiperight',function(e){
+  if(e.swipestart.coords[0]< 0.1*$(document).width()){
+    console.log('ww');
+    $('.ui.sidebar').sidebar({closable: false});
+    $('.ui.sidebar').sidebar('toggle');
+    $('#sidebar_icon').hide();
+    console.log(sidebarstate);
+    setTimeout(function(){sidebarstate = 1;},500);
+  }else{
+    if(mapstate == 1 && e.swipestart.coords[1]> 0.7*$(window).height())
+    {
+      //change to schedule
+      $('#map').transition('fade left');
+      $('#map').height('0');
+      $('#schedule').height(sche_height);
+      $('#schedule').transition('fade right');
+      mapstate=0;
+    }
+  }
+});
+
+$(document).click(function(){
+  if(sidebarstate==1){
+    $('.ui.sidebar').sidebar('toggle');
+    $('#sidebar_icon').show();
+    $('.pusher').height(origin_height);
+    sidebarstate=0;
+  }
+});
+//close sidebar
+
+
+
+
+
+
+</script>
+<script>
+    $('#user_icon').click(function(){
+        {% if user.is_authenticated %}
+            window.location.href='../profile';
         {% else %}
-            <div class="whole" id="{{forloop.counter}}day" display="none">
+            window.location.href='../accounts/login';
         {% endif %}
-        {% endcomment %}
-            {% for scence in day %}
-                <div class="part">
-                    <div class="list ui grid" style="margin-top:2vh">
-                        <div class="four wide column">
-                            <h1 style="font-size:150%">10:00</h1>
-                            <i class="big bus icon"></i>
-                        </div>
-                        <div class="twelve wide column">
-                            <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
-                                <div class="row">
-                                    <h1 style="font-size:3vh;margin-left:2%">{{ scence.site_name }}</h1>
-                                </div>
-                                <div class="row">
-                                    <h1 style="font-size:3vh;margin-left:20%">停留{{ scence.time }}分鐘</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="trans">
-                        <i class="bus icon" style="display:inline;"></i>
-                        <h1 style="font-size:3vh;display:inline; ">30分</h1>
-                    </div>
-                </div>
-            {% endfor %}
-            {% comment %}
-        <div class="part">
-            <div class="list ui grid" style="margin-top:2vh">
-                <div class="four wide column">
-                    <h1 style="font-size:150%">10:00</h1>
-                    <i class="big bus icon"></i>
-                </div>
-                <div class="twelve wide column">
-                    <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
-                        <div class="row">
-                            {{ for  }}
-                            <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
-                        </div>
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="trans">
-                <i class="bus icon" style="display:inline;"></i>
-                <h1 style="font-size:3vh;display:inline; ">30分</h1>
-            </div>
-        </div>
-        <div class="part">
-            <div class="list ui grid" style="margin-top:2vh">
-                <div class="four wide column">
-                    <h1 style="font-size:150%">10:00</h1>
-                    <i class="big bus icon"></i>
-                </div>
-                <div class="twelve wide column">
-                    <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
-                        </div>
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="trans">
-                <i class="bus icon" style="display:inline;"></i>
-                <h1 style="font-size:3vh;display:inline; ">30分</h1>
-            </div>
-        </div>
-        <div class="part">
-            <div class="list ui grid" style="margin-top:2vh">
-                <div class="four wide column">
-                    <h1 style="font-size:150%">10:00</h1>
-                    <i class="big bus icon"></i>
-                </div>
-                <div class="twelve wide column">
-                    <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
-                        </div>
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="trans">
-                <i class="bus icon" style="display:inline;"></i>
-                <h1 style="font-size:3vh;display:inline; ">30分</h1>
-            </div>
-        </div>
-        <div class="part">
-            <div class="list ui grid" style="margin-top:2vh">
-                <div class="four wide column">
-                    <h1 style="font-size:150%">10:00</h1>
-                    <i class="big bus icon"></i>
-                </div>
-                <div class="twelve wide column">
-                    <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
-                        </div>
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="trans">
-                <i class="bus icon" style="display:inline;"></i>
-                <h1 style="font-size:3vh;display:inline; ">30分</h1>
-            </div>
-        </div>
-        <div class="part">
-            <div class="list ui grid" style="margin-top:2vh">
-                <div class="four wide column">
-                    <h1 style="font-size:150%">10:00</h1>
-                    <i class="big bus icon"></i>
-                </div>
-                <div class="twelve wide column">
-                    <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
-                        </div>
-                        <div class="row">
-                            <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="trans">
-                <i class="bus icon" style="display:inline;"></i>
-                <h1 style="font-size:3vh;display:inline; ">30分</h1>
-            </div>
-        </div>
-        {% endcomment %}
+    });
+    $('#logout_icon').click(function(){
+        {% if user.is_authenticated %}
+            window.location.href="../accounts/logout";
+        {% else %}
+            alert('你沒登入阿!')
+        {% endif %}
+    });
+    $('#search_icon').click(function(){
+        window.location.href='../search';
+    });
+     $('#home_icon').click(function(){
+        window.location.href='../develop';
+    });
+     $('#edit_icon').click(function(){
+        console.log('check');
+        window.location.href = '../sch/0';
+    });
+</script>
 
-        </div>
-    {% endfor %}
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8&callback=initMap"></script>
 
-
-</div>
-
-
-</body>
 </html>

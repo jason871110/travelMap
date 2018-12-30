@@ -43,8 +43,23 @@ class TouristSite(models.Model):
 
     class Meta:
          ordering = ['route_order']
+
     def __str__(self):
         return self.site_name
 
+class MapSite(models.Model):
+    name = models.CharField(max_length=100)
+    site_type = models.CharField(max_length=100)
+    location = models.CharField(max_length=100)
+    stay = models.IntegerField(blank=True,default=30)
+    image = models.ImageField(upload_to='upload',blank=True)
+    phone_number = models.CharField(max_length=100,default='no number')
+    address =  models.CharField(max_length=100,default='no address')
+
+    def __str__(self):
+        return self.name
+
 class IMG(models.Model):
     img = models.ImageField(upload_to='upload')
+
+
