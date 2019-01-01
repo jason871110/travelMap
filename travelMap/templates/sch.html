@@ -240,6 +240,8 @@ $('#create_schedule_button').click(function(){
     }
     console.log($('#input_schedule_name').val());
     console.log($('#input_schedule_content').val());
+    $('#create_form').modal('hide');
+    $("#loader").addClass('active');
     $.ajax({
         url: '',
         type: "POST",
@@ -252,7 +254,7 @@ $('#create_schedule_button').click(function(){
         },
         dataType: 'json',
         success: function(content){
-            $('#create_form').modal('hide');
+           $("#loader").removeClass('active');
             location.reload();
         },
         failure: function(){

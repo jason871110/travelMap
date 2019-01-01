@@ -209,14 +209,16 @@ def sch(request,id_num):
                     schedule_now.content = request.POST.get('schedule_content','')
                     schedule_now.save()
                     result = jieba_test.find_sites(request.POST.get('jieba_input_result',''))
-                    print(result)
+
                     if len(result) !=0:
                         result = decide_course(result)
+                        print('result')
                         print(result)
+                        # print(result)
                         for ind,day_course in enumerate(result):
                             for create_site in day_course:
                                 place_name = create_site['name']
-                                print(type(place_name))
+                                # print(type(place_name))
                                 place_id = search(place_name)
                                 place_phone = detail(place_id)['phone_number']
                                 place_address = detail(place_id)['address']
@@ -275,7 +277,7 @@ def extract_article(request):#extract article to list tourist sites
 
 
 def search(name):
-    print('search')
+    # print('search')
     url_temp = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +
                 "input=" + name +
                 "&key=" + "AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8" +
@@ -288,7 +290,7 @@ def search(name):
 
     result = res.content.decode("utf-8")
     result = json.loads(result)
-    print(list(result))
+    # print(list(result))
     if (len(result["candidates"]) == 0):
         return None
     result_id = result['candidates'][0]["place_id"]
@@ -324,29 +326,37 @@ def detail(place_id):
 
 
 def camera(place_id,site_name):
-    url_temp = ("https://maps.googleapis.com/maps/api/place/details/json?" +
-                "placeid=" + place_id +
-                "&key=" + "AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8" +
-                '')
-    res = requests.get(url_temp)
-    result = json.loads(res.content.decode('utf-8'))
-    print(json.dumps(result, ensure_ascii=False, indent=2))
-    fo = open('detail.json', 'w', encoding="utf-8")
-    fo.write(json.dumps(result, ensure_ascii=False, indent=2))
-    photo_reference = result['result']['photos'][0]['photo_reference']
+    try:
+        fh = open('./media/image/'+site_name+'.jpg', 'r')
+        return True
+    except FileNotFoundError:
+        print('find')
+        url_temp = ("https://maps.googleapis.com/maps/api/place/details/json?" +
+                    "placeid=" + place_id +
+                    "&key=" + "AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8" +
+                    '')
+        res = requests.get(url_temp)
+        result = json.loads(res.content.decode('utf-8'))
+        # print(json.dumps(result, ensure_ascii=False, indent=2))
+        fo = open('detail.json', 'w', encoding="utf-8")
+        fo.write(json.dumps(result, ensure_ascii=False, indent=2))
+        try:
+            photo_reference = result['result']['photos'][0]['photo_reference']
 
-    url_temp = ('https://maps.googleapis.com/maps/api/place/photo?' +
-                'key=' + 'AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8' +
-                '&photoreference=' + photo_reference +
-                '&maxwidth=' + '600')
+            url_temp = ('https://maps.googleapis.com/maps/api/place/photo?' +
+                        'key=' + 'AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8' +
+                        '&photoreference=' + photo_reference +
+                        '&maxwidth=' + '600')
 
-    res = requests.get(url_temp)
-    content = BytesIO(res.content)
-    file = open('./media/image/'+site_name+'.jpg', 'wb+')
-    file.write(content.read())
-    file.close()
+            res = requests.get(url_temp)
+            content = BytesIO(res.content)
+        except:
+            content = open('./media/image/not_found.jpg', 'rb')
+        file = open('./media/image/'+site_name+'.jpg', 'wb+')
+        file.write(content.read())
+        file.close()
 
-    return True
+        return True
 
 
 ''''''''
@@ -416,7 +426,6 @@ def decide_course(original_course):
     adjust_course = [[]]
     adjust_course_day = []
     result = []
-    small_result = []
     day = 0
     '''
     with open('site_info.json', 'r', encoding='utf-8') as f:
@@ -478,9 +487,10 @@ def decide_course(original_course):
                 for ii in range(i, len(site)):
                     adjust_course[day].append(site[ii])
                 break
-
+    print('#adjust')
     print(adjust_course)
     for item in adjust_course:
+        small_result = []
         for inner_item in item:
             # small_result可再增加需要回傳的資訊
             small_result.append({
@@ -489,6 +499,7 @@ def decide_course(original_course):
                 'phone number': inner_item.phone_number,
                 'address': inner_item.address
             })
+
         result.append(small_result)
     # print(result)
 
