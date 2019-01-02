@@ -1,12 +1,6 @@
-.day{
-    height:7vh;
-    width:100%; 
-    font-family: 'Times New Roman', Times, serif;
-    text-align: justify;
-    border-color: grey;
-    border-bottom-style:dashed;   
-     /* display: none; */
-}
+
+/*day的css直接拿掉用不到了*/
+
 .list{
     height:15vh;
     width:100%;
@@ -21,7 +15,7 @@
    
 }
 .headerPic{
-    background-image: url("imgAnimate/002.jpg");
+    background-image: url("/media/img/002.jpg");
     background-position: center center; 
     background-repeat: no-repeat; 
     background-size: cover; 
@@ -29,3 +23,5 @@
 .whole{
    display: none;
 }
+
+

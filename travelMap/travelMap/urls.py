@@ -19,21 +19,22 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 from travel.views import show
-from travel.views import develop, search_dis,sch
-from travel.views import login, logout, register, filter_,extract_article,show_result,display
+from travel.views import develop, search_dis, sch
+from travel.views import login, logout, register, filter_, extract_article, show_result, display, profile
 
 urlpatterns = [
     url(r'^develop', develop),
     url(r'^search', search_dis),
     path('sch/<int:id_num>', sch),
-    path('show/<slug:slug>',show),
+    path('show/<slug:slug>', show),
     url(r'^filter', filter_, name='filter'),
-    url(r'^result',show_result),
+    url(r'^result', show_result),
     url(r'^display/(?P<input_day>[-\w]+)/$', display, name="display"),
+    url(r'^display/', display),
     url(r'^article', extract_article),
     url(r'^accounts/login/$', login),
-	url(r'^accounts/logout/$', logout),
-	url(r'^accounts/register/$', register),
+    url(r'^accounts/logout/$', logout),
+    url(r'^accounts/register/$', register),
+    url(r'^profile', profile),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)
-

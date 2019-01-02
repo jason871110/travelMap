@@ -1,0 +1,60 @@
+.following.bar {
+    /*position: fixed;*/
+    top: 0px;
+    z-index: 900;
+    left: 0%;
+    padding: 2em 0em;
+    width: 100%;
+    box-shadow: 0px 0px 0px 0px transparent;
+    border-bottom: 1px solid transparent;
+    transition: padding 0.5s ease, background 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+}
+#dick{
+    font-family: 'Times New Roman', Times, serif !important;
+}
+body{
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 1em 0em;
+    font-family: 'Times New Roman', Times, serif !important;
+}
+
+.pusher .stripe{
+    padding: 3em;
+}
+
+#navbar{
+    padding: 0em 0em;
+    width: 100%;
+}
+
+/*#user_image{
+    width: 20%;
+    /*
+    * height: 20%;
+    *
+}*/
+
+#logo{
+    width: 35px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
