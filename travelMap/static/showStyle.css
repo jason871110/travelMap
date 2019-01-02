@@ -1,4 +1,26 @@
+/*旅行所用css*/
+.traveltitle{
+    width:50%;
+    height:35vh;
+    margin-top:85%;
+    padding: 8%;
+    /* background-color: #000;opacity:0.6;
+    border-radius: 60%; */
+}
+.title{
+    color: #ffffff;
+    /*font-family: 'Times New Roman', Times, serif;*/
+    font-size: 10vh;
+    font-style: italic;
+}
+.subtitle{
+    margin-top: -10% !important;
+    color: #ffffff;
+    /*font-family: 'Times New Roman', Times, serif;*/
+    font-size:4vh;
+}
 
+/*我改動圖片相關位置*/
 .picContent1{
     position:absolute;
     top:80px;
@@ -13,7 +35,7 @@
 .picContent2{
     position:absolute;
     top:60%;
-    left:15%;
+    left:60%;
     width:0px;  /*200*/
     height:250px; /*250*/
     box-sizing:border-box;
@@ -24,8 +46,8 @@
 }
 .picContent3{
     position:absolute;
-    top:70%;
-    left:47%;
+    top:10%;
+    left:58%;
     width:0px; /*150*/
     height:0px;
     box-sizing:border-box;

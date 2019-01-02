@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 # Create your views here.
 import json
 # import requests
+
 import re
 from django.shortcuts import render, render_to_response,redirect
 from .models import TouristSite, IMG, Schedule, TotalCourse,MapSite
@@ -66,7 +67,8 @@ def show(request,slug):
         schedule_search.sort()
         print(schedule_search)
         for sch_id in schedule_search:
-            show_array.append(Schedule.objects.get(id=sch_id).image)
+            scnow = Schedule.objects.get(id=sch_id)
+            show_array.append({'image':scnow.image,'id':sch_id, 'title': scnow.title , 'content': scnow.content})
         content['show_array'] = show_array
         print(show_array)
         return render(request,'show.html',content)
@@ -161,9 +163,18 @@ def sch(request,id_num):
 
                     place_name=request.POST.get('site_name','')
                     place_id = search(request.POST.get('site_name',''))
-                    place_phone = detail(place_id)['phone_number']
-                    place_address = detail(place_id)['address']
-                    camera(place_id,place_name)
+                    if place_id == "empty":
+                        place_phone = " "
+                        place_address = " "
+                        photo = open('./media/image/not_found.jpg', 'rb')
+                        file = open('./media/image/' + place_name + '.jpg', 'wb+')
+                        file.write(content.read())
+                        file.close()
+                        photo.close()
+                    else:
+                        place_phone = detail(place_id)['phone_number']
+                        place_address = detail(place_id)['address']
+                        camera(place_id,place_name)
                     day_cur=request.POST.get('day_cur','')
                     schedule_all_course_now = schedule_now.totalcourse_set.all().get(day=day_cur)
                     site_num = TouristSite.objects.all().aggregate(Max('site_id'))['site_id__max']+1
@@ -220,9 +231,18 @@ def sch(request,id_num):
                                 place_name = create_site['name']
                                 # print(type(place_name))
                                 place_id = search(place_name)
-                                place_phone = detail(place_id)['phone_number']
-                                place_address = detail(place_id)['address']
-                                camera(place_id, place_name)
+                                if place_id == "empty":
+                                    place_phone = " "
+                                    place_address = " "
+                                    photo = open('./media/image/not_found.jpg', 'rb')
+                                    file = open('./media/image/' + place_name + '.jpg', 'wb+')
+                                    file.write(content.read())
+                                    file.close()
+                                    photo.close()
+                                else:
+                                    place_phone = detail(place_id)['phone_number']
+                                    place_address = detail(place_id)['address']
+                                    camera(place_id, place_name)
                                 day_cur = ind+1
                                 try:
                                     schedule_all_course_now = schedule_now.totalcourse_set.all().get(day=day_cur)
@@ -244,11 +264,13 @@ def sch(request,id_num):
                                                                       site_content="", site_id=site_num,
                                                                       line_id=schedule_all_course_now.id)
                     content['max_day'] = max_day
+                    '''
                     schedule_all_course_by_day = []
                     for i in range(max_day):
                         course_tem = schedule_all_course.get(day=i + 1).touristsite_set.all()
                         schedule_all_course_by_day.append(course_tem)
                     content['site_information'] = schedule_all_course_by_day
+                    '''
                     # print(content['site_information'])
                     return JsonResponse(content)
         else:
@@ -257,6 +279,7 @@ def sch(request,id_num):
     else:
         print('not exist')
         create_schedule = Schedule.objects.create(id=id_num, id_num=id_num, author=request.user.id, days=0, title="未命名")
+        create_schedule_day_1 = TotalCourse.objects.create(day=1 , course_id = id_num)
         content['max_day'] = 0
         content['site_information'] = []
         content['create']=1
@@ -292,7 +315,7 @@ def search(name):
     result = json.loads(result)
     # print(list(result))
     if (len(result["candidates"]) == 0):
-        return None
+        return "empty"
     result_id = result['candidates'][0]["place_id"]
 
     return result_id
@@ -355,6 +378,7 @@ def camera(place_id,site_name):
         file = open('./media/image/'+site_name+'.jpg', 'wb+')
         file.write(content.read())
         file.close()
+        content.close()
 
         return True
 

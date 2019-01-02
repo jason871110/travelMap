@@ -87,7 +87,7 @@
     </div>
         <div class="ui vertical divided grid" id="app-container" style="margin-top: 10vh;">
             <div class="upperPic"
-                 style="height:40vh;width:100%;margin-top:-25% !important;background-image:url('/media/image/2.jpg')">
+                 style="height:40vh;width:100%;margin-top:-25% !important;background-image:url('/media/image/img1.jpeg')">
                 <h1 style="color: aliceblue;margin-top: 10%" id="schedule_title">{{schedule_title}}</h1>
                 <p style="color: aliceblue;" id="schedule_content"> {{schedule_content}}</p>
             </div>
@@ -106,8 +106,20 @@
                              onclick="edit_site('{{site.image}}','{{site.site_id}}','{{site.site_name}}')">
                             <img class="ui avatar image" style="height: 8vh; width: 8vh;" src="{{site.image}}">
                             <div class="content">
-                                <div class="header">{{site.site_name}}</div>
-                                <div class="description"><span>{{site.site_content}}</span></div>
+                                <div class="header">
+                                    {% if site.site_name|length|get_digit:"-1" < 6 %}
+                                        {{site.site_name}}
+                                    {%else%}
+                                        {{site.site_name|slice:"0:5"}}...
+                                    {%endif%}
+                                    </div>
+                                <div class="description">
+                                    {% if site.site_content|length|get_digit:"-1" < 12 %}
+                                        <span>{{site.site_content}}</span>
+                                    {%else%}
+                                        <span>{{site.site_content|slice:"0:10"}}...</span>
+                                    {%endif%}
+                                </div>
                             </div>
                         </div>
                         {% endfor %}
@@ -146,7 +158,7 @@
                 <img src="" id="modal_img"><!--change by javascript 不用接-->
             </div>
         </div>
-        <div class="content">
+        <div class="content" id="site_detail_content">
             <div class="ui form">
                 <div class="fields">
                     <div class="eight wide field">
@@ -167,8 +179,6 @@
                     </div>
                 </div>
             </div>
-            <div class="ui green button" style="float:right;" id="edit_site_button">save</div>
-            <div class="ui red button" style="float:right;" id="edit_site_delete">delete</div>
         </div>
     </div>
     <div class="ui small modal" id="new_site">
@@ -198,11 +208,12 @@
         <div class="content">
             <div class="ui form">
                 <div class="inline field" id="create_inline_field">
+                {% if create == 1 %}
                     <div class="ui checkbox" id="jieba">
                         <input type="checkbox" tabindex="0" class="hidden">
                         <label>使用文章自動編排行程</label>
                     </div>
-
+                {% endif %}
                 </div>
                 <div class="field">
                     <label>行程名稱</label>
@@ -257,13 +268,17 @@ $('#create_schedule_button').click(function(){
            $("#loader").removeClass('active');
             location.reload();
         },
-        failure: function(){
+        error: function(){
          console.log('fail');
         },
     });
 
 });
-
+$('.upperPic').click(function(){
+    $('#input_schedule_name').val('{{schedule_title}}');
+    $('#input_schedule_content').val('{{schedule_content}}');
+    $('#create_form').modal('show');
+});
 
 
 </script>
@@ -506,85 +521,86 @@ function change_day(day_num){
              alert();
             },
         });
-
-
-
   });
-
-
-
-
-
-
-
 </script>
 <script>
 //click site call the modal
   function edit_site(img_url,site_id,site_title){
-  for(i=0;i<day_site.length;i++){
-        if(day_site[i]['site_id']==site_id){
-            console.log(day_site[i]);
-            $('#site_phone').attr('placeholder',day_site[i]['phone']);
-            $('#site_position').attr('placeholder',day_site[i]['address']);
-            $('#site_description').val(day_site[i]['content']);
-            i=day_site.length;
-        }
-  }
-  $('#modal_img').attr('src',img_url);
-  $('#site_detail').modal('show');
-  $('.rating').rating(0);//從後端拿取是否為最愛 是則為1否則為0 (後端)
-  $('#edit_site_button').click(function(){
-        $.ajax({
-            url: '',
-            type: "POST",
-            data:{
-                site_id: site_id,
-                site_content:$('#site_description').val(),
-                'csrfmiddlewaretoken': "{{ csrf_token }}",
-                type : 'update_content',
+      $('#edit_site_button').remove();
+      $('#edit_site_delete').remove();
+      $('#site_detail_content').append("<div class='ui green button' style='float:right;' id='edit_site_button'>save</div><div class='ui red button' style='float:right;' id='edit_site_delete'>delete</div>");
 
-            },
-            dataType: 'json',
-            success: function(content){
-                cont=$('#site_description').val();
-                $('#site_detail').modal('hide');
-                $('#'+site_id+">.content > .description >span").text(cont);
-                 for(i=0;i<day_site.length;i++){
-                    if(day_site[i]['site_id']==site_id){
-                        day_site[i]['content']=cont;
-                        i=day_site.length;
+      console.log('edit'+site_title);
+      for(i=0;i<day_site.length;i++){
+            if(day_site[i]['site_id']==site_id){
+                console.log(day_site[i]);
+                $('#site_phone').attr('placeholder',day_site[i]['phone']);
+                $('#site_position').attr('placeholder',day_site[i]['address']);
+                $('#modal_header').text(day_site[i]['site_name'])
+                $('#site_description').val(day_site[i]['content']);
+                i=day_site.length;
+            }
+      }
+      $('#modal_img').attr('src',img_url);
+      $('#site_detail').modal('show');
+      $('.rating').rating(0);//從後端拿取是否為最愛 是則為1否則為0 (後端)
+      $('#edit_site_button').on('click',function(event){
+            event.preventDefault();
+            console.log(site_id);
+            $.ajax({
+                url: '',
+                type: "POST",
+                data:{
+                    site_id: site_id,
+                    site_content:$('#site_description').val(),
+                    'csrfmiddlewaretoken': "{{ csrf_token }}",
+                    type : 'update_content',
+                },
+                dataType: 'json',
+                success: function(content){
+                    cont=$('#site_description').val();
+                    $('#site_detail').modal('hide');
+                    if(cont.length>12){
+                        cont=cont.substring(0,10);
+                        cont+='...'
                     }
-                 }
-            }
-            ,
-            failure: function(){
-             console.log('fail');
-            },
-        });
-  });
-  $('#edit_site_delete').click(function(){
+                    $('#'+site_id+">.content > .description >span").text(cont);
+                     for(i=0;i<day_site.length;i++){
+                        if(day_site[i]['site_id']==site_id){
+                            day_site[i]['content']=cont;
+                            i=day_site.length;
+                        }
+                     }
+                }
+                ,
+                failure: function(){
+                 console.log('fail');
+                },
+            });
+      });
 
-        $.ajax({
-            url: '',
-            type: "POST",
-            data:{
-                site_id: site_id,
-                'csrfmiddlewaretoken': "{{ csrf_token }}",
-                type : 'delete_site',
-            },
-            dataType: 'json',
-            success: function(content){
-                console.log('delete site');
-                $('#'+site_id).remove();
-                $('#site_detail').modal('hide')
-            }
-            ,
-            failure: function(){
-             console.log('fail');
-            },
-        });
-  });
+      $('#edit_site_delete').click(function(){
 
+            $.ajax({
+                url: '',
+                type: "POST",
+                data:{
+                    site_id: site_id,
+                    'csrfmiddlewaretoken': "{{ csrf_token }}",
+                    type : 'delete_site',
+                },
+                dataType: 'json',
+                success: function(content){
+                    console.log('delete site');
+                    $('#'+site_id).remove();
+                    $('#site_detail').modal('hide');
+                }
+                ,
+                failure: function(){
+                 console.log('fail');
+                },
+            });
+      });
 }
 
 

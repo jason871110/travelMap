@@ -1,3 +1,18 @@
+var judgeShow=false;
+var judgeid=0;
+$(document).ready(function() {
+    for(i=1;i<9;i++){
+        var first=new String("p"+i);
+        var pic=new String("imgAnimate/"+i+"/");
+        for(y=1;y<4;y++){
+            var second=first.concat("-"+y);
+            $("#"+second).css({
+                "background-image":"url(\'"+pic.concat(y+".jpeg")+"\')"
+            })
+        }
+    }
+})
+
 // for(i=1;i<9;i++){
 //     var first=new String("p"+i);
 //     var pic=new String("imgAnimate/"+i+"/");
@@ -24,17 +39,9 @@
 //             "background-image":"url(\'"+first.concat("3.jpeg")+"\')"
 //         })    
 // }
-var judgeShow=false;
-var judgeid=0;
+
 
 function changeBac(id){
-    /*
-    var pic=new String("/media/"+id);
-    //console.log(pic)
-    $("#"+"").css({
-      "background-image":"url(\'"+pic+"\')"
-    })
-    */
     if(judgeid!=id){
         $( ".picContent1" ).animate({
             height:"250px"
@@ -53,7 +60,6 @@ function changeBac(id){
           });
           judgeid=id;
     }   
-    console.log(judgeid)
     // for(i=1;i<9;i++){
     //     judgeShow=false;
     //     if(i==1){
