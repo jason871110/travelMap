@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from travel.views import show
 from travel.views import develop, search_dis, sch
-from travel.views import login, logout, register, filter_, extract_article, show_result, display, profile
+from travel.views import login, logout, register, filter_, extract_article, show_result, display, profile, theme_redirect
 
 urlpatterns = [
     url(r'^develop', develop),
@@ -36,5 +36,6 @@ urlpatterns = [
     url(r'^accounts/logout/$', logout),
     url(r'^accounts/register/$', register),
     url(r'^profile', profile),
+    url(r'^themes/(?P<content>[./\w]+)$', theme_redirect),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL)

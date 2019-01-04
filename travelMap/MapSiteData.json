@@ -1,0 +1,2594 @@
+[
+  {
+    "name": "藍晒圖文創園區",
+    "location": "ChIJtbdB0Xt2bjQR1IE4qcWD-lg",
+    "stay": 60,
+    "image": "upload/藍晒圖文創園區.png",
+    "phone number": "06 222 7195",
+    "address": "中西區西門路一段689巷",
+    "site_type": "a,b,f,h"
+  },
+  {
+    "name": "321巷 藝術聚落",
+    "location": "ChIJW5GWOPR2bjQR0zPPTr9TaM8",
+    "stay": 60,
+    "image": "upload/321巷_藝術聚落.png",
+    "phone number": "06 298 1800",
+    "address": "北區公園路321巷",
+    "site_type": "a,b,i"
+  },
+  {
+    "name": "銀同社區貓咪高地",
+    "location": "ChIJw5S5R4h2bjQRTK4Mw-AbPv4",
+    "stay": 45,
+    "image": "upload/銀同社區貓咪高地.png",
+    "phone number": "no number",
+    "address": "中西區開山路3巷37號",
+    "site_type": "b,i"
+  },
+  {
+    "name": "蝸牛巷",
+    "location": "ChIJA2cPbWN2bjQRHCZDCoo-M5w",
+    "stay": 45,
+    "image": "upload/蝸牛巷.png",
+    "phone number": "no number",
+    "address": "中西區永福路二段97巷號",
+    "site_type": "b,f,i"
+  },
+  {
+    "name": "巨大扭蛋機",
+    "location": "ChIJ22a_Fol2bjQRZiIbvesVxfE",
+    "stay": 30,
+    "image": "upload/巨大扭蛋機.png",
+    "phone number": "no number",
+    "address": "中西區衛民街154號",
+    "site_type": "i"
+  },
+  {
+    "name": "神農街",
+    "location": "ChIJqctagGZ2bjQRGlAjSFrC5hE",
+    "stay": 30,
+    "image": "upload/神農街.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,b,i"
+  },
+  {
+    "name": "壁畫",
+    "location": "ChIJaR2yXWF2bjQRUWhDvXB-J2w",
+    "stay": 15,
+    "image": "upload/壁畫.png",
+    "phone number": "no number",
+    "address": "中西區新美街125巷",
+    "site_type": "b,i"
+  },
+  {
+    "name": "原鶯料理",
+    "location": "ChIJMZUZ0GJ2bjQR9WM-RUKQGdc",
+    "stay": 45,
+    "image": "upload/原鶯料理.png",
+    "phone number": "06 221 0595",
+    "address": "中西區忠義路二段84巷18號",
+    "site_type": "j"
+  },
+  {
+    "name": "警察新村彩繪村",
+    "location": "ChIJs-is9NN1bjQRJGL0j4PE0IQ",
+    "stay": 90,
+    "image": "upload/警察新村彩繪村.png",
+    "phone number": "no number",
+    "address": "南區大成路一段79號",
+    "site_type": "a,b,i"
+  },
+  {
+    "name": "彎曲的榕樹",
+    "location": "ChIJ5__0XG52bjQRxMaVs5F7gLo",
+    "stay": 30,
+    "image": "upload/彎曲的榕樹.png",
+    "phone number": "no number",
+    "address": "中西區府前路二段258巷119號",
+    "site_type": "b,d,f"
+  },
+  {
+    "name": "文昌閣",
+    "location": "ChIJ0XqrrWJ2bjQRgH2vUAbgrBw",
+    "stay": 30,
+    "image": "upload/文昌閣.png",
+    "phone number": "06 221 4647",
+    "address": "中西區南門路2號",
+    "site_type": "b,c"
+  },
+  {
+    "name": "衛民街地下道",
+    "location": "ChIJWV77wI52bjQRGjVy2GxD-Xc",
+    "stay": 30,
+    "image": "upload/衛民街地下道.png",
+    "phone number": "no number",
+    "address": "東區衛民街",
+    "site_type": "b,f,i"
+  },
+  {
+    "name": "台南雙層巴士",
+    "location": "ChIJG2WIkYx2bjQRyBIWC6Yq0pU",
+    "stay": 30,
+    "image": "upload/台南雙層巴士.png",
+    "phone number": "06 221 9177",
+    "address": "東區",
+    "site_type": "a,b,f"
+  },
+  {
+    "name": "國華街",
+    "location": "ChIJCzLgrWZ2bjQRth1IQ4Ta7RA",
+    "stay": 90,
+    "image": "upload/國華街.png",
+    "phone number": "03-3545-7170",
+    "address": "中西區國華街三段182號",
+    "site_type": "a,b,f,i,j"
+  },
+  {
+    "name": "大成門 - 台南孔廟文化園區",
+    "location": "ChIJYw4RTH12bjQRKS6hu0HiVMY",
+    "stay": 90,
+    "image": "upload/大成門_-_台南孔廟文化園區.png",
+    "phone number": "06 228 9013",
+    "address": "中西區南門路二號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "新臨安橋",
+    "location": "ChIJ89t36252bjQRip5jUeykyRs",
+    "stay": 30,
+    "image": "upload/新臨安橋.png",
+    "phone number": "no number",
+    "address": "中西區民生路二段377號附近",
+    "site_type": "a,b,e,h"
+  },
+  {
+    "name": "鄭成功議和圖",
+    "location": "ChIJp3lgnGF2bjQRSjzCqSwSaqI",
+    "stay": 30,
+    "image": "upload/鄭成功議和圖.png",
+    "phone number": "no number",
+    "address": "中西區民族路二段212號",
+    "site_type": "b"
+  },
+  {
+    "name": "明倫堂 - 台南孔廟文化園區",
+    "location": "ChIJzYxbTX12bjQRTaJPxwIQNxc",
+    "stay": 90,
+    "image": "upload/明倫堂_-_台南孔廟文化園區.png",
+    "phone number": "no number",
+    "address": "中西區南門路2號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "海安路藝術街",
+    "location": "ChIJ5VdaHmd2bjQRU4n5IbANoPk",
+    "stay": 30,
+    "image": "upload/海安路藝術街.png",
+    "phone number": "no number",
+    "address": "中西區海安路二段5號",
+    "site_type": "a,b,f,i"
+  },
+  {
+    "name": "知事官邸",
+    "location": "ChIJf3uQ8o52bjQRrKmI_6FQ82w",
+    "stay": 30,
+    "image": "upload/知事官邸.png",
+    "phone number": "no number",
+    "address": "東區前鋒路96號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "原臺南州立農事試驗場宿舍群(丙種官舍)",
+    "location": "ChIJm1E9rZt2bjQRTmXHXgs320g",
+    "stay": 30,
+    "image": "upload/原臺南州立農事試驗場宿舍群(丙種官舍).png",
+    "phone number": "no number",
+    "address": "東區東門路二段158巷76號號",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "みなかみ水上物語交流館",
+    "location": "ChIJJwsnrZt2bjQR-BQuoUg63kI",
+    "stay": 30,
+    "image": "upload/みなかみ水上物語交流館.png",
+    "phone number": "no number",
+    "address": "東區",
+    "site_type": "a,b"
+  },
+  {
+    "name": "衛民街彩繪巷",
+    "location": "ChIJ1Q6-7I52bjQRaGULi7hOAbU",
+    "stay": 30,
+    "image": "upload/衛民街彩繪巷.png",
+    "phone number": "no number",
+    "address": "18 號, No. 1, 衛民街, 東區",
+    "site_type": "b,f,i"
+  },
+  {
+    "name": "台南知事官邸‧音樂會館",
+    "location": "ChIJTbdS8452bjQRI0ArgqPTPaI",
+    "stay": 30,
+    "image": "upload/台南知事官邸‧音樂會館.png",
+    "phone number": "06 236 7000",
+    "address": "東區衛民街1號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "知事官邸苦楝樹",
+    "location": "ChIJf3uQ8o52bjQRrKmI_6FQ82w",
+    "stay": 30,
+    "image": "upload/知事官邸苦楝樹.png",
+    "phone number": "no number",
+    "address": "東區前鋒路96號",
+    "site_type": "b,d"
+  },
+  {
+    "name": "彩繪巷弄",
+    "location": "ChIJGYWWR4h2bjQRHoCuzbL81Z4",
+    "stay": 30,
+    "image": "upload/彩繪巷弄.png",
+    "phone number": "no number",
+    "address": "中西區開山路3巷",
+    "site_type": "a,i"
+  },
+  {
+    "name": "台南夜間都會觀景步道",
+    "location": "ChIJMYHYhit3bjQR3pKEmg7KHik",
+    "stay": 30,
+    "image": "upload/台南夜間都會觀景步道.png",
+    "phone number": "no number",
+    "address": "中西區北門路一段123巷2-30號",
+    "site_type": "a,f,h"
+  },
+  {
+    "name": "Room2Music",
+    "location": "ChIJtWcZ4412bjQRaEjgTUcZas8",
+    "stay": 30,
+    "image": "upload/Room2Music.png",
+    "phone number": "06 236 7528",
+    "address": "號, No. 22, 東寧路西段, 東區",
+    "site_type": "b,f"
+  },
+  {
+    "name": "台南市文廟管理委員會台南以成書院",
+    "location": "ChIJh0lMs2J2bjQREaOEFmYbIOo",
+    "stay": 30,
+    "image": "upload/台南市文廟管理委員會台南以成書院.png",
+    "phone number": "06 221 9463",
+    "address": "中西區南門路2號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "臺南永康彩繪眷村",
+    "location": "ChIJJXMnr852bjQR_wiSSWCnbYE",
+    "stay": 45,
+    "image": "upload/臺南永康彩繪眷村.png",
+    "phone number": "06 312 4645",
+    "address": "永康區復興路423巷",
+    "site_type": "a,g,i"
+  },
+  {
+    "name": "臺灣鹽田文化",
+    "location": "ChIJO-JVIIzWbTQRjSymzgqNuGE",
+    "stay": 30,
+    "image": "upload/臺灣鹽田文化.png",
+    "phone number": "no number",
+    "address": "台南市",
+    "site_type": "a,d,e,g"
+  },
+  {
+    "name": "開天宮",
+    "location": "ChIJMV3RUrlwbjQRILwJxXbgRN4",
+    "stay": 30,
+    "image": "upload/開天宮.png",
+    "phone number": "06 232 8901",
+    "address": "永康區育樂街180號",
+    "site_type": "b,c"
+  },
+  {
+    "name": "蜜芝館勝利養蜂",
+    "location": "ChIJ1z-VFYFwbjQRAvkaj0ivGrw",
+    "stay": 25,
+    "image": "upload/蜜芝館勝利養蜂.png",
+    "phone number": "0933 397 530",
+    "address": "新化區唪口里147之17號",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "山海圳綠道自行車橋",
+    "location": "ChIJHwgalWl3bjQRjJfOuNQKH30",
+    "stay": 30,
+    "image": "upload/山海圳綠道自行車橋.png",
+    "phone number": "no number",
+    "address": "安順, 排水 線, 安南區",
+    "site_type": "a,d,e"
+  },
+  {
+    "name": "聖帝殿",
+    "location": "ChIJwaZOYQV6bjQRdTWqhux73SU",
+    "stay": 30,
+    "image": "upload/聖帝殿.png",
+    "phone number": "no number",
+    "address": "新市區",
+    "site_type": "b,c"
+  },
+  {
+    "name": "十二佃榕王武聖廟",
+    "location": "ChIJs1zjrPZ3bjQRfrmvF3evGRA",
+    "stay": 30,
+    "image": "upload/十二佃榕王武聖廟.png",
+    "phone number": "no number",
+    "address": "安南區公學路四段54巷",
+    "site_type": "c"
+  },
+  {
+    "name": "華美光學eye玩視界觀光工廠",
+    "location": "ChIJBcIahtF5bjQRKnQKXs_V7TM",
+    "stay": 60,
+    "image": "upload/華美光學eye玩視界觀光工廠.png",
+    "phone number": "06 593 7597",
+    "address": "安定區中工二路30號",
+    "site_type": "a,g"
+  },
+  {
+    "name": "新市大洲抽水站",
+    "location": "ChIJ3wZ4qhl6bjQRKyJ2gOQRib8",
+    "stay": 30,
+    "image": "upload/新市大洲抽水站.png",
+    "phone number": "no number",
+    "address": "新市區大洲里",
+    "site_type": "a"
+  },
+  {
+    "name": "舞彩迎賓",
+    "location": "ChIJcTKrUkx6bjQRmxvggx7vOKU",
+    "stay": 30,
+    "image": "upload/舞彩迎賓.png",
+    "phone number": "no number",
+    "address": "新市區新港社大道",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "港香蘭應用生技-綠色健康知識館",
+    "location": "ChIJmUkJkrJ7bjQRkAe-wEvL2G0",
+    "stay": 90,
+    "image": "upload/港香蘭應用生技-綠色健康知識館.png",
+    "phone number": "06 505 2505",
+    "address": "南科一路",
+    "site_type": "a,b"
+  },
+  {
+    "name": "北極殿",
+    "location": "ChIJE-hP4D54bjQRfvq5CI3r8BM",
+    "stay": 30,
+    "image": "upload/北極殿.png",
+    "phone number": "no number",
+    "address": "西港區",
+    "site_type": "c"
+  },
+  {
+    "name": "本將軍前大士殿",
+    "location": "ChIJM7wRdE94bjQRyhffmxvqi9c",
+    "stay": 30,
+    "image": "upload/本將軍前大士殿.png",
+    "phone number": "no number",
+    "address": "西港區",
+    "site_type": "c"
+  },
+  {
+    "name": "樹谷園區",
+    "location": "ChIJY052Iit6bjQRKxJTk9sjn64",
+    "stay": 60,
+    "image": "upload/風之谷.png",
+    "phone number": "no number",
+    "address": "新市區曼陀林路",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "南科湖濱雅舍幾米主題公園",
+    "location": "ChIJ_eyQecZ7bjQRTfziDu_lfNA",
+    "stay": 150,
+    "image": "upload/南科湖濱雅舍幾米主題公園.png",
+    "phone number": "no number",
+    "address": "善化區南科七路18號",
+    "site_type": "a,g"
+  },
+  {
+    "name": "安定湖",
+    "location": "ChIJ68pROsN7bjQRxvUn57eDKlo",
+    "stay": 30,
+    "image": "upload/安定湖.png",
+    "phone number": "no number",
+    "address": "善化區南科九路20號",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "樹谷生活科學館",
+    "location": "ChIJKZRyOc17bjQR-GXmPxN5hwo",
+    "stay": 150,
+    "image": "upload/樹谷生活科學館.png",
+    "phone number": "no number",
+    "address": "新市區堤塘港路30號",
+    "site_type": "b,d,g"
+  },
+  {
+    "name": "南關里遺址",
+    "location": "ChIJu4J44797bjQRMMQG5aOzM20",
+    "stay": 30,
+    "image": "upload/南關里遺址.png",
+    "phone number": "no number",
+    "address": "善化區南科八路12號",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "赤崁樓",
+    "location": "ChIJbYl7d2F2bjQRnFdvyMBuZfI",
+    "stay": 90,
+    "image": "upload/赤崁樓.png",
+    "phone number": "06 220 5647",
+    "address": "中西區民族路二段212號",
+    "site_type": "a,b"
+  },
+  {
+    "name": "安平古堡",
+    "location": "ChIJZ-TjeHN2bjQR8a3Jat0VHps",
+    "stay": 120,
+    "image": "upload/安平古堡.png",
+    "phone number": "06 226 7348",
+    "address": "安平區國勝路82號",
+    "site_type": "a,b,e"
+  },
+  {
+    "name": "台南廳長官邸",
+    "location": "ChIJ-TaudY52bjQR8tVca6KX0FU",
+    "stay": 60,
+    "image": "upload/台南廳長官邸.png",
+    "phone number": "no number",
+    "address": "東區育樂街197巷1號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "竹園岡",
+    "location": "ChIJ3UbX7412bjQR1jcrVpPy03c",
+    "stay": 30,
+    "image": "upload/竹園岡.png",
+    "phone number": "06 237 1206",
+    "address": "東區民族路一段1號",
+    "site_type": "b"
+  },
+  {
+    "name": "德慶溪",
+    "location": "ChIJe6gBh5J2bjQRZhkCZymcahM",
+    "stay": 30,
+    "image": "upload/德慶溪.png",
+    "phone number": "no number",
+    "address": "171 巷 號, No. 10, 勝利路, 東區",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "綠芝屋意麵",
+    "location": "ChIJD_7v2o12bjQRf5sosF-R4yY",
+    "stay": 25,
+    "image": "upload/綠芝屋意麵.png",
+    "phone number": "no number",
+    "address": "東區民族路一段31號",
+    "site_type": "j"
+  },
+  {
+    "name": "天壇",
+    "location": "ChIJGwsbZmJ2bjQRzVsgkZNHXAY",
+    "stay": 30,
+    "image": "upload/天壇.png",
+    "phone number": "06 222 7983",
+    "address": "中西區忠義路二段84巷16號",
+    "site_type": "c"
+  },
+  {
+    "name": "台南觀候所",
+    "location": "ChIJq7vR14l2bjQRhmlNkSlt5vk",
+    "stay": 30,
+    "image": "upload/台南觀候所.png",
+    "phone number": "06 345 9218",
+    "address": "中西區公園路21號",
+    "site_type": "b"
+  },
+  {
+    "name": "文學館",
+    "location": "ChIJcfdsmWJ2bjQRSb4_CGnFR0E",
+    "stay": 90,
+    "image": "upload/文學館.png",
+    "phone number": "06 221 7201",
+    "address": "中西區中正路1號",
+    "site_type": "b"
+  },
+  {
+    "name": "莉莉冰果室",
+    "location": "ChIJXytwGH12bjQRA9lZo8M4uJs",
+    "stay": 30,
+    "image": "upload/莉莉冰果室.png",
+    "phone number": "06 213 7522",
+    "address": "中西區府前路一段199號",
+    "site_type": "a,j"
+  },
+  {
+    "name": "普濟殿",
+    "location": "ChIJtVJ6zWZ2bjQRfxOI8R_fo9E",
+    "stay": 30,
+    "image": "upload/普濟殿.png",
+    "phone number": "06 226 8774",
+    "address": "中西區普濟街79號",
+    "site_type": "c"
+  },
+  {
+    "name": "暖暖蛇",
+    "location": "ChIJE3qwx2Z2bjQR_mL_JecuTRc",
+    "stay": 90,
+    "image": "upload/暖暖蛇.png",
+    "phone number": "06 221 6569",
+    "address": "中西區普濟街53號",
+    "site_type": "b,i,j"
+  },
+  {
+    "name": "燒貨美食",
+    "location": "ChIJW_EnxGZ2bjQRS-Rl8TucG1Y",
+    "stay": 30,
+    "image": "upload/燒貨美食.png",
+    "phone number": "06 226 9107",
+    "address": "中西區海安路二段296巷20號",
+    "site_type": "a,j"
+  },
+  {
+    "name": "捉鳳凰",
+    "location": "ChIJsUuwxWZ2bjQRMFHt2dxU3qE",
+    "stay": 30,
+    "image": "upload/捉鳳凰.png",
+    "phone number": "0980 716 478",
+    "address": "中西區海安路二段296巷",
+    "site_type": "b"
+  },
+  {
+    "name": "水仙宮市場",
+    "location": "ChIJSUTgSNJyBxQRbGwMYjzDYUU",
+    "stay": 30,
+    "image": "upload/水仙宮市場.png",
+    "phone number": "06 221 6737",
+    "address": "中西區海安路二段230號",
+    "site_type": "a,j"
+  },
+  {
+    "name": "宮後街",
+    "location": "ChIJRwgOAWR2bjQRqXoQJd498UY",
+    "stay": 30,
+    "image": "upload/宮後街.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "b,i"
+  },
+  {
+    "name": "抽籤巷",
+    "location": "ChIJc6mWa1F2bjQRARCLEuxLqBg",
+    "stay": 30,
+    "image": "upload/抽籤巷.png",
+    "phone number": "06 220 0201",
+    "address": "中西區新美街120號",
+    "site_type": "i"
+  },
+  {
+    "name": "算命巷",
+    "location": "ChIJu48X1mN2bjQR2d3WAAS29lU",
+    "stay": 30,
+    "image": "upload/算命巷.png",
+    "phone number": "06 223 3459",
+    "address": "中西區永福路二段227巷11號",
+    "site_type": "i"
+  },
+  {
+    "name": "武廟",
+    "location": "ChIJ_3sZgmF2bjQRJqNT18Vuoa0",
+    "stay": 30,
+    "image": "upload/武廟.png",
+    "phone number": "06 220 2390",
+    "address": "中西區永福路二段229號",
+    "site_type": "c"
+  },
+  {
+    "name": "普羅民遮城",
+    "location": "ChIJbYl7d2F2bjQRnFdvyMBuZfI",
+    "stay": 90,
+    "image": "upload/普羅民遮城.png",
+    "phone number": "06 220 5647",
+    "address": "中西區民族路二段212號",
+    "site_type": "a,b"
+  },
+  {
+    "name": "米街",
+    "location": "ChIJwY_AZ2F2bjQRbCv8FYxPHvY",
+    "stay": 30,
+    "image": "upload/米街.png",
+    "phone number": "0912 808 353",
+    "address": "中西區新美街",
+    "site_type": "i"
+  },
+  {
+    "name": "五妃廟",
+    "location": "ChIJhwqMKn52bjQRjs-gz337hJY",
+    "stay": 30,
+    "image": "upload/五妃廟.png",
+    "phone number": "06 214 5665",
+    "address": "中西區五妃街201號",
+    "site_type": "c"
+  },
+  {
+    "name": "慶中街綠豆湯",
+    "location": "ChIJqxbVh4B2bjQRvJhYPVGPY5A",
+    "stay": 15,
+    "image": "upload/慶中街綠豆湯.png",
+    "phone number": "06 213 7868",
+    "address": "中西區慶中街16號",
+    "site_type": "i,j"
+  },
+  {
+    "name": "小棧杏仁豆腐冰",
+    "location": "ChIJ0wuBgYB2bjQRSNhC6YpyTl8",
+    "stay": 30,
+    "image": "upload/小棧杏仁豆腐冰.png",
+    "phone number": "06 215 8157",
+    "address": "中西區五妃街206號",
+    "site_type": "j"
+  },
+  {
+    "name": "奇美博物館",
+    "location": "ChIJq6qqqnp0bjQRpvTHZeYTjKg",
+    "stay": 180,
+    "image": "upload/奇美博物館.png",
+    "phone number": "06 266 0808",
+    "address": "仁德區文華路二段66號",
+    "site_type": "a,b,d,g,h"
+  },
+  {
+    "name": "十鼓文化園區",
+    "location": "ChIJA0P9eml0bjQRAFSV5Tjabuc",
+    "stay": 210,
+    "image": "upload/十鼓文化園區.png",
+    "phone number": "06 266 2225",
+    "address": "仁德區文華路二段326號",
+    "site_type": "a,b,g,h"
+  },
+  {
+    "name": "比漾貨櫃市集",
+    "location": "ChIJwysq92R2bjQReXhtMeFGgVk",
+    "stay": 30,
+    "image": "upload/比漾貨櫃市集.png",
+    "phone number": "no number",
+    "address": "中西區正興街",
+    "site_type": "a,b,f"
+  },
+  {
+    "name": "林百貨",
+    "location": "ChIJrZJc4GJ2bjQRa3BRyIgtRcM",
+    "stay": 40,
+    "image": "upload/林百貨.png",
+    "phone number": "06 221 3000",
+    "address": "中西區忠義路二段63號",
+    "site_type": "b,f"
+  },
+  {
+    "name": "台南移民署",
+    "location": "ChIJGR0sjXF2bjQRqyYSK2M2rwk",
+    "stay": 40,
+    "image": "upload/台南移民署.png",
+    "phone number": "06 293 7641",
+    "address": "中西區府前路二段370號",
+    "site_type": "a"
+  },
+  {
+    "name": "文章牛肉湯",
+    "location": "ChIJDXFiuxp2bjQRSldJ3YTNG8M",
+    "stay": 30,
+    "image": "upload/文章牛肉湯.png",
+    "phone number": "06 228 4626",
+    "address": "安平區安平路300號",
+    "site_type": "j"
+  },
+  {
+    "name": "安平老街",
+    "location": "ChIJ_____wN2bjQRIOio8uGV_Og",
+    "stay": 120,
+    "image": "upload/安平老街.png",
+    "phone number": "no number",
+    "address": "安平區延平街",
+    "site_type": "a,b,g,i"
+  },
+  {
+    "name": "漁光島",
+    "location": "ChIJ87qwKf11bjQRMuEmcom6RX8",
+    "stay": 45,
+    "image": "upload/漁光島.png",
+    "phone number": "no number",
+    "address": "安平區漁光路114號",
+    "site_type": "a,d,e,g"
+  },
+  {
+    "name": "武聖夜市",
+    "location": "ChIJc9IkfkJ2bjQRD5USkR9J1ck",
+    "stay": 40,
+    "image": "upload/武聖夜市.png",
+    "phone number": "0929 188 085",
+    "address": "中西區武聖路69巷",
+    "site_type": "a,j"
+  },
+  {
+    "name": "司法博物館",
+    "location": "ChIJybxK6nx2bjQRIyrLFyqs3s0",
+    "stay": 120,
+    "image": "upload/司法博物館.png",
+    "phone number": "06 214 7173",
+    "address": "中西區府前路一段307號",
+    "site_type": "b"
+  },
+  {
+    "name": "四草綠色隧道",
+    "location": "ChIJt0-ISOvYbTQRhg3rUteyQIw",
+    "stay": 60,
+    "image": "upload/四草綠色隧道.png",
+    "phone number": "06 284 1610",
+    "address": "安南區大眾路360號",
+    "site_type": "a,e,g"
+  },
+  {
+    "name": "七股",
+    "location": "ChIJx41NYQXXbTQRkxL3t5elpl8",
+    "stay": 30,
+    "image": "upload/七股.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,e,g"
+  },
+  {
+    "name": "井仔腳",
+    "location": "ChIJt9-iniwrbDQRKr-JQj4B41s",
+    "stay": 60,
+    "image": "upload/井仔腳.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,d,e"
+  },
+  {
+    "name": "北門",
+    "location": "ChIJA-Hbpe0qbDQR_J9Ux-VBsSE",
+    "stay": 30,
+    "image": "upload/北門.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "g"
+  },
+  {
+    "name": "林初碑",
+    "location": "ChIJc5rfI8ORbjQR09fSnmIu0cw",
+    "stay": 30,
+    "image": "upload/林初碑.png",
+    "phone number": "06 685 5102",
+    "address": "白河區玉豐里林初埤",
+    "site_type": "d"
+  },
+  {
+    "name": "二寮",
+    "location": "ChIJYV0zmBVvbjQRlRzeXZTBmOY",
+    "stay": 30,
+    "image": "upload/二寮.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,d"
+  },
+  {
+    "name": "草山月世界",
+    "location": "ChIJD0kUZydvbjQRVntTkf9hpsw",
+    "stay": 30,
+    "image": "upload/草山月世界.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "大目降",
+    "location": "ChIJsURYDwdwbjQRvV10Kl8WZaE",
+    "stay": 30,
+    "image": "upload/大目降.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "g"
+  },
+  {
+    "name": "台積電",
+    "location": "ChIJayBXVMd7bjQR_BllH-ReIOI",
+    "stay": 30,
+    "image": "upload/台積電.png",
+    "phone number": "06 505 6688",
+    "address": "新市區南科北路1號",
+    "site_type": "g"
+  },
+  {
+    "name": "土地銀行",
+    "location": "ChIJ20ynGYt2bjQRVQ9g5jRlaYw",
+    "stay": 30,
+    "image": "upload/土地銀行.png",
+    "phone number": "06 221 0071",
+    "address": "北區公園路128之7號",
+    "site_type": "b"
+  },
+  {
+    "name": "台灣文學館",
+    "location": "ChIJcfdsmWJ2bjQRSb4_CGnFR0E",
+    "stay": 90,
+    "image": "upload/台灣文學館.png",
+    "phone number": "06 221 7201",
+    "address": "中西區中正路1號",
+    "site_type": "b"
+  },
+  {
+    "name": "武德殿",
+    "location": "ChIJe4ZTPH12bjQRIcF_xZ0kgTs",
+    "stay": 30,
+    "image": "upload/武德殿.png",
+    "phone number": "no number",
+    "address": "中西區忠義路二段2號",
+    "site_type": "b"
+  },
+  {
+    "name": "山林事務所",
+    "location": "ChIJ77e_NH12bjQRWqEsQyBrOSM",
+    "stay": 30,
+    "image": "upload/山林事務所.png",
+    "phone number": "04 2229 5848",
+    "address": "中西區友愛街8之3號",
+    "site_type": "g"
+  },
+  {
+    "name": "愛國婦人館",
+    "location": "ChIJ8Q1AaX12bjQRyzRE5ckbBbI",
+    "stay": 150,
+    "image": "upload/愛國婦人館.png",
+    "phone number": "06 214 9510",
+    "address": "中西區府前路一段197號",
+    "site_type": "b"
+  },
+  {
+    "name": "舊警察署",
+    "location": "ChIJEW-wHYh2bjQRMcOg9y-LPFk",
+    "stay": 120,
+    "image": "upload/舊警察署.png",
+    "phone number": "06 221 8881",
+    "address": "中西區南門路37號",
+    "site_type": "b"
+  },
+  {
+    "name": "大天后宮",
+    "location": "ChIJje2QZmF2bjQRR6NbMsm6hTY",
+    "stay": 30,
+    "image": "upload/大天后宮.png",
+    "phone number": "06 221 1178",
+    "address": "中西區永福路二段227巷18號",
+    "site_type": "c"
+  },
+  {
+    "name": "千畦種子博物館",
+    "location": "ChIJ5bF_ecJ2bjQR0AK5Dn7KFD4",
+    "stay": 30,
+    "image": "upload/千畦種子博物館.png",
+    "phone number": "06 236 0035",
+    "address": "北區東豐路451巷29-1號",
+    "site_type": "b,d"
+  },
+  {
+    "name": "綠俬旅",
+    "location": "ChIJ90sjMmR2bjQRGaytC3oHTJ4",
+    "stay": 30,
+    "image": "upload/綠俬旅.png",
+    "phone number": "0963 597 828",
+    "address": "中西區和平街56號",
+    "site_type": "b"
+  },
+  {
+    "name": "花藝工作室",
+    "location": "ChIJ90sjMmR2bjQRGaytC3oHTJ4",
+    "stay": 30,
+    "image": "upload/花藝工作室.png",
+    "phone number": "0963 597 828",
+    "address": "中西區和平街56號",
+    "site_type": "b"
+  },
+  {
+    "name": "保安路",
+    "location": "ChIJoWgfkXp2bjQRk6RZtTiaqI4",
+    "stay": 30,
+    "image": "upload/保安路.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "j"
+  },
+  {
+    "name": "永樂市場",
+    "location": "ChIJV_uMsWZ2bjQRL7udKmCf8SU",
+    "stay": 30,
+    "image": "upload/永樂市場.png",
+    "phone number": "06 224 3134",
+    "address": "中西區國華街三段",
+    "site_type": "j"
+  },
+  {
+    "name": "花園夜市",
+    "location": "ChIJx7B27Vl2bjQRXNQQFasKOKI",
+    "stay": 60,
+    "image": "upload/花園夜市.png",
+    "phone number": "06 358 3867",
+    "address": "北區海安路三段533號",
+    "site_type": "h,j"
+  },
+  {
+    "name": "巴克禮公園",
+    "location": "ChIJMwoLNSF0bjQRPDMC-i3Tuy0",
+    "stay": 60,
+    "image": "upload/巴克禮公園.png",
+    "phone number": "06 238 9673",
+    "address": "東區崇明里文化中心對面",
+    "site_type": "a,d"
+  },
+  {
+    "name": "奇美食品工廠",
+    "location": "ChIJyfT-ikV0bjQR4X91BVAuHpE",
+    "stay": 90,
+    "image": "upload/奇美食品工廠.png",
+    "phone number": "06 269 8588",
+    "address": "仁德區機場路1008號",
+    "site_type": "a"
+  },
+  {
+    "name": "台江學園",
+    "location": "ChIJBdGLtsHYbTQRntUrB7zrPso",
+    "stay": 30,
+    "image": "upload/台江學園.png",
+    "phone number": "06 284 2600",
+    "address": "安南區四草大道681巷118號",
+    "site_type": "d,e,g"
+  },
+  {
+    "name": "安平樹屋",
+    "location": "ChIJo7avkR12bjQR9Gvc2sRtx40",
+    "stay": 60,
+    "image": "upload/安平樹屋.png",
+    "phone number": "06 391 3901",
+    "address": "安平區古堡街108號",
+    "site_type": "b,d"
+  },
+  {
+    "name": "德陽艦軍艦博物館",
+    "location": "ChIJucicGR12bjQR6Gm5waWBdHQ",
+    "stay": 60,
+    "image": "upload/德陽艦軍艦博物館.png",
+    "phone number": "06 293 2925",
+    "address": "安平區安億路115號",
+    "site_type": "a,e"
+  },
+  {
+    "name": "德陽艦軍園區",
+    "location": "ChIJucicGR12bjQR6Gm5waWBdHQ",
+    "stay": 60,
+    "image": "upload/德陽艦軍艦博物館.png",
+    "phone number": "06 293 2925",
+    "address": "安平區安億路115號",
+    "site_type": "a,e"
+  },
+  {
+    "name": "虱目魚主題館",
+    "location": "ChIJQ1hB3v91bjQR__MjGJViSFw",
+    "stay": 60,
+    "image": "upload/虱目魚主題館.png",
+    "phone number": "06 293 1097",
+    "address": "安平區光州路88號",
+    "site_type": "b"
+  },
+  {
+    "name": "黑橋牌香腸博物館",
+    "location": "ChIJOaMiYd51bjQR5h4F5D6kcJk",
+    "stay": 60,
+    "image": "upload/黑橋牌香腸博物館.png",
+    "phone number": "06 261 6990",
+    "address": "南區新忠路2-1號",
+    "site_type": "b"
+  },
+  {
+    "name": "鹽山",
+    "location": "ChIJTRbkzL_WbTQRTrfGfckHIrc",
+    "stay": 60,
+    "image": "upload/鹽山.png",
+    "phone number": "06 780 0511#49",
+    "address": "七股區鹽埕里66號",
+    "site_type": "g"
+  },
+  {
+    "name": "鹽博物館",
+    "location": "ChIJb-a-wtbXbTQRBqIPpOgvl18",
+    "stay": 60,
+    "image": "upload/鹽博物館.png",
+    "phone number": "06 780 0698",
+    "address": "七股區鹽埕69號",
+    "site_type": "g"
+  },
+  {
+    "name": "錢來也雜貨店",
+    "location": "ChIJaXa719oqbDQRMk9Z9ePw3tE",
+    "stay": 60,
+    "image": "upload/錢來也雜貨店.png",
+    "phone number": "06 786 2627",
+    "address": "北門區北門297之1號",
+    "site_type": "b,j"
+  },
+  {
+    "name": "南鯤鯓代天府",
+    "location": "ChIJkxNdo40qbDQRefOk_8E5FU8",
+    "stay": 30,
+    "image": "upload/南鯤鯓代天府.png",
+    "phone number": "06 786 3711",
+    "address": "北門區鯤江里976號",
+    "site_type": "c,e"
+  },
+  {
+    "name": "七股觀海樓",
+    "location": "ChIJATOpE9DWbTQRNhN0O7ItoYs",
+    "stay": 45,
+    "image": "upload/七股觀海樓.png",
+    "phone number": "06 787 2611",
+    "address": "七股區",
+    "site_type": "e"
+  },
+  {
+    "name": "佳福寺",
+    "location": "ChIJWTuxvqd_bjQRydggUKKfcoY",
+    "stay": 30,
+    "image": "upload/佳福寺.png",
+    "phone number": "06 726 3011",
+    "address": "佳里區營頂里102號",
+    "site_type": "c"
+  },
+  {
+    "name": "新營美術園區",
+    "location": "ChIJO96rzNCFbjQRBtB16clMnHY",
+    "stay": 60,
+    "image": "upload/新營美術園區.png",
+    "phone number": "06 632 2231",
+    "address": "新營區民生路",
+    "site_type": "g"
+  },
+  {
+    "name": "無米樂",
+    "location": "ChIJCxNsqlOFbjQRnDa90kIlSCE",
+    "stay": 30,
+    "image": "upload/無米樂.png",
+    "phone number": "06 662 2725",
+    "address": "後壁區菁寮里75號",
+    "site_type": "g"
+  },
+  {
+    "name": "關子嶺溫泉",
+    "location": "ChIJSfNljJ2NbjQRKpPO1fEKKsk",
+    "stay": 60,
+    "image": "upload/關子嶺溫泉.png",
+    "phone number": "06 682 2344",
+    "address": "白河區",
+    "site_type": "d"
+  },
+  {
+    "name": "關仔嶺溫泉",
+    "location": "ChIJSfNljJ2NbjQRKpPO1fEKKsk",
+    "stay": 60,
+    "image": "upload/關仔嶺溫泉.png",
+    "phone number": "06 682 2344",
+    "address": "白河區",
+    "site_type": "d"
+  },
+  {
+    "name": "土溝農村美術館",
+    "location": "ChIJ1VTmIyqQbjQRK8TT9ZpZyYA",
+    "stay": 30,
+    "image": "upload/土溝農村美術館.png",
+    "phone number": "06 687 1322",
+    "address": "後壁區土溝里32號",
+    "site_type": "g"
+  },
+  {
+    "name": "胡厝寮彩繪村",
+    "location": "ChIJmW557wx8bjQR-5bCdyiwEt4",
+    "stay": 90,
+    "image": "upload/胡厝寮彩繪村.png",
+    "phone number": "no number",
+    "address": "善化區",
+    "site_type": "g"
+  },
+  {
+    "name": "善化彩繪村",
+    "location": "ChIJmW557wx8bjQR-5bCdyiwEt4",
+    "stay": 90,
+    "image": "upload/善化彩繪村.png",
+    "phone number": "no number",
+    "address": "善化區",
+    "site_type": "g"
+  },
+  {
+    "name": "南瀛天文教育館",
+    "location": "ChIJl64-Rn9jbjQRjciFlk2qCt0",
+    "stay": 180,
+    "image": "upload/南瀛天文教育館.png",
+    "phone number": "06 576 1076",
+    "address": "大內區曲溪里34-2號",
+    "site_type": "g,h"
+  },
+  {
+    "name": "奇美善化農場",
+    "location": "ChIJ7XVVmqR8bjQRNtgZ_hN5Hik",
+    "stay": 30,
+    "image": "upload/奇美善化農場.png",
+    "phone number": "06 589 4800",
+    "address": "新市區中心東路12號",
+    "site_type": "d"
+  },
+  {
+    "name": "迎曦湖",
+    "location": "ChIJI_lTwk16bjQRYcyIsPb1its",
+    "stay": 30,
+    "image": "upload/迎曦湖.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "幾米公園",
+    "location": "ChIJdTXpxtvkZzQRYSmxKq3qjSI",
+    "stay": 60,
+    "image": "upload/幾米公園.png",
+    "phone number": "03 931 2152",
+    "address": "宜蘭市宜興路一段240號",
+    "site_type": "d"
+  },
+  {
+    "name": "台灣歷史博物館",
+    "location": "ChIJC7CiCuJ5bjQR0UEDGKs4KF0",
+    "stay": 120,
+    "image": "upload/台灣歷史博物館.png",
+    "phone number": "06 356 8889",
+    "address": "安南區長和路一段250號",
+    "site_type": "b"
+  },
+  {
+    "name": "台灣金屬創意館",
+    "location": "ChIJkRuQt5hwbjQRzegFDP_Dvsw",
+    "stay": 90,
+    "image": "upload/台灣金屬創意館.png",
+    "phone number": "06 203 0728",
+    "address": "永康區永科環路598號",
+    "site_type": "b"
+  },
+  {
+    "name": "虹泰水凝膠世界",
+    "location": "ChIJ-Y6sp0txbjQRBXKBfbv65Zk",
+    "stay": 120,
+    "image": "upload/虹泰水凝膠世界.png",
+    "phone number": "06 272 4880",
+    "address": "仁德區中正路三段523巷116號",
+    "site_type": "a"
+  },
+  {
+    "name": "西口小瑞士",
+    "location": "ChIJMdlinc2LbjQRq6hQa1dgxCs",
+    "stay": 30,
+    "image": "upload/西口小瑞士.png",
+    "phone number": "06 686 1393",
+    "address": "東山區南勢里南勢庄66號",
+    "site_type": "g"
+  },
+  {
+    "name": "六甲國小",
+    "location": "ChIJcynHmgyIbjQRXj9kv_wYliY",
+    "stay": 30,
+    "image": "upload/六甲國小.png",
+    "phone number": "06 698 2041",
+    "address": "六甲區中正路319號",
+    "site_type": "g"
+  },
+  {
+    "name": "鴨莊休閒農場",
+    "location": "ChIJRTLTlyB9bjQR0F9LrFwMu8M",
+    "stay": 30,
+    "image": "upload/鴨莊休閒農場.png",
+    "phone number": "06 690 0101",
+    "address": "官田區渡頭里三塊厝178-1號",
+    "site_type": "d,g"
+  },
+  {
+    "name": "正甡牧場",
+    "location": "ChIJRTLTlyB9bjQR0F9LrFwMu8M",
+    "stay": 30,
+    "image": "upload/正甡牧場.png",
+    "phone number": "06 690 0101",
+    "address": "官田區渡頭里三塊厝178-1號",
+    "site_type": "d"
+  },
+  {
+    "name": "虎頭埤",
+    "location": "ChIJ5cR9Fv9vbjQRLSiI-ISs55U",
+    "stay": 60,
+    "image": "upload/虎頭埤.png",
+    "phone number": "06 590 1325",
+    "address": "新化區中興路42巷36號",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "葉麥克炸雞",
+    "location": "ChIJ2cmfm3lwbjQRFOWll8q8uP4",
+    "stay": 20,
+    "image": "upload/葉麥克炸雞.png",
+    "phone number": "0953 477 901",
+    "address": "新化區忠孝路116-1號",
+    "site_type": "j"
+  },
+  {
+    "name": "新光里彩繪村",
+    "location": "ChIJ_zt-fTBubjQRRXOxY2qV7Hc",
+    "stay": 90,
+    "image": "upload/新光里彩繪村.png",
+    "phone number": "no number",
+    "address": "關廟區新光里",
+    "site_type": "i"
+  },
+  {
+    "name": "南瀛天文教育園區",
+    "location": "ChIJl64-Rn9jbjQRjciFlk2qCt0",
+    "stay": 180,
+    "image": "upload/南瀛天文教育園區.png",
+    "phone number": "06 576 1076",
+    "address": "大內區曲溪里34-2號",
+    "site_type": "d,g"
+  },
+  {
+    "name": "鹽田生態文化村",
+    "location": "ChIJBQEm4Y3YbTQRxGdhaUH04C8",
+    "stay": 90,
+    "image": "upload/鹽田生態文化村.png",
+    "phone number": "06 284 0073",
+    "address": "安南區大眾街101巷12號",
+    "site_type": "d,g"
+  },
+  {
+    "name": "北汕尾媽祖宮鹿耳門天后宮",
+    "location": "ChIJQwtjhvfYbTQRL3Gv_yRSotk",
+    "stay": 30,
+    "image": "upload/北汕尾媽祖宮鹿耳門天后宮.png",
+    "phone number": "06 284 1386",
+    "address": "安南區媽祖宮一街136號",
+    "site_type": "c"
+  },
+  {
+    "name": "四草野生動物保護區",
+    "location": "ChIJ8x-_7ozYbTQRRbbeX8wOtTY",
+    "stay": 30,
+    "image": "upload/四草野生動物保護區.png",
+    "phone number": "06 284 0073",
+    "address": "安南區",
+    "site_type": "d"
+  },
+  {
+    "name": "四草砲臺",
+    "location": "ChIJ2W_Fc8LYbTQRNcTq5AYJKdk",
+    "stay": 30,
+    "image": "upload/四草砲臺.png",
+    "phone number": "06 284 2600",
+    "address": "安南區顯草街一段381號",
+    "site_type": "e"
+  },
+  {
+    "name": "海靈佳城碑",
+    "location": "ChIJ2d5eyZTYbTQRc6Ug4I_YSpY",
+    "stay": 30,
+    "image": "upload/海靈佳城碑.png",
+    "phone number": "no number",
+    "address": "安南區",
+    "site_type": "e"
+  },
+  {
+    "name": "袖珍版亞馬遜河",
+    "location": "ChIJmcQYTOvYbTQRV1dYKJGbHaY",
+    "stay": 30,
+    "image": "upload/袖珍版亞馬遜河.png",
+    "phone number": "no number",
+    "address": "安南區四草里",
+    "site_type": "d,e"
+  },
+  {
+    "name": "四草大眾廟",
+    "location": "ChIJt0-ISOvYbTQRnwSP3yFs-T0",
+    "stay": 30,
+    "image": "upload/四草大眾廟.png",
+    "phone number": "06 284 1610",
+    "address": "安南區大眾路360號",
+    "site_type": "c"
+  },
+  {
+    "name": "小玉山",
+    "location": "ChIJy6rcsLxobjQRVkQCFMACdmU",
+    "stay": 30,
+    "image": "upload/小玉山.png",
+    "phone number": "no number",
+    "address": "左鎮區青瓜寮農路",
+    "site_type": "g"
+  },
+  {
+    "name": "青瓜寮林家鳳凰花土埆厝",
+    "location": "ChIJzbDxQpZpbjQRK6SQ65UN65g",
+    "stay": 30,
+    "image": "upload/青瓜寮林家鳳凰花土埆厝.png",
+    "phone number": "no number",
+    "address": "左鎮區草山里56號",
+    "site_type": "g"
+  },
+  {
+    "name": "心仔寮山",
+    "location": "ChIJMTR4cyhmbjQRX_GhnlmdHkM",
+    "stay": 30,
+    "image": "upload/心仔寮山.png",
+    "phone number": "no number",
+    "address": "南化區",
+    "site_type": "g"
+  },
+  {
+    "name": "明修堂",
+    "location": "ChIJB3-uTpQPbjQRKNiZJxfodGU",
+    "stay": 30,
+    "image": "upload/明修堂.png",
+    "phone number": "07 361 0779",
+    "address": "楠梓區後勁東路132巷15號",
+    "site_type": "c"
+  },
+  {
+    "name": "瑪夏兒原鄉農產",
+    "location": "ChIJq5KPebelbzQRjVnIUwoJkbM",
+    "stay": 30,
+    "image": "upload/瑪夏兒原鄉農產.png",
+    "phone number": "08 955 1900",
+    "address": "延平鄉泰平路87號",
+    "site_type": "g"
+  },
+  {
+    "name": "立品有機茶園",
+    "location": "ChIJd8JH_bWlbzQRCFUWeHQ2_3k",
+    "stay": 30,
+    "image": "upload/立品有機茶園.png",
+    "phone number": "08 955 1607",
+    "address": "永安村, 566 永安路七鄰, 鹿野鄉",
+    "site_type": "d"
+  },
+  {
+    "name": "永安玉龍泉步道",
+    "location": "ChIJDejodbalbzQRL5piXhnyQeM",
+    "stay": 30,
+    "image": "upload/永安玉龍泉步道.png",
+    "phone number": "08 955 2136",
+    "address": "台東縣鹿野鄉永安村永安路512號(對面入口)",
+    "site_type": "d"
+  },
+  {
+    "name": "玉龍泉生態步道",
+    "location": "ChIJSUijpLWlbzQR9gY8Pe3s-FQ",
+    "stay": 90,
+    "image": "upload/玉龍泉生態步道.png",
+    "phone number": "08 955 2224",
+    "address": "鹿野鄉南一路",
+    "site_type": "d"
+  },
+  {
+    "name": "天妃宮",
+    "location": "ChIJ802iEHhtbjQRRI4NVUi7dRo",
+    "stay": 30,
+    "image": "upload/天妃宮.png",
+    "phone number": "no number",
+    "address": "852 巷 270 號, 南雄南路, 關廟區",
+    "site_type": "c"
+  },
+  {
+    "name": "三官府",
+    "location": "ChIJqXj3F35ybjQR3OegPD8Qplg",
+    "stay": 30,
+    "image": "upload/三官府.png",
+    "phone number": "06 555 1553",
+    "address": "關廟區",
+    "site_type": "c"
+  },
+  {
+    "name": "竹亮山莊民宿",
+    "location": "ChIJweuRXb1rbjQRnEzn5SdxGJo",
+    "stay": 30,
+    "image": "upload/竹亮山莊民宿.png",
+    "phone number": "07 667 3963",
+    "address": "內門區8之3號",
+    "site_type": "b"
+  },
+  {
+    "name": "龍肚敬字亭",
+    "location": "ChIJPy6QlaFBbjQRqxNlzO__z7E",
+    "stay": 30,
+    "image": "upload/龍肚敬字亭.png",
+    "phone number": "no number",
+    "address": "美濃區龍肚街",
+    "site_type": "g"
+  },
+  {
+    "name": "情人谷瀑布",
+    "location": "ChIJ9Uoci31GbjQRvef4bIfd8II",
+    "stay": 30,
+    "image": "upload/情人谷瀑布.png",
+    "phone number": "080 060 0766",
+    "address": "茂林區",
+    "site_type": "d"
+  },
+  {
+    "name": "茂林谷瀑布",
+    "location": "ChIJC2Wj49tFbjQR8KmGCZLYUDQ",
+    "stay": 30,
+    "image": "upload/茂林谷瀑布.png",
+    "phone number": "no number",
+    "address": "茂林區羅木斯溪登山步道終點",
+    "site_type": "d"
+  },
+  {
+    "name": "木勝溪",
+    "location": "ChIJ148GrtlFbjQRVhmdSZhdPeM",
+    "stay": 30,
+    "image": "upload/木勝溪.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "羅木斯步道",
+    "location": "ChIJzz1-nsNFbjQRZk0AVS262hA",
+    "stay": 60,
+    "image": "upload/羅木斯步道.png",
+    "phone number": "080 060 0766",
+    "address": "茂林區",
+    "site_type": "d"
+  },
+  {
+    "name": "萬萬自然生態農場",
+    "location": "ChIJDV-VzpK6bzQR-98yu5BZ4n8",
+    "stay": 30,
+    "image": "upload/萬萬自然生態農場.png",
+    "phone number": "0979 211 102",
+    "address": "卑南鄉美農村",
+    "site_type": "d"
+  },
+  {
+    "name": "阿公店水庫自行車道",
+    "location": "ChIJAdGDQ3sSbjQRYpX41uxsDNc",
+    "stay": 30,
+    "image": "upload/阿公店水庫自行車道.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,d"
+  },
+  {
+    "name": "煙波吊橋",
+    "location": "ChIJY7nYZX4SbjQRM4SH7TJFxz4",
+    "stay": 30,
+    "image": "upload/煙波吊橋.png",
+    "phone number": "07 616 6137",
+    "address": "燕巢區阿公店水庫自行車道煙波橋",
+    "site_type": "d"
+  },
+  {
+    "name": "阿公店水庫風景區管理處",
+    "location": "ChIJd6K4Em4SbjQRvFNmdwCATOs",
+    "stay": 30,
+    "image": "upload/阿公店水庫風景區管理處.png",
+    "phone number": "07 616 5641",
+    "address": "燕巢區工程路1號",
+    "site_type": "d"
+  },
+  {
+    "name": "阿公店水庫-晨鐘暮鼓",
+    "location": "ChIJ_aDJMGUSbjQRFJr7DfYshz8",
+    "stay": 30,
+    "image": "upload/阿公店水庫-晨鐘暮鼓.png",
+    "phone number": "no number",
+    "address": "燕巢區阿公店水庫 自行車道",
+    "site_type": "d"
+  },
+  {
+    "name": "阿公店森林公園",
+    "location": "ChIJmzAb8ocNbjQR8MvdJwIGpb8",
+    "stay": 60,
+    "image": "upload/阿公店森林公園.png",
+    "phone number": "07 611 9599",
+    "address": "燕巢區菜寮路",
+    "site_type": "d"
+  },
+  {
+    "name": "汪汪無毒農園",
+    "location": "ChIJeeF1XLk_bjQRppwICOVUVAM",
+    "stay": 30,
+    "image": "upload/汪汪無毒農園.png",
+    "phone number": "0929 360 029",
+    "address": "高樹鄉新南村社北路12號",
+    "site_type": "d"
+  },
+  {
+    "name": "樂活氧生假日農場",
+    "location": "ChIJVVVVVYE_bjQRSO1xjh4Vp9E",
+    "stay": 30,
+    "image": "upload/樂活氧生假日農場.png",
+    "phone number": "0982 073 207",
+    "address": "高樹鄉鹽樹村",
+    "site_type": "d"
+  },
+  {
+    "name": "北辰宮",
+    "location": "ChIJQ3bwBSIbbjQRt3qNUG7nWqo",
+    "stay": 30,
+    "image": "upload/北辰宮.png",
+    "phone number": "no number",
+    "address": "鳳山區北辰街1號",
+    "site_type": "c"
+  },
+  {
+    "name": "正順廟",
+    "location": "ChIJRbgKpDdpBxQRrUv8Rm4w-RY",
+    "stay": 30,
+    "image": "upload/正順廟.png",
+    "phone number": "07 698 9982",
+    "address": "茄萣區崎漏路65號",
+    "site_type": "c"
+  },
+  {
+    "name": "新鳳宮",
+    "location": "ChIJATAocLA_bjQRi_eJ3nRWWuk",
+    "stay": 30,
+    "image": "upload/新鳳宮.png",
+    "phone number": "08 796 6095",
+    "address": "高樹鄉",
+    "site_type": "c"
+  },
+  {
+    "name": "威武殿",
+    "location": "ChIJtbxXpZk_bjQR6FQD2lohltM",
+    "stay": 30,
+    "image": "upload/威武殿.png",
+    "phone number": "no number",
+    "address": "高樹鄉",
+    "site_type": "c"
+  },
+  {
+    "name": "莎卡蘭山",
+    "location": "ChIJf234kGA4bjQRkkCvbMC7MIU",
+    "stay": 30,
+    "image": "upload/莎卡蘭山.png",
+    "phone number": "no number",
+    "address": "三地門鄉口社村",
+    "site_type": "d"
+  },
+  {
+    "name": "舊達魯馬克",
+    "location": "ChIJW1GN2xS3bzQR06H9Hyfmt00",
+    "stay": 30,
+    "image": "upload/舊達魯馬克.png",
+    "phone number": "no number",
+    "address": "卑南鄉東興村",
+    "site_type": "d"
+  },
+  {
+    "name": "蚵仔寮海堤",
+    "location": "ChIJMboAW7MIbjQRQuPeoKUuXwM",
+    "stay": 30,
+    "image": "upload/蚵仔寮海堤.png",
+    "phone number": "no number",
+    "address": "梓官區通安路305巷10號",
+    "site_type": "e"
+  },
+  {
+    "name": "蚵仔寮週四觀光夜市",
+    "location": "ChIJc2Nr_rQIbjQRrrVWUJYJrns",
+    "stay": 90,
+    "image": "upload/蚵仔寮週四觀光夜市.png",
+    "phone number": "no number",
+    "address": "梓官區光明路130巷",
+    "site_type": "e"
+  },
+  {
+    "name": "仁武後安彩繪巷",
+    "location": "ChIJNcoD_CAQbjQRadMwILDXPEo",
+    "stay": 90,
+    "image": "upload/仁武後安彩繪巷.png",
+    "phone number": "no number",
+    "address": "仁武區安樂一街169巷",
+    "site_type": "i"
+  },
+  {
+    "name": "仁武光之塔",
+    "location": "ChIJ05JnFAMQbjQRV9Ia8H67rR8",
+    "stay": 30,
+    "image": "upload/仁武光之塔.png",
+    "phone number": "no number",
+    "address": "仁武區仁和街與, 水管路, 交叉口",
+    "site_type": "a"
+  },
+  {
+    "name": "佳美居休閒牧場",
+    "location": "ChIJIdYh7_48bjQRL--JB-oscSk",
+    "stay": 30,
+    "image": "upload/佳美居休閒牧場.png",
+    "phone number": "0910 278 972",
+    "address": "之 50 號, No. 215, 信義路, 長治鄉",
+    "site_type": "d"
+  },
+  {
+    "name": "靈宵寶殿",
+    "location": "ChIJT7HdIy9xbjQRDhKFY7jxvW4",
+    "stay": 30,
+    "image": "upload/靈宵寶殿.png",
+    "phone number": "06 272 8329",
+    "address": "永康區永大路二段103巷8號",
+    "site_type": "c"
+  },
+  {
+    "name": "佳瑪產業道路往真笠山",
+    "location": "ChIJ7bnCYFA6bjQRZi7dI67Kn2E",
+    "stay": 30,
+    "image": "upload/佳瑪產業道路往真笠山.png",
+    "phone number": "080 080 0121",
+    "address": "瑪家鄉佳瑪道路44號",
+    "site_type": "g"
+  },
+  {
+    "name": "青鳥",
+    "location": "ChIJd4wR53h2bjQRfmZswsLfLEY",
+    "stay": 30,
+    "image": "upload/青鳥.png",
+    "phone number": "06 214 6930",
+    "address": "中西區西門路一段474號",
+    "site_type": "b"
+  },
+  {
+    "name": "訓風砲台",
+    "location": "ChIJq6b2W0EbbjQRrkmJagtcUzo",
+    "stay": 30,
+    "image": "upload/訓風砲台.png",
+    "phone number": "no number",
+    "address": "鳳山區",
+    "site_type": "e"
+  },
+  {
+    "name": "東港溪萬巒自行車步道",
+    "location": "ChIJMVQ-iEwibjQRwmMASAuzmnw",
+    "stay": 30,
+    "image": "upload/東港溪萬巒自行車步道.png",
+    "phone number": "08 781 2460",
+    "address": "硫磺村東港溪畔",
+    "site_type": "d"
+  },
+  {
+    "name": "美和村曾家夥房",
+    "location": "ChIJqQMJfVsibjQR3U1RakpbKRY",
+    "stay": 30,
+    "image": "upload/美和村曾家夥房.png",
+    "phone number": "no number",
+    "address": "內埔鄉海平路28號號",
+    "site_type": "g"
+  },
+  {
+    "name": "硫磺琦護岸",
+    "location": "ChIJA0wOMAIjbjQRv3JEKVHFhgU",
+    "stay": 90,
+    "image": "upload/硫磺琦護岸.png",
+    "phone number": "no number",
+    "address": "內埔鄉美和村",
+    "site_type": "e"
+  },
+  {
+    "name": "萬巒彩繪吊橋",
+    "location": "ChIJgXVmwUwibjQR_pQQ5lBwq5U",
+    "stay": 30,
+    "image": "upload/萬巒彩繪吊橋.png",
+    "phone number": "no number",
+    "address": "萬巒鄉硫磺村東港溪",
+    "site_type": "g"
+  },
+  {
+    "name": "佳泰公路",
+    "location": "ChIJI2f66_0kbjQRncnm8RX3Oco",
+    "stay": 30,
+    "image": "upload/佳泰公路.png",
+    "phone number": "08 732 2156",
+    "address": "泰武鄉",
+    "site_type": "g"
+  },
+  {
+    "name": "東海村古厝",
+    "location": "ChIJPy_6KYjecTQR7FT-Cw35HCk",
+    "stay": 30,
+    "image": "upload/東海村古厝.png",
+    "phone number": "no number",
+    "address": "枋寮鄉",
+    "site_type": "g"
+  },
+  {
+    "name": "崁馬腳",
+    "location": "ChIJK6yK9tLUcTQR90_CX4hnd0E",
+    "stay": 30,
+    "image": "upload/崁馬腳.png",
+    "phone number": "no number",
+    "address": "大武鄉金龍路46號",
+    "site_type": "g"
+  },
+  {
+    "name": "大武彩虹村",
+    "location": "ChIJ9cnvJykrcDQRvI2i2UIkTBo",
+    "stay": 20,
+    "image": "upload/大武彩虹村.png",
+    "phone number": "08 979 1340",
+    "address": "大武鄉大武街10號",
+    "site_type": "g"
+  },
+  {
+    "name": "金龍湖",
+    "location": "ChIJ8_V09MvUcTQRue7aAHLWlNY",
+    "stay": 30,
+    "image": "upload/金龍湖.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "金龍湖休憩區",
+    "location": "ChIJc0-m4c3UcTQR3aLWfHV4Pug",
+    "stay": 45,
+    "image": "upload/金龍湖休憩區.png",
+    "phone number": "08 979 1340",
+    "address": "大武鄉尚武村",
+    "site_type": "d"
+  },
+  {
+    "name": "大武水庫",
+    "location": "ChIJc0-m4c3UcTQR3aLWfHV4Pug",
+    "stay": 45,
+    "image": "upload/大武水庫.png",
+    "phone number": "08 979 1340",
+    "address": "大武鄉尚武村",
+    "site_type": "d"
+  },
+  {
+    "name": "大武觀海步道",
+    "location": "ChIJLbTnMCkrcDQRGAmHI2NQq0U",
+    "stay": 60,
+    "image": "upload/大武觀海步道.png",
+    "phone number": "08 979 1340",
+    "address": "大武鄉",
+    "site_type": "e"
+  },
+  {
+    "name": "大武國家森林步道",
+    "location": "ChIJG2PsGCkrcDQRVuuj3mSw2ME",
+    "stay": 30,
+    "image": "upload/大武國家森林步道.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "厚石群礁",
+    "location": "ChIJ-wE38urvcTQRgUqp_XdXNUM",
+    "stay": 30,
+    "image": "upload/厚石群礁.png",
+    "phone number": "08 886 1461",
+    "address": "琉球鄉",
+    "site_type": "d"
+  },
+  {
+    "name": "鷹仔嘴山",
+    "location": "ChIJJycdoEpDbzQRx-Uy7IQvx-g",
+    "stay": 30,
+    "image": "upload/鷹仔嘴山.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "觀音石",
+    "location": "ChIJOeGqj8HvcTQRd2A48LEGT4Q",
+    "stay": 30,
+    "image": "upload/觀音石.png",
+    "phone number": "08 861 2405#115",
+    "address": "琉球鄉",
+    "site_type": "d"
+  },
+  {
+    "name": "海子口",
+    "location": "ChIJwzKXwsLvcTQR3xIJSk7OMfg",
+    "stay": 30,
+    "image": "upload/海子口.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "e"
+  },
+  {
+    "name": "南田百年夫妻樹",
+    "location": "ChIJJZf0UcrScTQRdYFpfUkrHrY",
+    "stay": 30,
+    "image": "upload/南田百年夫妻樹.png",
+    "phone number": "no number",
+    "address": "達仁鄉斯路博吉橋",
+    "site_type": "d"
+  },
+  {
+    "name": "休憩涼亭",
+    "location": "ChIJh1x64c_ScTQR7HeV9jAk4H4",
+    "stay": 30,
+    "image": "upload/休憩涼亭.png",
+    "phone number": "no number",
+    "address": "達仁鄉南田村",
+    "site_type": "b"
+  },
+  {
+    "name": "南田人文景觀觀景台",
+    "location": "ChIJJeY4ldHScTQRjnc-8BdSveA",
+    "stay": 30,
+    "image": "upload/南田人文景觀觀景台.png",
+    "phone number": "no number",
+    "address": "達仁鄉南田村",
+    "site_type": "d"
+  },
+  {
+    "name": "南田石秘境",
+    "location": "ChIJkWUxjs3ScTQRfy7RkHmnqF8",
+    "stay": 30,
+    "image": "upload/南田石秘境.png",
+    "phone number": "no number",
+    "address": "達仁鄉南田村",
+    "site_type": "d"
+  },
+  {
+    "name": "南田觀景台",
+    "location": "ChIJJeY4ldHScTQRjnc-8BdSveA",
+    "stay": 30,
+    "image": "upload/南田觀景台.png",
+    "phone number": "no number",
+    "address": "達仁鄉南田村",
+    "site_type": "d"
+  },
+  {
+    "name": "南田部落",
+    "location": "ChIJDyuQ5dPScTQR1mu2fXwEjzU",
+    "stay": 30,
+    "image": "upload/南田部落.png",
+    "phone number": "no number",
+    "address": "達仁鄉台26線",
+    "site_type": "d"
+  },
+  {
+    "name": "入德之門",
+    "location": "ChIJDYWPTX12bjQRH4M2QE2VA-s",
+    "stay": 30,
+    "image": "upload/入德之門.png",
+    "phone number": "no number",
+    "address": "中西區南門路2號",
+    "site_type": "b"
+  },
+  {
+    "name": "臺南文化創意產業園區",
+    "location": "ChIJo6dL64x2bjQRl3sP23mHafk",
+    "stay": 180,
+    "image": "upload/臺南文化創意產業園區.png",
+    "phone number": "06 222 2681",
+    "address": "東區北門路二段16號",
+    "site_type": "b"
+  },
+  {
+    "name": "台南河岸包棟公寓",
+    "location": "ChIJ6-K0Nk52bjQRaT08AlqcfN4",
+    "stay": 30,
+    "image": "upload/台南河岸包棟公寓.png",
+    "phone number": "0971 258 733",
+    "address": "北區中華北路一段",
+    "site_type": "b"
+  },
+  {
+    "name": "樹之谷",
+    "location": "ChIJKZRyOc17bjQR-GXmPxN5hwo",
+    "stay": 30,
+    "image": "upload/樹之谷.png",
+    "phone number": "no number",
+    "address": "新市區堤塘港路30號",
+    "site_type": "b"
+  },
+  {
+    "name": "走馬瀨農場",
+    "location": "ChIJFeLZsNBjbjQRFb6ZXzB4mO4",
+    "stay": 30,
+    "image": "upload/走馬瀨農場.png",
+    "phone number": "06 576 0121",
+    "address": "大內區其子瓦60號",
+    "site_type": "a,d,g"
+  },
+  {
+    "name": "梅嶺",
+    "location": "ChIJYaShBHP1bjQRxJphdZ3zQYE",
+    "stay": 30,
+    "image": "upload/梅嶺.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "統一獅主場",
+    "location": "ChIJLy3ycYB2bjQRbS1QV9aufMA",
+    "stay": 30,
+    "image": "upload/統一獅主場.png",
+    "phone number": "06 215 9852",
+    "address": "南區健康路一段257號",
+    "site_type": "a"
+  },
+  {
+    "name": "金華府",
+    "location": "ChIJm0DtKmR2bjQRfdtZDkGqHaU",
+    "stay": 30,
+    "image": "upload/金華府.png",
+    "phone number": "06 222 4836",
+    "address": "中西區神農街71號",
+    "site_type": "c"
+  },
+  {
+    "name": "風神廟",
+    "location": "ChIJNaqC2mV2bjQREZmy3DOVuYI",
+    "stay": 30,
+    "image": "upload/風神廟.png",
+    "phone number": "06 227 7540",
+    "address": "中西區民權路三段143巷8號",
+    "site_type": "c"
+  },
+  {
+    "name": "接官亭石坊",
+    "location": "ChIJcxQoxWV2bjQRAh8zH0kBGFA",
+    "stay": 30,
+    "image": "upload/接官亭石坊.png",
+    "phone number": "no number",
+    "address": "中西區民權路三段143巷8號",
+    "site_type": "b"
+  },
+  {
+    "name": "西羅殿",
+    "location": "ChIJ7ZZT0GV2bjQRVx6mfT8cMnc",
+    "stay": 30,
+    "image": "upload/西羅殿.png",
+    "phone number": "06 228 5354",
+    "address": "中西區和平街90號",
+    "site_type": "c"
+  },
+  {
+    "name": "海安路裝置藝術",
+    "location": "ChIJA2iYPXd3bjQRn-Dz6jFFakk",
+    "stay": 30,
+    "image": "upload/海安路裝置藝術.png",
+    "phone number": "no number",
+    "address": "No. 292巷5號, 海安路, 中西區",
+    "site_type": "b"
+  },
+  {
+    "name": "正興街",
+    "location": "ChIJ9U5ud2V2bjQRNvOz0YopLOQ",
+    "stay": 30,
+    "image": "no image",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,j"
+  },
+  {
+    "name": "西市場",
+    "location": "ChIJozwI6jGUbjQRrWmv7pPV7O4",
+    "stay": 30,
+    "image": "upload/西市場.png",
+    "phone number": "06 220 6396",
+    "address": "中西區西門路二段與號正興街交界",
+    "site_type": "j"
+  },
+  {
+    "name": "看西街教會",
+    "location": "ChIJrywWEmR2bjQRM46xJZeesKY",
+    "stay": 30,
+    "image": "upload/看西街教會.png",
+    "phone number": "06 222 5808",
+    "address": "中西區和平街33號",
+    "site_type": "b"
+  },
+  {
+    "name": "南化大地谷",
+    "location": "ChIJTQC28a9fbjQRxTp1SChd4wI",
+    "stay": 30,
+    "image": "upload/南化大地谷.png",
+    "phone number": "no number",
+    "address": "南化區",
+    "site_type": "d"
+  },
+  {
+    "name": "水道淨水廠",
+    "location": "ChIJDUo-98RkbjQRQ5i4O2Lkx-E",
+    "stay": 40,
+    "image": "upload/水道淨水廠.png",
+    "phone number": "06 578 2811",
+    "address": "山上區新莊里新莊59-18號",
+    "site_type": "a"
+  },
+  {
+    "name": "尖山埤",
+    "location": "ChIJM9wBxCGJbjQRMfqbhc2Ez4Q",
+    "stay": 30,
+    "image": "upload/尖山埤.png",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "d"
+  },
+  {
+    "name": "尖山埤江南渡假村",
+    "location": "ChIJq6qqqhqJbjQRt01afVb8SYU",
+    "stay": 30,
+    "image": "upload/尖山埤江南渡假村.png",
+    "phone number": "06 623 3888",
+    "address": "柳營區旭山里60號",
+    "site_type": "a,g"
+  },
+  {
+    "name": "雙春海濱",
+    "location": "ChIJHz5OY6wrbDQRyHaCjB-vUYA",
+    "stay": 150,
+    "image": "upload/雙春海濱.png",
+    "phone number": "06 786 5355",
+    "address": "北門區雙春村35-5號",
+    "site_type": "e"
+  },
+  {
+    "name": "國聖燈塔",
+    "location": "ChIJvfBljp3QbTQRjCLKROPbG7U",
+    "stay": 45,
+    "image": "upload/國聖燈塔.png",
+    "phone number": "02 8978 2900",
+    "address": "七股區北堤堤坊",
+    "site_type": "e"
+  },
+  {
+    "name": "台南移民局",
+    "location": "ChIJGR0sjXF2bjQRqyYSK2M2rwk",
+    "stay": 40,
+    "image": "upload/台南移民局.png",
+    "phone number": "06 293 7641",
+    "address": "中西區府前路二段370號",
+    "site_type": "b"
+  },
+  {
+    "name": "鹽水老街",
+    "location": "ChIJ968d8RuEbjQRET3_AKc2pbE",
+    "stay": 30,
+    "image": "no image",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a,b,f,g,i"
+  },
+  {
+    "name": "七股鹽山",
+    "location": "ChIJTRbkzL_WbTQRTrfGfckHIrc",
+    "stay": 60,
+    "image": "upload/七股鹽山.png",
+    "phone number": "06 780 0511#49",
+    "address": "七股區鹽埕里66號",
+    "site_type": "e"
+  },
+  {
+    "name": "茂雄蝦仁肉圓",
+    "location": "ChIJ9U1LHHt2bjQRFUCPXSRs284",
+    "stay": 30,
+    "image": "upload/茂雄蝦仁肉圓.png",
+    "phone number": "06 228 3458",
+    "address": "中西區保安路46號",
+    "site_type": "j"
+  },
+  {
+    "name": "周氏蝦捲",
+    "location": "ChIJa7BtvxF2bjQRLe7lWvAbqMU",
+    "stay": 50,
+    "image": "upload/周氏蝦捲.png",
+    "phone number": "06 280 1304",
+    "address": "安平區安平路408-1號",
+    "site_type": "j"
+  },
+  {
+    "name": "北門水晶教堂",
+    "location": "ChIJAQAAQMUqbDQR6j5bN-bwrbs",
+    "stay": 45,
+    "image": "upload/北門水晶教堂.png",
+    "phone number": "06 786 2322",
+    "address": "北門區北門里200號",
+    "site_type": "b,g"
+  },
+  {
+    "name": "觀夕平台",
+    "location": "ChIJ_____wN2bjQRogqxlnZt3NQ",
+    "stay": 60,
+    "image": "upload/觀夕平台.png",
+    "phone number": "no number",
+    "address": "安平區漁濱路",
+    "site_type": "e,f"
+  },
+  {
+    "name": "赤崁擔仔麵",
+    "location": "ChIJRxlNjWF2bjQRbG86AvO0H00",
+    "stay": 50,
+    "image": "upload/赤崁擔仔麵.png",
+    "phone number": "080 021 1800",
+    "address": "中西區民族路二段180號",
+    "site_type": "j"
+  },
+  {
+    "name": "赤嵌棺材板",
+    "location": "ChIJ9X1wvmR2bjQRsqhUCAqPWhI",
+    "stay": 50,
+    "image": "upload/赤嵌棺材板.png",
+    "phone number": "06 224 0014",
+    "address": "中西區中正路康樂市場180號",
+    "site_type": "j"
+  },
+  {
+    "name": "蜷尾家",
+    "location": "ChIJbTv_-WR2bjQR77wGAOikk1o",
+    "stay": 30,
+    "image": "upload/蜷尾家.png",
+    "phone number": "no number",
+    "address": "中西區正興街92號",
+    "site_type": "j"
+  },
+  {
+    "name": "麻豆代天府",
+    "location": "ChIJkQk5r9F9bjQR7T60qmYnd5s",
+    "stay": 30,
+    "image": "upload/麻豆代天府.png",
+    "phone number": "06 572 2133",
+    "address": "麻豆區關帝廟60號",
+    "site_type": "c"
+  },
+  {
+    "name": "夢幻蜜拉",
+    "location": "ChIJzUToOxt2bjQRHwCsYKy_ums",
+    "stay": 30,
+    "image": "upload/夢幻蜜拉.png",
+    "phone number": "06 221 7393",
+    "address": "安平區安平路49號",
+    "site_type": "j"
+  },
+  {
+    "name": "台南原水道",
+    "location": "ChIJDUo-98RkbjQRQ5i4O2Lkx-E",
+    "stay": 40,
+    "image": "upload/台南原水道.png",
+    "phone number": "06 578 2811",
+    "address": "山上區新莊里新莊59-18號",
+    "site_type": "a"
+  },
+  {
+    "name": "台江學院",
+    "location": "ChIJBdGLtsHYbTQRntUrB7zrPso",
+    "stay": 30,
+    "image": "upload/台江學院.png",
+    "phone number": "06 284 2600",
+    "address": "安南區四草大道681巷118號",
+    "site_type": "b"
+  },
+  {
+    "name": "夕遊出張所",
+    "location": "ChIJR0ctuxp2bjQRcIg1Va6v9Bc",
+    "stay": 45,
+    "image": "upload/夕遊出張所.png",
+    "phone number": "06 391 1088",
+    "address": "安平區古堡街196號",
+    "site_type": "b"
+  },
+  {
+    "name": "納涼屋",
+    "location": "ChIJe_8jUZp2bjQR89oW6dgs6mo",
+    "stay": 60,
+    "image": "upload/納涼屋.png",
+    "phone number": "0909 999 625",
+    "address": "東區府東街21巷18號",
+    "site_type": "b"
+  },
+  {
+    "name": "豆豆龍樂園",
+    "location": "ChIJmT-QDw92bjQRVdNnk75EG-k",
+    "stay": 30,
+    "image": "upload/豆豆龍樂園.png",
+    "phone number": "no number",
+    "address": "安平區怡平路493號",
+    "site_type": "a"
+  },
+  {
+    "name": "億載金城",
+    "location": "ChIJk_qk9P91bjQRTolgNlHUSrc",
+    "stay": 60,
+    "image": "upload/億載金城.png",
+    "phone number": "06 295 1504",
+    "address": "安平區光州路3號",
+    "site_type": "a,e"
+  },
+  {
+    "name": "劍獅公園",
+    "location": "ChIJ_QqN2xp2bjQRZes212P31iY",
+    "stay": 30,
+    "image": "upload/劍獅公園.png",
+    "phone number": "no number",
+    "address": "安平區安北路6號",
+    "site_type": "a"
+  },
+  {
+    "name": "南泉冰菓室",
+    "location": "ChIJQ0WvVBJ2bjQRM2tLk_DHcIg",
+    "stay": 40,
+    "image": "upload/南泉冰菓室.png",
+    "phone number": "06 350 6666",
+    "address": "安平區安平路270號",
+    "site_type": "j"
+  },
+  {
+    "name": "街役場",
+    "location": "ChIJQUIEiXlwbjQRjkN9xBNbPvc",
+    "stay": 30,
+    "image": "upload/街役場.png",
+    "phone number": "06 590 5599",
+    "address": "新化區中正路500號",
+    "site_type": "b"
+  },
+  {
+    "name": "找春文創食堂",
+    "location": "ChIJlSJcBHBwbjQRg0epGEfHZ9U",
+    "stay": 60,
+    "image": "upload/找春文創食堂.png",
+    "phone number": "0927 857 603",
+    "address": "No No, No. 1, 和平街45巷, 新化區",
+    "site_type": "j"
+  },
+  {
+    "name": "大目降故事館",
+    "location": "ChIJPfsCF3BwbjQRgu9r8tO_3CY",
+    "stay": 30,
+    "image": "upload/大目降故事館.png",
+    "phone number": "no number",
+    "address": "新化區和平街29號",
+    "site_type": "g"
+  },
+  {
+    "name": "真心食府",
+    "location": "ChIJlwgMPnBwbjQRHjNIOrdzauk",
+    "stay": 30,
+    "image": "upload/真心食府.png",
+    "phone number": "06 590 0756",
+    "address": "新化區和平街23號",
+    "site_type": "j"
+  },
+  {
+    "name": "戴帽子的警察局",
+    "location": "ChIJhxsvp3pwbjQRRx62c9j0KG4",
+    "stay": 30,
+    "image": "upload/戴帽子的警察局.png",
+    "phone number": "06 590 2003",
+    "address": "新化區中山路91號",
+    "site_type": "a"
+  },
+  {
+    "name": "老塘湖藝術村",
+    "location": "ChIJJeDSwzR-bjQRE-U5H4g9rXI",
+    "stay": 90,
+    "image": "upload/老塘湖藝術村.png",
+    "phone number": "06 783 3800",
+    "address": "學甲區美豐49之26號",
+    "site_type": "a"
+  },
+  {
+    "name": "深藍咖啡館",
+    "location": "ChIJo5wMGpt2bjQRmcEIX0UBE8o",
+    "stay": 30,
+    "image": "upload/深藍咖啡館.png",
+    "phone number": "06 238 7722",
+    "address": "東區府連東路55號",
+    "site_type": "b"
+  },
+  {
+    "name": "安築覓徑",
+    "location": "ChIJPcrDaHl2bjQR2luxndUSYoU",
+    "stay": 30,
+    "image": "upload/安築覓徑.png",
+    "phone number": "0979 525 736",
+    "address": "中西區西門路一段",
+    "site_type": "d"
+  },
+  {
+    "name": "高鐵木棉花",
+    "location": "ChIJu79N3qtzbjQRgpXHqw1Bkc8",
+    "stay": 30,
+    "image": "upload/高鐵木棉花.png",
+    "phone number": "no number",
+    "address": "歸仁區",
+    "site_type": "d"
+  },
+  {
+    "name": "台南一中",
+    "location": "ChIJ3UbX7412bjQR1jcrVpPy03c",
+    "stay": 30,
+    "image": "upload/台南一中.png",
+    "phone number": "06 237 1206",
+    "address": "東區民族路一段1號",
+    "site_type": "b"
+  },
+  {
+    "name": "台南女中",
+    "location": "ChIJgb61Cod2bjQRQesODYzbxD4",
+    "stay": 30,
+    "image": "upload/台南女中.png",
+    "phone number": "06 213 1928",
+    "address": "中西區大埔街97號",
+    "site_type": "b"
+  },
+  {
+    "name": "成功大學",
+    "location": "ChIJ0yAIKe12bjQRnqEH4osC7uA",
+    "stay": 30,
+    "image": "upload/成功大學.png",
+    "phone number": "06 275 7575",
+    "address": "東區大學路1號",
+    "site_type": "b"
+  },
+  {
+    "name": "六千牛肉湯",
+    "location": "ChIJuSIMDFR2bjQRO5xlAsCglKA",
+    "stay": 60,
+    "image": "upload/六千牛肉湯.png",
+    "phone number": "06 222 7603",
+    "address": "中西區海安路一段63號",
+    "site_type": "j"
+  },
+  {
+    "name": "﻿知事官邸",
+    "location": "ChIJqVED7Y52bjQRODfcwb927MQ",
+    "stay": 30,
+    "image": "upload/﻿知事官邸.png",
+    "phone number": "06 236 7000",
+    "address": "東區衛民街1號",
+    "site_type": "b"
+  },
+  {
+    "name": "神農藝術街",
+    "location": "ChIJqctagGZ2bjQRGlAjSFrC5hE",
+    "stay": 30,
+    "image": "upload/神農藝術街.png",
+    "phone number": "no number",
+    "address": "中西區神農街",
+    "site_type": "b"
+  },
+  {
+    "name": "奇美食品幸福工廠",
+    "location": "ChIJyfT-ikV0bjQR4X91BVAuHpE",
+    "stay": 90,
+    "image": "upload/奇美食品幸福工廠.png",
+    "phone number": "06 269 8588",
+    "address": "仁德區機場路1008號",
+    "site_type": "a"
+  },
+  {
+    "name": "奇美工廠",
+    "location": "ChIJyfT-ikV0bjQR4X91BVAuHpE",
+    "stay": 90,
+    "image": "upload/奇美工廠.png",
+    "phone number": "06 269 8588",
+    "address": "仁德區機場路1008號",
+    "site_type": "a"
+  },
+  {
+    "name": "十鼓文化村",
+    "location": "ChIJA0P9eml0bjQRAFSV5Tjabuc",
+    "stay": 210,
+    "image": "upload/十鼓文化村.png",
+    "phone number": "06 266 2225",
+    "address": "仁德區文華路二段326號",
+    "site_type": "a,b,g,h"
+  },
+  {
+    "name": "水上町交流館",
+    "location": "ChIJJwsnrZt2bjQR-BQuoUg63kI",
+    "stay": 30,
+    "image": "upload/水上町交流館.png",
+    "phone number": "no number",
+    "address": "東區",
+    "site_type": "a"
+  },
+  {
+    "name": "孔廟",
+    "location": "ChIJFbzVrGJ2bjQRkZC9jslaIgs",
+    "stay": 90,
+    "image": "upload/孔廟.png",
+    "phone number": "06 221 4647",
+    "address": "中西區南門路2號",
+    "site_type": "a,b,d"
+  },
+  {
+    "name": "南科",
+    "location": "ChIJrd8RLaF7bjQRFqhHZLmQ3mY",
+    "stay": 30,
+    "image": "upload/南科.png",
+    "phone number": "06 505 1001",
+    "address": "新市區南科三路22號",
+    "site_type": "a"
+  },
+  {
+    "name": "種子博物館",
+    "location": "ChIJ5bF_ecJ2bjQR0AK5Dn7KFD4",
+    "stay": 30,
+    "image": "upload/種子博物館.png",
+    "phone number": "06 236 0035",
+    "address": "北區東豐路451巷29-1號",
+    "site_type": "d"
+  },
+  {
+    "name": "綠色隧道",
+    "location": "ChIJt0-ISOvYbTQRhg3rUteyQIw",
+    "stay": 30,
+    "image": "upload/綠色隧道.png",
+    "phone number": "06 284 1610",
+    "address": "安南區大眾路360號",
+    "site_type": "d,e"
+  },
+  {
+    "name": "鹽田",
+    "location": "ChIJq6qqqtUqbDQR_ohO2eK2x4E",
+    "stay": 30,
+    "image": "upload/鹽田.png",
+    "phone number": "06 786 1629",
+    "address": "北門區永華里64號",
+    "site_type": "e,g"
+  },
+  {
+    "name": "關子嶺",
+    "location": "ChIJSfNljJ2NbjQRKpPO1fEKKsk",
+    "stay": 60,
+    "image": "upload/關子嶺.png",
+    "phone number": "06 682 2344",
+    "address": "白河區",
+    "site_type": "d"
+  },
+  {
+    "name": "關仔嶺",
+    "location": "ChIJSfNljJ2NbjQRKpPO1fEKKsk",
+    "stay": 60,
+    "image": "upload/關仔嶺.png",
+    "phone number": "06 682 2344",
+    "address": "白河區",
+    "site_type": "d"
+  },
+  {
+    "name": "天文教育園區",
+    "location": "ChIJl64-Rn9jbjQRjciFlk2qCt0",
+    "stay": 180,
+    "image": "upload/天文教育園區.png",
+    "phone number": "06 576 1076",
+    "address": "大內區曲溪里34-2號",
+    "site_type": "g,h"
+  },
+  {
+    "name": "阿公店水庫",
+    "location": "ChIJVRN2F3gSbjQRDTw6wx4Lcuw",
+    "stay": 30,
+    "image": "upload/阿公店水庫.png",
+    "phone number": "07 616 6111",
+    "address": "燕巢區工程路1號",
+    "site_type": "d,g"
+  },
+  {
+    "name": "夫妻樹",
+    "location": "ChIJG7KyVGN2bjQRA65nwnl_9wc",
+    "stay": 30,
+    "image": "upload/夫妻樹.png",
+    "phone number": "no number",
+    "address": "中西區友愛街201巷",
+    "site_type": "d"
+  },
+  {
+    "name": "大成門",
+    "location": "ChIJYw4RTH12bjQRKS6hu0HiVMY",
+    "stay": 30,
+    "image": "upload/大成門.png",
+    "phone number": "06 228 9013",
+    "address": "中西區南門路二號",
+    "site_type": "a"
+  },
+  {
+    "name": "台南知事官邸",
+    "location": "ChIJqVED7Y52bjQRODfcwb927MQ",
+    "stay": 30,
+    "image": "upload/台南知事官邸.png",
+    "phone number": "06 236 7000",
+    "address": "東區衛民街1號",
+    "site_type": "b"
+  },
+  {
+    "name": "音樂會館",
+    "location": "ChIJTbdS8452bjQRI0ArgqPTPaI",
+    "stay": 30,
+    "image": "upload/音樂會館.png",
+    "phone number": "06 236 7000",
+    "address": "東區衛民街1號",
+    "site_type": "b"
+  },
+  {
+    "name": "水仙宮",
+    "location": "ChIJwRyTJ2R2bjQRtvAFmP9ZEGk",
+    "stay": 30,
+    "image": "upload/水仙宮.png",
+    "phone number": "06 220 3019",
+    "address": "中西區神農街1號",
+    "site_type": "c"
+  },
+  {
+    "name": "海安路",
+    "location": "ChIJH9UxJGR2bjQRGip0kxRluDw",
+    "stay": 30,
+    "image": "no image",
+    "phone number": "no number",
+    "address": "no address",
+    "site_type": "a"
+  },
+  {
+    "name": "藍晒圖",
+    "location": "ChIJ01ts2Xt2bjQRl2NOYCOCcEg",
+    "stay": 30,
+    "image": "upload/藍晒圖.png",
+    "phone number": "06 221 3688",
+    "address": "南區西門路一段689巷1號",
+    "site_type": "a,f,h"
+  },
+  {
+    "name": "明倫堂",
+    "location": "ChIJzYxbTX12bjQRTaJPxwIQNxc",
+    "stay": 30,
+    "image": "upload/明倫堂.png",
+    "phone number": "no number",
+    "address": "中西區南門路2號",
+    "site_type": "a,b"
+  },
+  {
+    "name": "文創園區",
+    "location": "ChIJo6dL64x2bjQRl3sP23mHafk",
+    "stay": 30,
+    "image": "upload/文創園區.png",
+    "phone number": "06 222 2681",
+    "address": "東區北門路二段16號",
+    "site_type": "a,b"
+  },
+  {
+    "name": "原臺南州立農事試驗場宿舍群",
+    "location": "ChIJm1E9rZt2bjQRTmXHXgs320g",
+    "stay": 30,
+    "image": "upload/原臺南州立農事試驗場宿舍群.png",
+    "phone number": "no number",
+    "address": "東區東門路二段158巷76號號",
+    "site_type": "a"
+  },
+  {
+    "name": "水上物語交流館",
+    "location": "ChIJJwsnrZt2bjQR-BQuoUg63kI",
+    "stay": 30,
+    "image": "upload/水上物語交流館.png",
+    "phone number": "no number",
+    "address": "東區",
+    "site_type": "a"
+  }
+]

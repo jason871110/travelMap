@@ -27,6 +27,28 @@ body{
     padding: 0em 0em;
     width: 100%;
 }
+.traveltitle{
+    opacity: 0.8;
+    margin-top: 30%;
+    margin-left: -55%;
+    width:40%;
+    height:25vh;
+    padding: 8%;
+    /* background-color: #000;opacity:0.6;
+    border-radius: 60%; */
+}
+.title{
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 6vh;
+    font-style: italic;
+}
+.subtitle{
+    margin-top: -10% !important;
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:3vh;
+}
 
 /*#user_image{
     width: 20%;

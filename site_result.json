@@ -1,0 +1,122 @@
+[
+  [
+    {
+      "address": "安平區安平路300號",
+      "location": "ChIJDXFiuxp2bjQRSldJ3YTNG8M",
+      "name": "文章牛肉湯",
+      "phone number": "06 228 4626"
+    },
+    {
+      "address": "安平區安北路6號",
+      "location": "ChIJ_QqN2xp2bjQRZes212P31iY",
+      "name": "劍獅公園",
+      "phone number": "no number"
+    },
+    {
+      "address": "安平區安平路270號",
+      "location": "ChIJQ0WvVBJ2bjQRM2tLk_DHcIg",
+      "name": "南泉冰菓室",
+      "phone number": "06 350 6666"
+    },
+    {
+      "address": "安平區古堡街196號",
+      "location": "ChIJR0ctuxp2bjQRcIg1Va6v9Bc",
+      "name": "夕遊出張所",
+      "phone number": "06 391 1088"
+    },
+    {
+      "address": "安平區古堡街108號",
+      "location": "ChIJo7avkR12bjQR9Gvc2sRtx40",
+      "name": "安平樹屋",
+      "phone number": "06 391 3901"
+    },
+    {
+      "address": "安平區國勝路82號",
+      "location": "ChIJZ-TjeHN2bjQR8a3Jat0VHps",
+      "name": "安平古堡",
+      "phone number": "06 226 7348"
+    },
+    {
+      "address": "中西區海安路二段296巷20號",
+      "location": "ChIJW_EnxGZ2bjQRS-Rl8TucG1Y",
+      "name": "燒貨美食",
+      "phone number": "06 226 9107"
+    }
+  ],
+  [
+    {
+      "address": "東區府連東路55號",
+      "location": "ChIJo5wMGpt2bjQRmcEIX0UBE8o",
+      "name": "深藍咖啡館",
+      "phone number": "06 238 7722"
+    },
+    {
+      "address": "安平區安億路115號",
+      "location": "ChIJucicGR12bjQR6Gm5waWBdHQ",
+      "name": "德陽艦軍艦博物館",
+      "phone number": "06 293 2925"
+    },
+    {
+      "address": "安平區光州路88號",
+      "location": "ChIJQ1hB3v91bjQR__MjGJViSFw",
+      "name": "虱目魚主題館",
+      "phone number": "06 293 1097"
+    },
+    {
+      "address": "東區民族路一段31號",
+      "location": "ChIJD_7v2o12bjQRf5sosF-R4yY",
+      "name": "綠芝屋意麵",
+      "phone number": "no number"
+    },
+    {
+      "address": "東區大學路1號",
+      "location": "ChIJ0yAIKe12bjQRnqEH4osC7uA",
+      "name": "成功大學",
+      "phone number": "06 275 7575"
+    },
+    {
+      "address": "東區衛民街1號",
+      "location": "ChIJqVED7Y52bjQRODfcwb927MQ",
+      "name": "台南知事官邸",
+      "phone number": "06 236 7000"
+    }
+  ],
+  [
+    {
+      "address": "中西區海安路一段63號",
+      "location": "ChIJuSIMDFR2bjQRO5xlAsCglKA",
+      "name": "六千牛肉湯",
+      "phone number": "06 222 7603"
+    },
+    {
+      "address": "南區西門路一段689巷1號",
+      "location": "ChIJ01ts2Xt2bjQRl2NOYCOCcEg",
+      "name": "藍晒圖",
+      "phone number": "06 221 3688"
+    },
+    {
+      "address": "中西區中正路1號",
+      "location": "ChIJcfdsmWJ2bjQRSb4_CGnFR0E",
+      "name": "台灣文學館",
+      "phone number": "06 221 7201"
+    },
+    {
+      "address": "中西區忠義路二段84巷18號",
+      "location": "ChIJMZUZ0GJ2bjQR9WM-RUKQGdc",
+      "name": "原鶯料理",
+      "phone number": "06 221 0595"
+    },
+    {
+      "address": "中西區忠義路二段63號",
+      "location": "ChIJrZJc4GJ2bjQRa3BRyIgtRcM",
+      "name": "林百貨",
+      "phone number": "06 221 3000"
+    },
+    {
+      "address": "東區北門路二段16號",
+      "location": "ChIJo6dL64x2bjQRl3sP23mHafk",
+      "name": "文創園區",
+      "phone number": "06 222 2681"
+    }
+  ]
+]
