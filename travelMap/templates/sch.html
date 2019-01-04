@@ -530,7 +530,6 @@ function change_day(day_num){
       $('#edit_site_delete').remove();
       $('#site_detail_content').append("<div class='ui green button' style='float:right;' id='edit_site_button'>save</div><div class='ui red button' style='float:right;' id='edit_site_delete'>delete</div>");
 
-      console.log('edit'+site_title);
       for(i=0;i<day_site.length;i++){
             if(day_site[i]['site_id']==site_id){
                 console.log(day_site[i]);
@@ -602,11 +601,6 @@ function change_day(day_num){
             });
       });
 }
-
-
-
-
-
 </script>
 <script>
   //滑動

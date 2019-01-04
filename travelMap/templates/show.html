@@ -82,6 +82,9 @@
 
 
 
+
+
+
 </style>
 
 <body>
@@ -171,6 +174,9 @@
 
 
 
+
+
+
 </script>
 
 <div class="ui left vertical inverted sidebar labeled icon menu">
@@ -221,18 +227,15 @@
                     <div data-u="slides"
                          style="cursor:default;position:relative;top:0px;left:0px;width:640px;height:960px;overflow:hidden;">
                         {% for search_sch in show_array%}
-                        <div id={{forloop.counter}} onclick="changeBac({{search_sch.id}})">
-                            <img data-u="image" src="{{search_sch.image}}"/>
-                            <!--div class="picContent1" id="p1-1" value="/media/{{schedule_item.0.image}}">
+                        <div id={{forloop.counter}}
+                             onclick=" edit_site('{{search_sch.image}}','{{search_sch.id}}','{{search_sch.title}}','{{search_sch.content}}')">
+                            <img data-u="image" src="{{search_sch.image}}">
+                            <!--div class="picContent1" id="p1-1">
                             </div>
-                            <div class="picContent2" id="p1-2" value="/media/{{schedule_item.1.image}}">
+                            <div class="picContent2" id="p1-2">
                             </div>
-                            <div class="picContent3" id="p1-3" value="/media/{{schedule_item.2.image}}">
+                            <div class="picContent3" id="p1-3">
                             </div-->
-                            <div class="traveltitle">
-                                <h1 class="title">{{search_sch.title}}</h1>
-                                <p class="subtitle">{{search_sch.content}}</p>
-                            </div>
                         </div>
                         {% endfor %}
                     </div>
@@ -268,8 +271,45 @@
             <!-- #endregion Jssor Slider End -->
         </div>
     </div>
+
+    <div class="ui small modal" id="site_detail">
+        <i class="close icon"></i>
+        <div class="header">
+            <span id="modal_header"></span>
+            <div class="ui heart rating" data-max-rating="1" id="favorite"><!--我的最愛-->
+            </div>
+        </div>
+        <div class="image content">
+            <div class="ui fluid image">
+                <img src="" id="modal_img"><!--change by javascript 不用接-->
+            </div>
+        </div>
+        <div class="content" id="site_detail_content">
+            <div class="ui form">
+                <div class="field">
+                    <label>行程敘述</label>
+                    <textarea rows="2" id="site_description" readonly=""></textarea><!--若曾輸入過要讓後端傳進來-->
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
+<script>
+//click site call the modal
+  function edit_site(img_url,site_id,site_title,site_content){
+      $('#modal_header').text(site_title);
+      $('#site_description').val(site_content);
+      $('#modal_img').attr('src',img_url);
+      $('#site_detail').modal('show');
+      $('.content').click(function(){
+        window.location.href ='../display/'+site_id;
+      });
+}
+
+</script>
 <script>
 var judgeShow=false;
 var judgeid=0;
@@ -306,8 +346,10 @@ function changeBac(id){
     window.location.href="../display/"+id+"/";
 }
 
-</script>
 
+
+
+</script>
 <script>
 var sidebarstate=0;
 var origin_height;
@@ -332,6 +374,9 @@ $(document).click(function(){
     sidebarstate=0;
   }
 });
+
+
+
 
 
 
@@ -361,6 +406,9 @@ $(document).click(function(){
         console.log('check');
         window.location.href = '../sch/0';
     });
+
+
+
 
 </script>
 </html>
