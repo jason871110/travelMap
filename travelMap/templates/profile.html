@@ -49,11 +49,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-    {% if user_schedules %}
-        background-image: url({{ user_schedules.0.image }});
-    {% else %}
         background-image: url('/media/user_img/2.jpeg');
-    {% endif %}
     }
 </style>
 
@@ -126,7 +122,8 @@
             <div class="swiper-wrapper">
                 {% for schedule in user_schedules %}
                     <div class="swiper-slide" id="trip{{ forloop.counter }}"
-                         style="background-image:url({{ schedule.image }})">
+                         style="background-image:url('/media/user_img/2.jpeg')">
+
                         <div class="traveltitle">
                             <h1 class="title">{{ schedule.title }}</h1>
                             <p class="subtitle">{{ schedule.content }}</p>

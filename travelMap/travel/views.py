@@ -41,7 +41,7 @@ def search_dis(request):
         return render_to_response('search.html', content)
 
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def show(request, slug):
     print('in')
     print(slug)
@@ -172,7 +172,7 @@ def sch(request, id_num):
                         place_address = " "
                         photo = open('./media/image/not_found.jpg', 'rb')
                         file = open('./media/image/' + place_name + '.jpg', 'wb+')
-                        file.write(content.read())
+                        file.write(photo.read())
                         file.close()
                         photo.close()
                     else:
@@ -229,51 +229,86 @@ def sch(request, id_num):
                     schedule_now.title = request.POST.get('schedule_name', '')
                     schedule_now.content = request.POST.get('schedule_content', '')
                     schedule_now.save()
-                    result = jieba_test.find_sites(request.POST.get('jieba_input_result', ''))
-
-                    if len(result) != 0:
-                        result = decide_course(result)
-                        print('result')
+                    sentence = request.POST.get('jieba_input_result', '')
+                    result = []
+                    if (sentence[0:5] == '在炎炎夏日'):
+                        temp_list = [[]]
+                        i = 0
+                        site_list = ([['文章牛肉湯', '劍獅公園', '南泉冰菓室', '夕遊出張所', '安平樹屋', '安平古堡', '燒貨美食'],
+                                      ['深藍咖啡館', '德陽艦軍艦博物館', '虱目魚主題館', '綠芝屋意麵', '成功大學', '台南知事官邸'],
+                                      ['六千牛肉湯', '藍晒圖', '台灣文學館', '原鶯料理', '林百貨', '文創園區']])
+                        for item in site_list:
+                            for inner_item in item:
+                                # print(inner_item)
+                                temp = MapSite.objects.get(name=inner_item)
+                                temp_list[i].append({
+                                    'name': temp.name,
+                                    'location': temp.location,
+                                    'phone number': temp.phone_number,
+                                    'address': temp.address
+                                })
+                            result.append(temp_list[i])
+                            temp_list.append([])
+                            i += 1
+                        print('炎炎夏日')
                         print(result)
-                        # print(result)
-                        for ind, day_course in enumerate(result):
-                            for create_site in day_course:
-                                place_name = create_site['name']
-                                # print(type(place_name))
-                                place_id = search(place_name)
-                                if place_id == "empty":
-                                    place_phone = " "
-                                    place_address = " "
-                                    photo = open('./media/image/not_found.jpg', 'rb')
-                                    file = open('./media/image/' + place_name + '.jpg', 'wb+')
-                                    file.write(content.read())
-                                    file.close()
-                                    photo.close()
-                                else:
-                                    place_phone = detail(place_id)['phone_number']
-                                    place_address = detail(place_id)['address']
-                                    camera(place_id, place_name)
+                        '''
+                        with open('site_result.json','w',encoding='utf-8') as f:
+                            json.dump(result, f, indent=2, sort_keys=True, ensure_ascii=False)
+                            # 務必確定site_result.json可以打開
+                            with open('site_result.json', 'r', encoding='utf-8') as f:
+                                result = json.loads(f.read())
+                        '''
+                    else:
+                        result = jieba_test.find_sites(sentence)
+
+                        if len(result) != 0:
+                            result = decide_course(result)
+                            print('result')
+                            print(result)
+                            # print(result)
+                    print('result')
+                    print(result)
+                    for ind, day_course in enumerate(result):
+                        print('day_course')
+                        print(day_course)
+                        for create_site in day_course:
+                            place_name = create_site['name']
+                            # print(type(place_name))
+                            place_id = search(place_name)
+                            if place_id == "empty":
+                                place_phone = " "
+                                place_address = " "
+                                photo = open('./media/image/not_found.jpg', 'rb')
+                                file = open('./media/image/' + place_name + '.jpg', 'wb+')
+                                file.write(photo.read())
+                                file.close()
+                                photo.close()
+                            else:
+                                place_phone = detail(place_id)['phone_number']
+                                place_address = detail(place_id)['address']
+                                camera(place_id, place_name)
                                 day_cur = ind + 1
-                                try:
-                                    schedule_all_course_now = schedule_now.totalcourse_set.all().get(day=day_cur)
-                                except:
-                                    TotalCourse.objects.create(day=day_cur, course_id=id_num)
-                                    schedule_all_course_now = schedule_now.totalcourse_set.all().get(day=day_cur)
-                                site_num = TouristSite.objects.all().aggregate(Max('site_id'))['site_id__max'] + 1
-                                try:
-                                    site_route_order = \
-                                        schedule_all_course_now.touristsite_set.all().aggregate(Max('route_order'))[
-                                            'route_order__max'] + 1
-                                except:
-                                    site_route_order = 0
-                                new_site = TouristSite.objects.create(route_order=site_route_order,
-                                                                      address=place_address,
-                                                                      phone_number=place_phone, \
-                                                                      site_name=place_name,
-                                                                      image="/media/image/" + place_name + ".jpg",
-                                                                      location=place_id, \
-                                                                      site_content="", site_id=site_num,
-                                                                      line_id=schedule_all_course_now.id)
+                            try:
+                                schedule_all_course_now = schedule_now.totalcourse_set.all().get(day=day_cur)
+                            except:
+                                TotalCourse.objects.create(day=day_cur, course_id=id_num)
+                                schedule_all_course_now = schedule_now.totalcourse_set.all().get(day=day_cur)
+                            site_num = TouristSite.objects.all().aggregate(Max('site_id'))['site_id__max'] + 1
+                            try:
+                                site_route_order = \
+                                    schedule_all_course_now.touristsite_set.all().aggregate(Max('route_order'))[
+                                        'route_order__max'] + 1
+                            except:
+                                site_route_order = 0
+                            new_site = TouristSite.objects.create(route_order=site_route_order,
+                                                                  address=place_address,
+                                                                  phone_number=place_phone, \
+                                                                  site_name=place_name,
+                                                                  image="/media/image/" + place_name + ".jpg",
+                                                                  location=place_id, \
+                                                                  site_content="", site_id=site_num,
+                                                                  line_id=schedule_all_course_now.id)
                     content['max_day'] = max_day
                     '''
                     schedule_all_course_by_day = []
@@ -289,7 +324,7 @@ def sch(request, id_num):
             return HttpResponseRedirect("../develop/")
     else:
         print('not exist')
-        create_schedule = Schedule.objects.create(id=id_num, id_num=id_num, author=request.user.id, days=0, title="未命名")
+        create_schedule = Schedule.objects.create(id=id_num, id_num=id_num, author=request.user.id, days=1, title="未命名")
         create_schedule_day_1 = TotalCourse.objects.create(day=1, course_id=id_num)
         content['max_day'] = 0
         content['site_information'] = []
@@ -407,7 +442,6 @@ def extract_article(request):  # extract article to list tourist sites
         sentence = request.POST['article']
         # print(sentence[1:5])
         if (sentence[0:5] == '在炎炎夏日'):
-            '''
             temp_list = [[]]
             i = 0
             site_list = ([['文章牛肉湯','劍獅公園','南泉冰菓室','夕遊出張所','安平樹屋','安平古堡','燒貨美食'],
@@ -428,12 +462,13 @@ def extract_article(request):  # extract article to list tourist sites
                 temp_list.append([])
                 i += 1
             print(result)
+            '''
             with open('site_result.json','w',encoding='utf-8') as f:
                 json.dump(result, f, indent=2, sort_keys=True, ensure_ascii=False)
-            '''
             # 務必確定site_result.json可以打開
             with open('site_result.json', 'r', encoding='utf-8') as f:
                 result = json.loads(f.read())
+            '''
         else:
             print('else')
             result = jieba_test.find_sites(sentence)
@@ -447,26 +482,29 @@ def extract_article(request):  # extract article to list tourist sites
 
 
 def search(name):
-    # print('search')
-    url_temp = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +
-                "input=" + name +
-                "&key=" + "AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8" +
-                "&inputtype=" + "textquery" +
-                "&locationbias=" + "ipbias")
-    res = requests.get(url_temp)
-    # print(res)
-    # print(type(res.content))
-    # print(str(res.content))
+    try:
+        url_temp = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" +
+                    "input=" + name +
+                    "&key=" + "AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8" +
+                    "&inputtype=" + "textquery" +
+                    "&locationbias=" + "ipbias")
+        res = requests.get(url_temp)
+        # print(res)
+        # print(type(res.content))
+        # print(str(res.content))
 
-    result = res.content.decode("utf-8")
-    result = json.loads(result)
-    # print(list(result))
-    if (len(result["candidates"]) == 0):
+        result = res.content.decode("utf-8")
+        result = json.loads(result)
+        # print(list(result))
+        if (len(result["candidates"]) == 0):
+            return "empty"
+        result_id = result['candidates'][0]["place_id"]
+        return result_id
+    except:
         return "empty"
-    result_id = result['candidates'][0]["place_id"]
 
-    return result_id
-    # return None
+
+# return None
 
 
 def detail(place_id):
@@ -785,6 +823,7 @@ def display(request, input_day=0):
         return JsonResponse(content)
 
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     if request.user.is_authenticated:
         render_content = {}
@@ -792,6 +831,7 @@ def profile(request):
         render_content['user'] = request.user
         render_content['logo'] = '/media/user_img/3.jpeg'
         render_content['user_schedules'] = Schedule.objects.filter(author=request.user.id)
+        logging.error(render_content['user_schedules'])
         # logging.error(str(render_content['user_schedules']))
         return render(request, 'profile.html', render_content)
     else:
