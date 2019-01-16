@@ -83,7 +83,7 @@
 </div>
 <div class="pusher" style="min-height: 100vh;">
     <div id="app-container" style="margin-top: 10vh;overflow: hidden;">
-        <div class="headerPic" style="height:30vh;width:100%;"></div>
+      <div class="headerPic" style="height:30vh;width:100%;background-image: url({{img}});"></div>
         {% for day in days_schedule %}
             {% if forloop.counter == 1 %}
                 <button onclick="showsch(this.id)" class="fluid ui blue basic button daybtn" style="margin-top:5%"
@@ -97,7 +97,7 @@
                     <div class="part">
                         <div class="list ui grid" style="margin-top:2vh">
                             <div class="four wide column">
-                                <h1 style="font-size:150%">10:00</h1>
+                              <h1 style="font-size:150%">{{ scence.time }}</h1>
                                 <i class="big bus icon"></i>
                             </div>
                             <div class="twelve wide column">
@@ -106,7 +106,7 @@
                                         <h1 style="font-size:3vh;margin-left:2%">{{ scence.site_name }}</h1>
                                     </div>
                                     <div class="row">
-                                        <h1 style="font-size:3vh;margin-left:20%">停留{{ scence.time }}分鐘</h1>
+                                        <h1 style="font-size:3vh;margin-left:20%">停留30分鐘</h1>
                                     </div>
                                 </div>
                             </div>

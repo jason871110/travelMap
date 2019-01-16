@@ -74,7 +74,7 @@
         </div>
 
         <div class="eight wide column">
-            <div class="ui card" onclick="click_img('{{schedule_item.0.image}}', '{{schedule_item.0.content}}' )">
+            <div class="ui card" onclick="click_img('{{schedule_item.0.image}}', '{{schedule_item.0.content}}',{{schedule_item.3.id}} )">
                 <div class="image">
                     <img src='{{schedule_item.0.image}}' style="height: 15vh;">
                 </div>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="eight wide column">
-            <div class="ui card" onclick="click_img('{{schedule_item.1.image}}', '{{schedule_item.1.content}}' )">
+            <div class="ui card" onclick="click_img('{{schedule_item.1.image}}', '{{schedule_item.1.content}}',{{schedule_item.3.id}} )">
                 <div class="image">
                     <img src='{{schedule_item.1.image}}' style="height: 15vh;">
                 </div>
@@ -108,7 +108,7 @@
         </div>
         <div class="eight wide column">
             <div class="ui card">
-                <div class="image" onclick="click_img('{{schedule_item.2.image}}', '{{schedule_item.2.content}}')">
+                <div class="image" onclick="click_img('{{schedule_item.2.image}}', '{{schedule_item.2.content}}',{{schedule_item.3.id}})">
                     <img src='{{schedule_item.2.image}}' style="height: 15vh;">
                 </div>
                 <div class="content">
@@ -125,7 +125,7 @@
         </div>
         <div class="eight wide column">
             <div class="ui card">
-                <div class="image" onclick="click_img('{{schedule_item.3.image}}', '{{schedule_item.3.content}}')">
+              <div class="image" onclick="click_img('{{schedule_item.3.image}}', '{{schedule_item.3.content}}',{{schedule_item.3.id}})">
                     <img src='{{schedule_item.3.image}}' style="height: 15vh;">
                 </div>
                 <div class="content">
@@ -147,7 +147,7 @@
         <div class="eight wide column">
             <div class="ui card">
                 <div class="image">
-                    <img class="ui medium image" style="height: 20vh;" src="">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/二寮.jpg">
                 </div>
                 <div class="content">
                     <a class="header">熱血</a>
@@ -159,7 +159,7 @@
         <div class="eight wide column">
             <div class="ui card">
                 <div class="image">
-                    <img class="ui medium image" style="height: 20vh;" src="">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/img1.jpeg">
                 </div>
                 <div class="content">
                     <a class="header">文青</a>
@@ -175,7 +175,7 @@
         <div class="sixteen wide column">
             <div class="ui card">
                 <div class="image">
-                    <img class="ui medium image" style="height: 20vh;" src="">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/虎山國小.JPG">
                 </div>
                 <div class="content">
                     <a class="header">台南兩日遊</a>
@@ -191,7 +191,7 @@
         <div class="sixteen wide column">
             <div class="ui card">
                 <div class="image">
-                    <img class="ui medium image" style="height: 20vh;" src="">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/虎山國小.JPG">
                 </div>
                 <div class="content">
                     <a class="header">探探琛探</a>
@@ -207,7 +207,7 @@
         <div class="sixteen wide column">
             <div class="ui card">
                 <div class="image">
-                    <img class="ui medium image" style="height: 20vh;" src="">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/虎山國小.JPG">
                 </div>
                 <div class="content">
                     <a class="header">tainan</a>
@@ -253,12 +253,16 @@
 </script>
 <script>
 
-function click_img(img_url, content){
-  $('#modal_img').attr('src', "/media/"+img_url );
-  $('#modal_description').text(content)
-  console.log("/media/"+img_url)
-  console.log(content)
+function click_img(img_url, content,page_id){
+  $('#modal_img').attr('src', img_url );
+  $('#modal_description').text(content);
+  console.log(img_url);
+  console.log(content);
   $('.ui.modal').modal('show');
+  $('#modal_img').click(function(){
+    //console.log(page_id);
+    window.location.href = "../display/"+page_id+'/';
+  });
 
 }
 var origin_height;
