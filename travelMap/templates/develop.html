@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'semantic.min.css' %}">
+    <script type="text/javascript" src="{% static 'semantic.min.js'%}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'FullScrean.css' %}">
+
+</head>
+<style>
+  body{
+    padding: 0;
+  }
+
+
+</style>
+<body>
+<div class="ui left vertical inverted sidebar labeled icon menu">
+    <a class="item" id="user_icon">
+        <i class="user icon"></i>
+        {% if user.is_authenticated %}
+        {{ user.username }}
+        {% else %}
+        Login
+        {% endif %}
+    </a>
+    <a class="item">
+        <i class="home icon"></i>
+        Home
+    </a>
+    <a class="item" id="search_icon">
+        <i class="search icon"></i>
+        search
+    </a>
+    <a class="item" id="edit_icon">
+        <i class="edit icon"></i>
+        create
+    </a>
+    <a class="item" id="logout_icon">
+        <i class="user times icon"></i>
+        logout
+    </a>
+</div>
+<div class="pusher" style="min-height: 100vh;">
+
+    <div id="cover_img"
+         style="text-align:center;vertical-align: middle;line-height:20vh; opacity:1;width: 100%; height:20vh; background-image:url(/media/beach-exotic-holiday-248797.jpg); background-size: cover; background-position: center;">
+        <b>
+            Travel Map
+        </b>
+    </div>
+    <div class="ui vertical divided grid" id="app-container">
+        <div class="ui icon message" onclick="trans_search()" style="top:-5vh;">
+            <i class="search icon"></i>
+            <div class="content">
+                <div class="header">
+                    對行程毫無頭緒?
+                </div>
+                <p>快速安排您的第一個行程</p>
+            </div>
+            <i class="angle right icon" style="position:absolute; right:-5%;"></i>
+        </div>
+
+        <div class="eight wide column">
+            <div class="ui card" onclick="click_img('{{schedule_item.0.image}}', '{{schedule_item.0.content}}',{{schedule_item.3.id}} )">
+                <div class="image">
+                    <img src='{{schedule_item.0.image}}' style="height: 15vh;">
+                </div>
+                <div class="content">
+                    <a class="header">{{schedule_item.0.title}}</a>
+                    <div class="meta">
+                        <span class="date">72 views</span>
+                    </div>
+                    <div class="description">
+                        建議遊玩天數：{{schedule_item.0.days}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui card" onclick="click_img('{{schedule_item.1.image}}', '{{schedule_item.1.content}}',{{schedule_item.3.id}} )">
+                <div class="image">
+                    <img src='{{schedule_item.1.image}}' style="height: 15vh;">
+                </div>
+                <div class="content">
+                    <a class="header">{{schedule_item.1.title}}</a>
+                    <div class="meta">
+                        <span class="date">72 views</span>
+                    </div>
+                    <div class="description">
+                        建議遊玩天數：{{schedule_item.1.days}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="eight wide column">
+            <div class="ui card">
+                <div class="image" onclick="click_img('{{schedule_item.2.image}}', '{{schedule_item.2.content}}',{{schedule_item.3.id}})">
+                    <img src='{{schedule_item.2.image}}' style="height: 15vh;">
+                </div>
+                <div class="content">
+                    <a class="header">{{schedule_item.2.title}}</a>
+                    <div class="meta">
+                        <span class="date">72 views</span>
+                    </div>
+                    <div class="description">
+                        建議遊玩天數：{{schedule_item.2.days}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="eight wide column">
+            <div class="ui card">
+              <div class="image" onclick="click_img('{{schedule_item.3.image}}', '{{schedule_item.3.content}}',{{schedule_item.3.id}})">
+                    <img src='{{schedule_item.3.image}}' style="height: 15vh;">
+                </div>
+                <div class="content">
+                    <a class="header">{{schedule_item.3.title}}</a>
+                    <div class="meta">
+                        <span class="date">72 views</span>
+                    </div>
+                    <div class="description">
+                        建議遊玩天數：{{schedule_item.3.days}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixteen wide column">
+            <p><b>
+                嘗試更多不同的玩法
+            </b></p>
+        </div>
+        <div class="eight wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/二寮.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">熱血</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="eight wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/img1.jpeg">
+                </div>
+                <div class="content">
+                    <a class="header">文青</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="sixteen wide column">
+            <p><b>
+                為你推薦
+            </b></p>
+        </div>
+        <div class="sixteen wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/虎山國小.JPG">
+                </div>
+                <div class="content">
+                    <a class="header">台南兩日遊</a>
+                    <div class="meta">
+                        <span class="date">272 views</span>
+                    </div>
+                    <div class="description">
+                        description
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixteen wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/虎山國小.JPG">
+                </div>
+                <div class="content">
+                    <a class="header">探探琛探</a>
+                    <div class="meta">
+                        <span class="date">72 views</span>
+                    </div>
+                    <div class="description">
+                        description
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sixteen wide column">
+            <div class="ui card">
+                <div class="image">
+                    <img class="ui medium image" style="height: 20vh;" src="../media/image/虎山國小.JPG">
+                </div>
+                <div class="content">
+                    <a class="header">tainan</a>
+                    <div class="meta">
+                        <span class="date">72 views</span>
+                    </div>
+                    <div class="description">
+                        description
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui modal">
+        <div class="image content">
+            <div class="ui medium image">
+                <img src="" id="modal_img">
+            </div>
+            <div class="description" id="modal_description">
+                change here by jquery(maybe?)
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function trans_search(){
+        window.location.href = '../sch/0';
+    }
+</script>
+<script>
+  var data = [
+{% for s in schedule_item %}
+{
+  image : "{{s.image}}",
+  content : "{{ s.content }}",
+},
+
+{% endfor %}
+]
+
+</script>
+<script>
+
+function click_img(img_url, content,page_id){
+  $('#modal_img').attr('src', img_url );
+  $('#modal_description').text(content);
+  console.log(img_url);
+  console.log(content);
+  $('.ui.modal').modal('show');
+  $('#modal_img').click(function(){
+    //console.log(page_id);
+    window.location.href = "../display/"+page_id+'/';
+  });
+
+}
+var origin_height;
+  $(document).ready(function(){
+    console.log('st');
+    origin_height = $('.pusher').height();
+    //    $('#cover_img').transition('fade up');
+  });
+$(document).keypress(function(event){
+  var keycode = (event.keyCode ? event.keyCode : event.which);
+  if(keycode == '13'){
+    $('.ui.modal').modal('show');
+  }
+});
+var sidebarstate = 0;
+$('.pusher').on('swiperight',function(){
+  $('.ui.sidebar').sidebar({closable: false});
+  $('.ui.sidebar').sidebar('toggle');
+  $('#sidebar_icon').hide();
+  console.log(sidebarstate);
+  setTimeout(function(){sidebarstate = 1;},500);
+});
+
+$(document).click(function(){
+  if(sidebarstate==1){
+    $('.ui.sidebar').sidebar('toggle');
+    $('#sidebar_icon').show();
+    $('.pusher').height(origin_height);
+    sidebarstate=0;
+  }
+});
+
+</script>
+<script>
+    $('#user_icon').click(function(){
+        {% if user.is_authenticated %}
+            window.location.href='../profile';
+        {% else %}
+            window.location.href='../accounts/login';
+        {% endif %}
+    });
+    $('#logout_icon').click(function(){
+        {% if user.is_authenticated %}
+            window.location.href="../accounts/logout";
+        {% else %}
+            alert('你沒登入阿!')
+        {% endif %}
+    });
+    $('#search_icon').click(function(){
+        window.location.href='../search';
+    });
+    $('#edit_icon').click(function(){
+        console.log('check');
+        window.location.href = '../sch/0';
+    });
+</script>
+</html>
+

@@ -1,0 +1,284 @@
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "semantic.min.css" %}">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src={% static "semantic.min.js" %}></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href={% static "normalize.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "FullScrean.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "account.css" %}>
+    <!--swiper-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+
+</head>
+<style>
+
+
+    .swiper-container {
+        width: 100%;
+        height: 40vh;
+
+    }
+
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('/media/user_img/2.jpeg');
+    }
+</style>
+
+<body>
+
+
+<div class="ui left vertical inverted sidebar labeled icon menu">
+    <a class="item" id="user_icon">
+        <i class="user icon"></i>
+        {% if user.is_authenticated %}
+            {{ user.username }}
+        {% else %}
+            Login
+        {% endif %}
+    </a>
+    <a class="item">
+        <i class="home icon"></i>
+        Home
+    </a>
+    <a class="item" id="search_icon">
+        <i class="search icon"></i>
+        search
+    </a>
+    <a class="item" id="edit_icon">
+        <i class="edit icon"></i>
+        create
+    </a>
+    <a class="item" id="logout_icon">
+        <i class="user times icon"></i>
+        logout
+    </a>
+</div>
+</div>
+<div class="pusher">
+    <div class="full height" id="app-container">
+        <div class="following bar light fixed" id="navbar">
+            <div class="ui container">
+                <div class="ui large secondary menu">
+                    <div class="ui item">
+                        <div class="ui logo shape">
+                            <div class="sides">
+                                <div class="active ui side">
+                                    <img class="ui image" src="{{ logo }}" alt="logo" id="logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="view ui item">
+                        <i class="sidebar icon" id="menu"></i>
+                        "Menu"
+                    </a>
+                    <div class="right menu">
+                        <div class="ui floating item">
+                            <i class="user icon"></i>
+                            <div class="text">{{ user.username }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui container">
+            <img class="ui centered small circular image" src="{{ user_image }}" id="user_image">
+        </div>
+        <div class="ui divider"></div>
+        <h1 id="mytrip"
+            style="font-family: 'Times New Roman', Times, serif;color: grey;text-align: center;opacity:0.7 ;">
+            Mytrip</h1>
+        <!--接圖片和文字就好，圖片接在backgroundimage-->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for schedule in user_schedules %}
+                    <div class="swiper-slide" id="trip{{ forloop.counter }}"
+                         style="background-image:url('/media/user_img/2.jpeg')">
+
+                        <div class="traveltitle">
+                            <h1 class="title">{{ schedule.title }}</h1>
+                            <p class="subtitle">{{ schedule.content }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% comment %}
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="traveltitle">
+                        <h1 class="title">Tainan</h1>
+                        <p class="subtitle">Having a trip in to Tainan.The city of history.</p>
+                    </div>
+                </div>
+                {% endcomment %}
+            </div>
+        </div>
+        <div class="ui divider"></div>
+
+        <div class="ui vertical segment">
+            <div class="ui center aligned container">
+                <div class="ui fluid vertical menu">
+                    <div class="item">
+                        <div class="header">Basic setting</div>
+                        <div class="menu">
+                            <a class="item">Change name</a>
+                            <a class="item">Change user icon</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="header">Security setting</div>
+                        <div class="menu">
+                            <a class="item">Change password</a>
+                            <a class="item">Set up security problem</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="header">Subscribes</div>
+                        <div class="menu">
+                            <a class="item">List all subscribes</a>
+                            <a class="item">Explorer subscribes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui vertical segment"></div>
+
+
+    </div>
+    <div class="ui divider"></div>
+</div>
+</body>
+<script>
+    var swiper = new Swiper('.swiper-container');
+</script>
+<script>
+
+    var origin_height;
+    $(document).ready(function () {
+        console.log('st');
+        origin_height = $('.pusher').height();
+        //    $('#cover_img').transition('fade up');
+    });
+    $(document).keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            $('.ui.modal').modal('show');
+        }
+    });
+    var sidebarstate = 0;
+    $('.pusher').on('swiperight', function () {
+        $('.ui.sidebar').sidebar({closable: false});
+        $('.ui.sidebar').sidebar('toggle');
+        $('#sidebar_icon').hide();
+        console.log(sidebarstate);
+        setTimeout(function () {
+            sidebarstate = 1;
+        }, 500);
+    });
+
+    $(document).click(function () {
+        if (sidebarstate == 1) {
+            $('.ui.sidebar').sidebar('toggle');
+            $('#sidebar_icon').show();
+            $('.pusher').height(origin_height);
+            sidebarstate = 0;
+        }
+    });
+    $('#menu').click(function () {
+        $('.ui.sidebar').sidebar({closable: false});
+        $('.ui.sidebar').sidebar('toggle');
+        $('#sidebar_icon').hide();
+        console.log(sidebarstate);
+        setTimeout(function () {
+            sidebarstate = 1;
+        }, 500);
+    })
+
+    $('#user_icon').click(function () {
+        {% if user.is_authenticated %}
+            window.location.href = '../profile';
+        {% else %}
+            window.location.href = '../accounts/login';
+        {% endif %}
+    });
+    $('#logout_icon').click(function () {
+        {% if user.is_authenticated %}
+            window.location.href = "../accounts/logout";
+        {% else %}
+            alert('你沒登入阿!')
+        {% endif %}
+    });
+    $('#search_icon').click(function () {
+        window.location.href = '../search';
+    });
+    $('#edit_icon').click(function () {
+        console.log('check');
+        window.location.href = '../sch/0';
+    });
+</script>
+</html>

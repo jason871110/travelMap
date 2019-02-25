@@ -1,0 +1,62 @@
+/*旅行所用css*/
+.traveltitle{
+    width:50%;
+    height:35vh;
+    margin-top:85% !important;
+    padding: 8%;
+    bording: 1pt solid;
+    /* background-color: #000;opacity:0.6;
+    border-radius: 60%; */
+}
+.title{
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10vh;
+    font-style: italic;
+}
+.subtitle{
+    margin-top: -10% !important;
+    color: #ffffff;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:4vh;
+}
+
+/*我改動圖片相關位置*/
+.picContent1{
+    position:absolute;
+    top:80px;
+    left:170px;
+    width:300px; /*300*/
+    height:250px; /*250*/
+    /* background-image:url('imgAnimate/1/1.jpg');  */
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+.picContent2{
+    position:absolute;
+    top:60%;
+    left:60%;
+    width:200px;  /*200*/
+    height:250px; /*250*/
+    box-sizing:border-box;
+    /* background-image:url("imgAnimate/003.jpg"); */
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+.picContent3{
+    position:absolute;
+    top:10%;
+    left:58%;
+    width:150px; /*150*/
+    height:150px;
+    box-sizing:border-box;
+    /* background-image:url("imgAnimate/002.jpg"); */
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+ #p1-1 ,#p1-2{
+     background-image:url('imgAnimate/1/1.jpeg');  
+} 

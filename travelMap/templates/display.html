@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <!--jquery mobile-->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'semantic.css' %}">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="{% static 'semantic.min.js' %}"></script>
+    <!--button-->
+    <link rel="stylesheet" type="text/css" href="{% static 'button.css' %}">
+    <!--icon-->
+    <link rel="stylesheet" type="text/css" href="{% static 'icon.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'icon.min.css' %}">
+    <!--try fullscrean-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'normalize.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'FullScrean.css' %}">
+
+    <!--my css-->
+    <link rel="stylesheet" type="text/css" href="{% static 'finalDisplay.css' %}">
+    <script src="{% static 'jquery-ui.min.js' %}"></script>
+    <script src="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">
+
+    <script>
+
+
+        //簡單更動display屬性
+        function showsch(id) {
+            if ($('#Day' + id).css('display') == 'none') {
+                $("#Day" + id).fadeIn(1500);
+            } else {
+                $("#Day" + id).fadeOut(1000);
+            }
+
+        }
+
+
+    </script>
+
+</head>
+<style>
+
+    li {
+        width: 100%;
+
+    }
+</style>
+<body>
+<div class="ui left vertical inverted sidebar labeled icon menu">
+    <a class="item" id="user_icon">
+        <i class="user icon"></i>
+        {% if user.is_authenticated %}
+            {{ user.username }}
+        {% else %}
+            Login
+        {% endif %}
+    </a>
+    <a class="item">
+        <i class="home icon"></i>
+        Home
+    </a>
+    <a class="item" id="search_icon">
+        <i class="search icon"></i>
+        search
+    </a>
+    <a class="item" id="edit_icon">
+        <i class="edit icon"></i>
+        create
+    </a>
+    <a class="item" id="logout_icon">
+        <i class="user times icon"></i>
+        logout
+    </a>
+</div>
+<div class="pusher" style="min-height: 100vh;">
+    <div id="app-container" style="margin-top: 10vh;overflow: hidden;">
+      <div class="headerPic" style="height:30vh;width:100%;background-image: url({{img}});"></div>
+        {% for day in days_schedule %}
+            {% if forloop.counter == 1 %}
+                <button onclick="showsch(this.id)" class="fluid ui blue basic button daybtn" style="margin-top:5%"
+                        id="{{ forloop.counter }}">Day{{ forloop.counter }}</button>
+            {% else %}
+                <button onclick="showsch(this.id)" class="fluid ui blue basic button daybtn" id="{{ forloop.counter }}">
+                    Day{{ forloop.counter }}</button>
+            {% endif %}
+            <div class="whole" id="Day{{ forloop.counter }}">
+                {% for scence in day %}
+                    <div class="part">
+                        <div class="list ui grid" style="margin-top:2vh">
+                            <div class="four wide column">
+                              <h1 style="font-size:150%">{{ scence.time }}</h1>
+                                <i class="big bus icon"></i>
+                            </div>
+                            <div class="twelve wide column">
+                                <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                    <div class="row">
+                                        <h1 style="font-size:3vh;margin-left:2%">{{ scence.site_name }}</h1>
+                                    </div>
+                                    <div class="row">
+                                        <h1 style="font-size:3vh;margin-left:20%">停留30分鐘</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trans">
+                            <i class="bus icon" style="display:inline;"></i>
+                            <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% comment %}
+                <div class="part">
+                    <div class="list ui grid" style="margin-top:2vh">
+                        <div class="four wide column">
+                            <h1 style="font-size:150%">10:00</h1>
+                            <i class="big bus icon"></i>
+                        </div>
+                        <div class="twelve wide column">
+                            <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                                </div>
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans">
+                        <i class="bus icon" style="display:inline;"></i>
+                        <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                    </div>
+                </div>
+                <div class="part">
+                    <div class="list ui grid" style="margin-top:2vh">
+                        <div class="four wide column">
+                            <h1 style="font-size:150%">10:00</h1>
+                            <i class="big bus icon"></i>
+                        </div>
+                        <div class="twelve wide column">
+                            <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                                </div>
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans">
+                        <i class="bus icon" style="display:inline;"></i>
+                        <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                    </div>
+                </div>
+                <div class="part">
+                    <div class="list ui grid" style="margin-top:2vh">
+                        <div class="four wide column">
+                            <h1 style="font-size:150%">10:00</h1>
+                            <i class="big bus icon"></i>
+                        </div>
+                        <div class="twelve wide column">
+                            <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                                </div>
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans">
+                        <i class="bus icon" style="display:inline;"></i>
+                        <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                    </div>
+                </div>
+                <div class="part">
+                    <div class="list ui grid" style="margin-top:2vh">
+                        <div class="four wide column">
+                            <h1 style="font-size:150%">10:00</h1>
+                            <i class="big bus icon"></i>
+                        </div>
+                        <div class="twelve wide column">
+                            <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                                </div>
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans">
+                        <i class="bus icon" style="display:inline;"></i>
+                        <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                    </div>
+                </div>
+                <div class="part">
+                    <div class="list ui grid" style="margin-top:2vh">
+                        <div class="four wide column">
+                            <h1 style="font-size:150%">10:00</h1>
+                            <i class="big bus icon"></i>
+                        </div>
+                        <div class="twelve wide column">
+                            <div class="ui two vertically divided grid" style="background-color: antiquewhite;">
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:2%">我想騎重機-我好帥</h1>
+                                </div>
+                                <div class="row">
+                                    <h1 style="font-size:3vh;margin-left:20%">停留 30分鐘</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trans">
+                        <i class="bus icon" style="display:inline;"></i>
+                        <h1 style="font-size:3vh;display:inline; ">30分</h1>
+                    </div>
+                </div>
+            {% endcomment %}
+            </div>
+        {% endfor %}
+        <div id="map" style="width:100%; border: 1pt solid;" class="transition hidden"></div>
+
+
+    </div>
+</div>
+</body>
+
+<script>
+    $(document).ready(function () {
+            (function () {
+                for (i = 0; i <={{ total_day }}; i++) {
+                    $(".whole#" + (i + 1) + "day").css("display", "none");
+                    $(".day#" + i).css("color", getRandomColor());
+                }
+            }())
+        }
+    );
+
+    //get color
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    //demo細節
+    function showsch(id) {
+
+            if ($('#Day' + id).css('display') == 'none') {
+                $("#Day" + id).fadeIn(1500);
+            } else {
+                $("#Day" + id).fadeOut(1000);
+            }
+
+
+        $.ajax({
+            url: '',
+            type: "POST",
+            data: {
+                day_cur: id,
+                'csrfmiddlewaretoken': "{{ csrf_token }}",
+            },
+            dataType: 'json',
+            success: function (content) {
+                directionsService = new google.maps.DirectionsService;
+                directionsDisplay = new google.maps.DirectionsRenderer;
+                map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 18,
+                    center: {lat: 22.9988465, lng: 120.2173261},
+                });
+                directionsDisplay.setMap(map);
+                console.log(content['waypoints']);
+                var request = {
+                    waypoints: content['waypoints'],
+                    origin: content['origin'],
+                    destination: content['destination'],
+                    optimizeWaypoints: false,
+                    travelMode: 'WALKING',
+                }
+                directionsService.route(request, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(result);
+                    } else {
+                        console.log('error');
+                    }
+                });
+                directionsDisplay.setMap(map);
+                map.setZoom(12);
+            }
+            ,
+            failure: function () {
+                console.log('fail');
+                alert();
+            },
+        });
+    }
+
+    {% comment %}{% endcomment %}
+</script>
+<script>
+    //google map
+    function initMap() {
+        directionsService = new google.maps.DirectionsService;
+        directionsDisplay = new google.maps.DirectionsRenderer;
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 6,
+            center: {lat: 22.9988465, lng: 120.2173261},
+        });
+        directionsDisplay.setMap(map);
+        console.log('map');
+        if ({{first_time_load}} == 1
+    )
+        {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+        }
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var pts = [];
+        {% for pt in waypoints %}
+            pts.push({stopover: true, location: {placeId: "{{ pt }}"}});
+        {% endfor %}
+        var request = {
+            waypoints: pts,
+            origin: {placeId: "{{origin}}"},
+            destination: {placeId: "{{ destination }}"},
+            optimizeWaypoints: false,
+            travelMode: 'WALKING',
+        }
+        console.log(pts);
+        console.log('{{origin}}');
+        console.log('{{destination}}');
+        console.log('end');
+        directionsService.route(request, function (result, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(result);
+            } else {
+                console.log('error');
+                console.log(status);
+            }
+        });
+    }
+</script>
+<script>
+    //滑動
+    var origin_height;//record origin height prevent height change
+    var sche_height;//as origin_height
+    $(document).ready(function () {
+        origin_height = $('.pusher').height();
+        $('.pusher').height(origin_height);
+        sche_height = $('#schedule').height();
+        $('#loader').height(origin_height);
+    });
+    //change to google map(左滑)
+    var mapstate = 0;
+    $('.pusher').on('swipeleft', function () {
+        if (mapstate == 0) {
+            console.log('left');
+            $('#schedule').transition('fade right');
+            $('#schedule').height('0');
+            setTimeout(function () {
+                $('#map').height('50vh');
+                $('#map').transition('fade left');
+                map.setZoom(12);
+            });
+            mapstate = 1;
+        }
+    });
+    //右滑 1.若從最左邊開始則打開sidebar 2. else 則判斷是否為google map 頁面再決定是否切換
+    var sidebarstate = 0;
+    $('.pusher').on('swiperight', function (e) {
+        if (e.swipestart.coords[0] < 0.1 * $(document).width()) {
+            console.log('ww');
+            $('.ui.sidebar').sidebar({closable: false});
+            $('.ui.sidebar').sidebar('toggle');
+            $('#sidebar_icon').hide();
+            console.log(sidebarstate);
+            setTimeout(function () {
+                sidebarstate = 1;
+            }, 500);
+        } else {
+            if (mapstate == 1 && e.swipestart.coords[1] > 0.7 * $(window).height()) {
+                //change to schedule
+                $('#map').transition('fade left');
+                $('#map').height('0');
+                $('#schedule').height(sche_height);
+                $('#schedule').transition('fade right');
+                mapstate = 0;
+            }
+        }
+    });
+    $(document).click(function () {
+        if (sidebarstate == 1) {
+            $('.ui.sidebar').sidebar('toggle');
+            $('#sidebar_icon').show();
+            $('.pusher').height(origin_height);
+            sidebarstate = 0;
+        }
+    });
+    //close sidebar
+</script>
+<script>
+    $('#user_icon').click(function () {
+        {% if user.is_authenticated %}
+            window.location.href = '../../profile';
+        {% else %}
+            window.location.href = '../../accounts/login';
+        {% endif %}
+    });
+    $('#logout_icon').click(function () {
+        {% if user.is_authenticated %}
+            window.location.href = "../../accounts/logout";
+        {% else %}
+            alert('你沒登入阿!')
+        {% endif %}
+    });
+    $('#search_icon').click(function () {
+        window.location.href = '../../search';
+    });
+    $('#home_icon').click(function () {
+        window.location.href = '../../develop';
+    });
+    $('#edit_icon').click(function () {
+        console.log('check');
+        window.location.href = '../../sch/0';
+    });
+</script>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2pGT9ePkt26BbSk1tvcPWXg1_8ZZ8lM8&callback=initMap"></script>
+
+</html>
